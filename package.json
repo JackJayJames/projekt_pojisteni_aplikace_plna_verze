@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/JackJayJames/projekt_pojisteni_aplikace_plna_verze/issues"
   },
-  "homepage": "https://github.com/JackJayJames/projekt_pojisteni_aplikace_plna_verze#readme"
+  "homepage": "https://github.com/JackJayJames/projekt_pojisteni_aplikace_plna_verze#readme",
+  "dependencies": {
+    "express": "~4.18.1"
+  }
 }
