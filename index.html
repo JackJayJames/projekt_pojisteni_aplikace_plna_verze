@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="cs-cz">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styly/reset.css" type="text/css" />
+    <link rel="stylesheet" href="styly/zakladni_body.css" type="text/css" />
+    <link rel="shortcut icon" type="image/x-icon" href="/icon/pojisteni.ico" />
+    <script src="/scripty/main.js" type="module" defer></script>
+    <title>Hlavní stránka</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <a href="index.html" class="logo">
+                    <img src="imgs/logo-pojisteni.svg" alt="logo pojištění" />
+                    <h3>Pojištění&nbsp;APP</h3>
+                </a>
+            </div>
+        </nav>
+    </header>
+    <section id="body-content">
+        <article>
+            <h2>Pojištěnci</h2>
+            <div id="cont_pojistenci">
+                <!--Zde se bude vypisovat tabulka s pojištěnci-->
+            </div>
+        </article>
+        <article>
+            <h2>Nový pojištěnec</h2>
+            <form action="novy-pojistenec" class="formular">
+                <div class="form-group">
+                    <label for="Jméno" class="nazev">Jméno</label>
+                    <input type="text" id="input-jmeno" placeholder="Jan" />
+                    <span id="val-jmeno"></span>
+                </div>
+                <div class="form-group">
+                    <label for="Přijmení" class="nazev">Přijmení</label>
+                    <input type="text" id="input-prijmeni" placeholder="Novák" />
+                    <span id="val-prijmeni"></span>
+                </div>
+                <div class="form-group">
+                    <label for="Věk" class="nazev">Datum narození</label>
+                    <input type="date" id="input-vek" />
+                    <span id="val-vek"></span>
+                </div>
+                <div class="form-group">
+                    <label for="Telefon" class="nazev">Telefon</label>
+                    <input type="text" id="input-telefon" placeholder="123 456 789" />
+                    <span id="val-telefon"></span>
+                </div>
+                <div class="form-group">
+                    <button type="button" id="btn-ulozit">Uložit</button>
+                </div>
+            </form>
+        </article>
+    </section>
+    <footer>
+        
+    </footer>
+</body>
+</html>
