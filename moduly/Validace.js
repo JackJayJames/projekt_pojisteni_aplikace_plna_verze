@@ -17,4 +17,14 @@ module.exports = class Validace{
         });
         return schema.validate(pojistenec);
     }
+    static pojisteni(pojisteni){
+        const schema = Joi.object({
+            nazev: Joi.string().min(5).required(),
+            castka: Joi.number().min(1).required(),
+            predmet: Joi.string().min(2).required(),
+            platnost_od: Joi.date().required(),
+            platnost_do: Joi.date().required()
+        });
+        return schema.validate(pojisteni);
+    }
 }
