@@ -1,5 +1,10 @@
+const Mongo = require('./moduly/Database.js')
+const database = new Mongo();
+
 const express = require('express');
 const app = express();
+
+data.funguje();
 
 app.use(express.json());
 
