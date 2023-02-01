@@ -1,4 +1,4 @@
-const Mongo = require('./moduly/Database.js')
+const Mongo = require('./moduly/database/Database.js')
 const database = new Mongo();
 
 const express = require('express');
