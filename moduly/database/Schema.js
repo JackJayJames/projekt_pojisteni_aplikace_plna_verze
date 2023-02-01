@@ -10,6 +10,6 @@ module.exports = class Schema{
         ulice: String,
         mesto: String,
         psc: Number,
-        pojisteni: [ String ]
+        pojisteni: Array
     }
 }

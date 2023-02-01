@@ -12,6 +12,7 @@ app.use(express.json());
 app.get('/', (req, res) => {
     res.send('hello, it works');
 });
+
 app.post('/', (req, res) => {
 
     const { error } = Validace.pojistenec(req.body);
@@ -20,21 +21,10 @@ app.post('/', (req, res) => {
         res.status(400).send(error.details[0].message);
     }
     else{
-        console.log("validní");
-        res.status(200).send("correct");
+        database.ulozitPojistence(req.body);
+        console.log(`--> ${req.body.jmeno} ${req.body.prijmeni}`);
+        res.status(200).send(req.body.jmeno + " " + req.body.prijmeni);
     }
-
-    /*database.ulozitPojistence({
-        "jmeno": "Pavel",
-        "prijmeni": "Plíhal",
-        "mail": "Pavel@Plihal.cz",
-        "telefon": 654987321,
-        "ulice": "Hlavní ulice 21",
-        "mesto": "Praha",
-        "psc": 471423,
-        "narozeni": "1999-08-23"
-    });*/
-    //res.send(req.body);
 });
 
 app.listen(3000, () => console.log('Listening on port 3000...'))
