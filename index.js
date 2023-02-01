@@ -14,7 +14,17 @@ app.get('/', (req, res) => {
 });
 app.post('/', (req, res) => {
 
-    database.ulozitPojistence({
+    const { error } = Validace.pojistenec(req.body);
+    if(error){
+        console.log(error.details[0].message);
+        res.status(400).send(error.details[0].message);
+    }
+    else{
+        console.log("validní");
+        res.status(200).send("correct");
+    }
+
+    /*database.ulozitPojistence({
         "jmeno": "Pavel",
         "prijmeni": "Plíhal",
         "mail": "Pavel@Plihal.cz",
@@ -23,10 +33,8 @@ app.post('/', (req, res) => {
         "mesto": "Praha",
         "psc": 471423,
         "narozeni": "1999-08-23"
-    });
-
-    console.log(req.body);
-    res.send(req.body);
+    });*/
+    //res.send(req.body);
 });
 
 app.listen(3000, () => console.log('Listening on port 3000...'))

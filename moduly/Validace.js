@@ -12,8 +12,9 @@ module.exports = class Validace{
             ulice: Joi.string().min(3).required(),
             mesto: Joi.string().min(3).required(),
             psc: Joi.number().min(10000).max(99999).required(),
-            narozeni: Joi.date(),
+            narozeni: Joi.date().required(),
             pojisteni: Joi.array().items(Joi.string())
         });
+        return schema.validate(pojistenec);
     }
 }
