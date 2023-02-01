@@ -4,7 +4,7 @@ const database = new Mongo();
 const express = require('express');
 const app = express();
 
-data.funguje();
+database.spustit();
 
 app.use(express.json());
 
