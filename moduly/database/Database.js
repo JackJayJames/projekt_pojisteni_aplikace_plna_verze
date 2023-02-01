@@ -1,6 +1,6 @@
 'use strict';
 
-const schema = require('./Schema.js')
+const Schema = require('./Schema.js')
 const mongoose = require('mongoose');
 
 module.exports = class Database{
