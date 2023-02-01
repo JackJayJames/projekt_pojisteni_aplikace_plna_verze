@@ -6,6 +6,18 @@ const app = express();
 
 database.spustit();
 
+database.ulozitPojistence({
+    "jmeno": "Pavel",
+    "prijmeni": "Plíhal",
+    "mail": "Pavel@Plihal.cz",
+    "telefon": 654987321,
+    "ulice": "Hlavní ulice 21",
+    "mesto": "Praha",
+    "psc": 471423,
+    "narozeni": "1999-08-23"
+});
+
+/*
 app.use(express.json());
 
 app.get('/', (req, res) => {
@@ -17,3 +29,4 @@ app.post('/', (req, res) => {
 });
 
 app.listen(3000, () => console.log('Listening on port 3000...'))
+*/
