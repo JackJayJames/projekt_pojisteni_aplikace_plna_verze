@@ -1,5 +1,5 @@
-const Validace = require('./moduly/Validace.js')
-const Mongo = require('./moduly/database/Database.js')
+const Validace = require('./moduly/Validace.js');
+const Mongo = require('./moduly/database/Database.js');
 const database = new Mongo();
 
 const express = require('express');
