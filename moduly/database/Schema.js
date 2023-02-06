@@ -21,4 +21,15 @@ module.exports = class Schema{
         platnost_do: Date,
         udalosti_ID: Array
     }
+    static udalost = {
+        nazev: String,
+        datum: Date,
+        poznamky: String,
+        status: {
+            type: String,
+            default: "Ke zpracování"
+        },
+        pojisteni_ID: String,
+        pojistenec_ID: String
+    }
 }

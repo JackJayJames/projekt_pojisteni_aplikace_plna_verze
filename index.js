@@ -22,7 +22,6 @@ app.post('/api/pojistenec', (req, res) => {
             .catch(error => res.status(404).send("Chyba zapsání pojistence do databáze"))
     }
 });
-
 app.post('/api/pojisteni/:pojistenec', (req, res) => {
     const { error } = Validace.pojisteni(req.body);
     if(error){
