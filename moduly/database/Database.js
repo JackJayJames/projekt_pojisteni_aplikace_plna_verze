@@ -32,6 +32,7 @@ module.exports = class Database{
                 const pojistenec = await this._ModelPojistenec.findById(pojistenec_ID);
                 pojistenec.pojisteni.push(result.id);
                 await this._ModelPojistenec.findByIdAndUpdate(pojistenec, { pojisteni: pojistenec.pojisteni });
+                await this._ModelPojisteni.findByIdAndUpdate(result, { pojistenec_ID: pojistenec.id });
                 return result;
             }
         });

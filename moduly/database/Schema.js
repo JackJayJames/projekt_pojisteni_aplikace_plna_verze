@@ -13,6 +13,7 @@ module.exports = class Schema{
         pojisteni: Array
     }
     static pojisteni = {
+        pojistenec_ID: String,
         nazev: String,
         castka: Number,
         predmet: String,
