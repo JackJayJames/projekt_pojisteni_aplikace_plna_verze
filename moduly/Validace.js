@@ -28,4 +28,12 @@ module.exports = class Validace{
         });
         return schema.validate(pojisteni);
     }
+    static udalost(udalost){
+        const schema = Joi.object({
+            nazev: Joi.string().min(5).required(),
+            datum: Joi.date().required(),
+            poznamka: Joi.string().required(),
+        });
+        return schema.validate(udalost);
+    }
 }

@@ -24,7 +24,7 @@ module.exports = class Schema{
     static udalost = {
         nazev: String,
         datum: Date,
-        poznamky: String,
+        poznamka: String,
         status: {
             type: String,
             default: "Ke zpracování"
