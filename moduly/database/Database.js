@@ -10,6 +10,7 @@ module.exports = class Database{
         privatni.set(this, {
             _adresa: "mongodb://127.0.0.1:27017/pojistdb",
             _ModelPojistenec: mongoose.model('Pojistenec', Schema.pojistenec),
+            _ModelPojisteni: mongoose.model('Pojisteni', Schema.pojisteni),
 
             _vytvoritModelPojistenec: function(pojistenec){
                 return this._ulozitModel(new this._ModelPojistenec(pojistenec));
@@ -25,6 +26,13 @@ module.exports = class Database{
             },
             _smazatPojistence: async function(id){
                 return await this._ModelPojistenec.findByIdAndDelete(id);
+            },
+            _ulozitPojisteni: async function(pojistenec_ID, pojisteni){
+                const result = await this._ModelPojisteni(pojisteni).save();
+                const pojistenec = await this._ModelPojistenec.findById(pojistenec_ID);
+                pojistenec.pojisteni.push(result.id);
+                await this._ModelPojistenec.findByIdAndUpdate(pojistenec, { pojisteni: pojistenec.pojisteni });
+                return result;
             }
         });
     }
@@ -44,5 +52,8 @@ module.exports = class Database{
     }
     smazatPojistence(id){
         return privatni.get(this)._smazatPojistence(id);
+    }
+    ulozitPojisteni(pojistenec, pojisteni){
+        return privatni.get(this)._ulozitPojisteni(pojistenec, pojisteni);
     }
 }

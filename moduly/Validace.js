@@ -23,7 +23,8 @@ module.exports = class Validace{
             castka: Joi.number().min(1).required(),
             predmet: Joi.string().min(2).required(),
             platnost_od: Joi.date().required(),
-            platnost_do: Joi.date().required()
+            platnost_do: Joi.date().required(),
+            udalosti_ID: Joi.array().items(Joi.string())
         });
         return schema.validate(pojisteni);
     }

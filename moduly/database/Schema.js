@@ -12,4 +12,12 @@ module.exports = class Schema{
         psc: Number,
         pojisteni: Array
     }
+    static pojisteni = {
+        nazev: String,
+        castka: Number,
+        predmet: String,
+        platnost_od: Date,
+        platnost_do: Date,
+        udalosti_ID: Array
+    }
 }

@@ -10,10 +10,6 @@ database.spustit();
 
 app.use(express.json());
 
-app.get('/', (req, res) => {
-    res.send('hello, it works');
-});
-
 app.post('/api/pojistenec', (req, res) => {
     const { error } = Validace.pojistenec(req.body);
     if(error){
@@ -22,8 +18,21 @@ app.post('/api/pojistenec', (req, res) => {
     }
     else{
         database.ulozitPojistence(req.body)
-            .then(result => res.send(result))
-            .catch(error => res.send("Chyby zapsání pojistence do databáze"))
+            .then(result => res.status(200).send(result))
+            .catch(error => res.status(404).send("Chyba zapsání pojistence do databáze"))
+    }
+});
+
+app.post('/api/pojisteni/:pojistenec', (req, res) => {
+    const { error } = Validace.pojisteni(req.body);
+    if(error){
+        console.log(error.details[0].message);
+        res.status(400).send(error.details[0].message);
+    }
+    else{
+        database.ulozitPojisteni(req.params.pojistenec, req.body)
+            .then(result => res.status(200).send(result))
+            .catch(error => res.status[404].send("Chyba zapsání pojištění do databáze"))
     }
 });
 
