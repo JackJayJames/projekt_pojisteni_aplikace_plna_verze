@@ -34,6 +34,16 @@ app.post('/api/pojisteni/:pojistenec', (req, res) => {
             .catch(error => res.status[404].send("Chyba zapsání pojištění do databáze"))
     }
 });
+app.post('/api/udalost/:pojisteni', (req, res) => {
+    const { error } = Validace.udalost(req.body);
+    console.log(req.params);
+    if(error){
+        console.log(error.details[0].message);
+        res.status(400).send(error.details[0].message);
+    } else {
+        res.status(200).send("V pořádku");
+    }
+});
 
 app.get('/api/pojistenci', (req, res) => {
     database.ziskatPojistence()
