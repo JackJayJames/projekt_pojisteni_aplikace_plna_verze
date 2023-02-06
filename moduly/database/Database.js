@@ -22,6 +22,9 @@ module.exports = class Database{
             },
             _ziskatPojistenceDleID: async function(id){
                 return await this._ModelPojistenec.findById(id);
+            },
+            _smazatPojistence: async function(id){
+                return await this._ModelPojistenec.findByIdAndDelete(id);
             }
         });
     }
@@ -38,5 +41,8 @@ module.exports = class Database{
             return privatni.get(this)._ziskatPojistence();
         else
             return privatni.get(this)._ziskatPojistenceDleID(id);
+    }
+    smazatPojistence(id){
+        return privatni.get(this)._smazatPojistence(id);
     }
 }

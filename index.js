@@ -26,6 +26,7 @@ app.post('/api/pojistenec', (req, res) => {
             .catch(error => res.send("Chyby zapsání pojistence do databáze"))
     }
 });
+
 app.get('/api/pojistenci', (req, res) => {
     database.ziskatPojistence()
         .then(pojistenci => res.status(200).send(pojistenci))
@@ -34,7 +35,15 @@ app.get('/api/pojistenci', (req, res) => {
 app.get('/api/pojistenec/:id', (req, res) => {
     database.ziskatPojistence(String(req.params.id))
         .then(pojistenec => res.status(200).send(pojistenec))
-        .catch(err => res.status(404).send("Pojištěnec nenalezen" + err))
+        .catch(err => res.status(404).send("Chyba čtení z databáze"));
 });
+
+app.delete('/api/pojistenec/:id', (req, res) => {
+    database.smazatPojistence(String(req.params.id))
+        .then(pojistenec => res.status(200).send(`Pojištěnec ${pojistenec.jmeno} ${pojistenec.prijmeni} byl úspěšně smazán`))
+        .catch(err => res.status(404).send("Chyba čtení z databáze"));
+});
+
+//63e0a3d4ef791bbe8136575d
 
 app.listen(3000, () => console.log('Listening on port 3000...'))
