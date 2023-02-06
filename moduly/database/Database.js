@@ -12,10 +12,16 @@ module.exports = class Database{
             _ModelPojistenec: mongoose.model('Pojistenec', Schema.pojistenec),
 
             _vytvoritModelPojistenec: function(pojistenec){
-                this._ulozitModel(new this._ModelPojistenec(pojistenec));
+                return this._ulozitModel(new this._ModelPojistenec(pojistenec));
             },
             _ulozitModel: async function(model){
-                const result = await model.save();
+                return await model.save();
+            },
+            _ziskatPojistence: async function(){
+                return await this._ModelPojistenec.find()
+            },
+            _ziskatPojistenceDleID: async function(id){
+                return await this._ModelPojistenec.findById(id);
             }
         });
     }
@@ -25,6 +31,12 @@ module.exports = class Database{
             .catch(error => console.error('Could not connect to MongoDB...', error));
     }
     ulozitPojistence(pojistenec){
-        privatni.get(this)._vytvoritModelPojistenec(pojistenec);
+        return privatni.get(this)._vytvoritModelPojistenec(pojistenec);
+    }
+    ziskatPojistence(id){
+        if(!id)
+            return privatni.get(this)._ziskatPojistence();
+        else
+            return privatni.get(this)._ziskatPojistenceDleID(id);
     }
 }
