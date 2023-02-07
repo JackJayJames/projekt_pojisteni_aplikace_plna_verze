@@ -2,6 +2,7 @@
 
 const Schema = require('./Schema.js')
 const mongoose = require('mongoose');
+const { pojisteni } = require('../Validace.js');
 
 
 const privatni = new WeakMap();
@@ -23,6 +24,9 @@ module.exports = class Database{
             },
             _ziskatPojistenceDleID: async function(id){
                 return await this._ModelPojistenec.findById(id);
+            },
+            _ziskatPojisteni: async function(id){
+                return await this._ModelPojisteni.findById(id);
             },
             _smazatPojistence: async function(id){
                 return await this._ModelPojistenec.findByIdAndDelete(id);
@@ -56,5 +60,8 @@ module.exports = class Database{
     }
     ulozitPojisteni(pojistenec, pojisteni){
         return privatni.get(this)._ulozitPojisteni(pojistenec, pojisteni);
+    }
+    ziskatPojisteni(id){
+        return privatni.get(this)._ziskatPojisteni(id);
     }
 }

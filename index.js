@@ -55,6 +55,11 @@ app.get('/api/pojistenec/:id', (req, res) => {
         .then(pojistenec => res.status(200).send(pojistenec))
         .catch(err => res.status(404).send("Chyba čtení z databáze"));
 });
+app.get('/api/pojisteni/:id', (req, res) => {
+    database.ziskatPojisteni(req.params.id)
+        .then(pojisteni => res.status(200).send(pojisteni))
+        .catch(err => res.status(404).send("Chyba čtení z databáse"))
+});
 
 app.delete('/api/pojistenec/:id', (req, res) => {
     database.smazatPojistence(String(req.params.id))
