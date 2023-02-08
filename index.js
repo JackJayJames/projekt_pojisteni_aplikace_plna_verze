@@ -3,7 +3,7 @@ const Mongo = require('./moduly/database/Database.js');
 const database = new Mongo();
 
 const express = require('express');
-const { pojistenec } = require('./moduly/Validace.js');
+const { pojistenec, pojisteni } = require('./moduly/Validace.js');
 const app = express();
 
 database.spustit();
@@ -66,6 +66,11 @@ app.delete('/api/pojistenec/:id', (req, res) => {
         .then(pojistenec => res.status(200).send(`Pojištěnec ${pojistenec.jmeno} ${pojistenec.prijmeni} byl úspěšně smazán`))
         .catch(err => res.status(404).send("Chyba čtení z databáze"));
 });
+app.delete('/api/pojisteni/:id', (req, res) => {
+    database.smazatPojisteni(req.params.id)
+        .then(pojisteni => res.status(200).send(`Pojištění ${pojisteni.nazev} na ${pojisteni.predmet} bylo úspěšně smazáno`))
+        .catch(err => res.status(404).send("Chyba čtení z databáze"));
+    });
 
 //63e0a3d4ef791bbe8136575d
 

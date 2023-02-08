@@ -29,7 +29,11 @@ module.exports = class Database{
                 return await this._ModelPojisteni.findById(id);
             },
             _smazatPojistence: async function(id){
-                return await this._ModelPojistenec.findByIdAndDelete(id);
+                const result = await this._ModelPojistenec.findByIdAndDelete(id);
+                for(const pojisteni of result.pojisteni){
+                    await this._ModelPojisteni.findByIdAndDelete(id);
+                }
+                return result;
             },
             _ulozitPojisteni: async function(pojistenec_ID, pojisteni){
                 const result = await this._ModelPojisteni(pojisteni).save();
@@ -63,5 +67,8 @@ module.exports = class Database{
     }
     ziskatPojisteni(id){
         return privatni.get(this)._ziskatPojisteni(id);
+    }
+    smazatPojisteni(id){
+        return privatni.get(this)._smazatPojisteni(id);
     }
 }
