@@ -1,0 +1,30 @@
+{
+    "jmeno": "Tom",
+    "prijmeni": "Cruise",
+    "narozeni": "1960-07-03",
+    "mail": "tom.cruise@email.com",
+    "telefon": "123456789",
+    "ulice": "Syracuse 12",
+    "mesto": "New York",
+    "psc": 76553
+}
+{
+    "jmeno": "Jack",
+    "prijmeni": "Black",
+    "narozeni": "1969-08-28",
+    "mail": "black@jack.org",
+    "telefon": "123456765",
+    "ulice": "Tenacius D23",
+    "mesto": "Santa Monica",
+    "psc": 76512
+}
+{
+    "jmeno": "Angelina",
+    "prijmeni": "Jolie",
+    "narozeni": "1975-07-04",
+    "mail": "Angelina.Joile@gmail.com",
+    "telefon": "987654321",
+    "ulice": "Boolieville",
+    "mesto": "Los Angeles",
+    "psc": 76512
+}

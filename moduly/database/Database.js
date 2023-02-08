@@ -35,6 +35,9 @@ module.exports = class Database{
                 }
                 return result;
             },
+            _smazatPojisteni: async function(id){
+                this._ModelPojistenec.find({ pojisteni: id });
+            },
             _ulozitPojisteni: async function(pojistenec_ID, pojisteni){
                 const result = await this._ModelPojisteni(pojisteni).save();
                 const pojistenec = await this._ModelPojistenec.findById(pojistenec_ID);

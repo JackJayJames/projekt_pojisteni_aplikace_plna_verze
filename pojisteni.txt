@@ -1,0 +1,42 @@
+{
+    "nazev": "Nemovitost",
+    "castka": 100000,
+    "predmet": "Byt",
+    "platnost_od": "2023-08-02",
+    "platnost_do": "2027-11-22"
+}
+{
+    "nazev": "Zdravotni",
+    "castka": 20000,
+    "predmet": "Telo",
+    "platnost_od": "2023-08-02",
+    "platnost_do": "2030-01-15"
+}
+{
+    "nazev": "Nemovitost",
+    "castka": 3500000,
+    "predmet": "Dům",
+    "platnost_od": "2023-08-02",
+    "platnost_do": "2053-07-02"
+}
+{
+    "nazev": "Havarijní",
+    "castka": 1000000,
+    "predmet": "Škoda Octavia",
+    "platnost_od": "2023-08-02",
+    "platnost_do": "2028-07-02"
+}
+{
+    "nazev": "Havarijní proti zvěři",
+    "castka": 800000,
+    "predmet": "Peugeot 308",
+    "platnost_od": "2023-08-02",
+    "platnost_do": "2026-02-11"
+}
+{
+    "nazev": "Nemovitost",
+    "castka": 12000000,
+    "predmet": "Hotel",
+    "platnost_od": "2023-08-02",
+    "platnost_do": "2060-02-28"
+}
