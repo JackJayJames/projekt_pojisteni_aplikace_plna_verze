@@ -31,7 +31,7 @@ module.exports = class Database{
             _smazatPojistence: async function(id){
                 const result = await this._ModelPojistenec.findByIdAndDelete(id);
                 for(const pojisteni of result.pojisteni){
-                    await this._ModelPojisteni.findByIdAndDelete(id);
+                    await this._ModelPojisteni.findByIdAndDelete(pojisteni);
                 }
                 return result;
             },
