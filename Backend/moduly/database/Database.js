@@ -36,14 +36,20 @@ module.exports = class Database{
                 return result;
             },
             _smazatPojisteni: async function(id){
-                this._ModelPojistenec.find({ pojisteni: id });
+                console.log(id);
+                const pojistenec = await this._ModelPojistenec.findOne({ "pojisteni": id });
+                pojistenec.pojisteni.splice(pojistenec.pojisteni.indexOf(id), 1);
+                console.log(pojistenec.pojisteni.indexOf(id));
+                console.log(pojistenec.pojisteni);
+                await this._ModelPojistenec.findByIdAndUpdate(pojistenec.id, { pojisteni: pojistenec.pojisteni })
+                return await this._ModelPojisteni.findByIdAndDelete(id);
             },
             _ulozitPojisteni: async function(pojistenec_ID, pojisteni){
+                pojisteni.pojistenec_ID = pojistenec_ID;
                 const result = await this._ModelPojisteni(pojisteni).save();
                 const pojistenec = await this._ModelPojistenec.findById(pojistenec_ID);
                 pojistenec.pojisteni.push(result.id);
                 await this._ModelPojistenec.findByIdAndUpdate(pojistenec, { pojisteni: pojistenec.pojisteni });
-                await this._ModelPojisteni.findByIdAndUpdate(result, { pojistenec_ID: pojistenec.id });
                 return result;
             }
         });

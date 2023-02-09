@@ -31,7 +31,7 @@ app.post('/api/pojisteni/:pojistenec', (req, res) => {
     else{
         database.ulozitPojisteni(req.params.pojistenec, req.body)
             .then(result => res.status(200).send(result))
-            .catch(error => res.status[404].send("Chyba zapsání pojištění do databáze"))
+            .catch(error => res.status(404).send("Chyba zapsání pojištění do databáze"))
     }
 });
 app.post('/api/udalost/:pojisteni', (req, res) => {
