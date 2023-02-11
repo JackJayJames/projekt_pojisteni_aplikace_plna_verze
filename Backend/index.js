@@ -47,17 +47,26 @@ app.post('/api/udalost/:pojisteni', (req, res) => {
 
 app.get('/api/pojistenci', (req, res) => {
     database.ziskatPojistence()
-        .then(pojistenci => res.status(200).send(pojistenci))
+        .then(pojistenci => {
+            res.status(200).send(pojistenci);
+            console.log("GET: posílám seznam pojištěnců");
+        })
         .catch(err => res.status(404).send("Chyba čtení z databáse"));
 })
 app.get('/api/pojistenec/:id', (req, res) => {
     database.ziskatPojistence(String(req.params.id))
-        .then(pojistenec => res.status(200).send(pojistenec))
+        .then(pojistenec => {
+            res.status(200).send(pojistenec);
+            console.log(`GET: ${req.params.id}, posílám pojištěnce ${pojistenec.jmeno} ${pojistenec.prijmeni}`);
+        })
         .catch(err => res.status(404).send("Chyba čtení z databáze"));
 });
 app.get('/api/pojisteni/:id', (req, res) => {
     database.ziskatPojisteni(req.params.id)
-        .then(pojisteni => res.status(200).send(pojisteni))
+        .then(pojisteni => {
+            console.log(`GET: ${id}, posílám pojištění ${pojisteni.nazev} ${pojisteni.predmet}`);
+            res.status(200).send(pojisteni);
+        })
         .catch(err => res.status(404).send("Chyba čtení z databáse"))
 });
 
