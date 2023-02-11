@@ -5,7 +5,6 @@ const Mongo = require('./moduly/database/Database.js');
 const database = new Mongo();
 
 const express = require('express');
-//const { pojistenec, pojisteni } = require('./moduly/Validace.js');
 const app = express();
 
 database.spustit();
@@ -24,7 +23,7 @@ app.post('/api/pojistenec', (req, res) => {
                 res.status(200).send(result);
                 console.log(`POST: Pojištěnec ${result.jmeno} ${result.prijmeni}, byl úspěšně přidán`);
             })
-            .catch(err => res.status(404).send(`Chyba zapsání pojistence do databáze ${err}`));
+            .catch(err => res.status(404).send(`Chyba zapsání pojistence do databáze -> ${err}`));
     }
 });
 app.post('/api/pojisteni/:pojistenec', (req, res) => {
@@ -39,7 +38,7 @@ app.post('/api/pojisteni/:pojistenec', (req, res) => {
                 res.status(200).send(result);
                 console.log(`POST: Pojištění ${result.nazev} ${result.predmet} bylo přidáno pojištěnci s ID ${req.params.pojistenec}`);
             })
-            .catch(err => res.status(404).send(`Chyba zapsání pojištění do databáze ${err}`))
+            .catch(err => res.status(404).send(`Chyba zapsání pojištění do databáze -> ${err}`))
     }
 });/*
 app.post('/api/udalost/:pojisteni', (req, res) => {
@@ -59,7 +58,7 @@ app.get('/api/pojistenci', (req, res) => {
             res.status(200).send(pojistenci);
             console.log("GET: posílám seznam pojištěnců");
         })
-        .catch(err => res.status(404).send(`Chyba čtení z databáse ${err}`));
+        .catch(err => res.status(404).send(`Chyba čtení z databáse -> ${err}`));
 })
 app.get('/api/pojistenec/:id', (req, res) => {
     database.ziskatPojistence(req.params.id)
@@ -70,7 +69,7 @@ app.get('/api/pojistenec/:id', (req, res) => {
         })
         .catch(err => {
             console.log(err.message);
-            res.status(404).send(`Chyba čtení z databáse ${err}`);
+            res.status(404).send(`Chyba čtení z databáse -> ${err}`);
         });
 });
 app.get('/api/pojisteni/:id', (req, res) => {
@@ -82,7 +81,7 @@ app.get('/api/pojisteni/:id', (req, res) => {
         })
         .catch(err => {
             console.log(err.message);
-            res.status(404).send(`Chyba čtení z databáse ${err}`);
+            res.status(404).send(`Chyba čtení z databáse -> ${err}`);
         });
 });
 
@@ -92,7 +91,7 @@ app.delete('/api/pojistenec/:id', (req, res) => {
             res.status(200).send(`Pojištěnec ${pojistenec.jmeno} ${pojistenec.prijmeni} byl úspěšně smazán`);
             console.log(`DELETE: Pojištěnec ${pojistenec.jmeno} ${pojistenec.prijmeni} byl úspěšně smazán`);
         })
-        .catch(err => res.status(404).send(`Chyba mazání z databáse ${err}`));
+        .catch(err => res.status(404).send(`Chyba mazání z databáse -> ${err}`));
 });
 app.delete('/api/pojisteni/:id', (req, res) => {
     database.smazatPojisteni(req.params.id)
@@ -100,9 +99,7 @@ app.delete('/api/pojisteni/:id', (req, res) => {
             res.status(200).send(`Pojištění ${pojisteni.nazev} na ${pojisteni.predmet} bylo úspěšně smazáno`);
             console.log(`DELETE: Pojištění ${pojisteni.nazev} na ${pojisteni.predmet} bylo úspěšně smazáno`);
         })
-        .catch(err => res.status(404).send(`Chyba mazání z databáse ${err}`));
+        .catch(err => res.status(404).send(`Chyba mazání z databáse -> ${err}`));
     });
-
-//63e0a3d4ef791bbe8136575d
 
 app.listen(3000, () => console.log('Listening on port 3000...'))
