@@ -36,11 +36,8 @@ module.exports = class Database{
                 return result;
             },
             _smazatPojisteni: async function(id){
-                console.log(id);
                 const pojistenec = await this._ModelPojistenec.findOne({ "pojisteni": id });
                 pojistenec.pojisteni.splice(pojistenec.pojisteni.indexOf(id), 1);
-                console.log(pojistenec.pojisteni.indexOf(id));
-                console.log(pojistenec.pojisteni);
                 await this._ModelPojistenec.findByIdAndUpdate(pojistenec.id, { pojisteni: pojistenec.pojisteni })
                 return await this._ModelPojisteni.findByIdAndDelete(id);
             },
