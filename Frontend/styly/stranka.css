@@ -1,0 +1,21 @@
+*{
+    border: 1px dotted red;
+}
+body > header{
+    background-color: rgb(120, 120, 227);
+    height: 10vh;
+    width: 100%;
+    padding: 1% 0 1% 0;
+}
+nav{
+    height: auto;
+    display: flex;
+}
+.navigace{
+    padding: 0;
+    margin: 0;
+}
+.navigace li{
+    list-style: none;
+    margin: 0;
+}
