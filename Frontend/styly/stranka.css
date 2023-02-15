@@ -23,6 +23,7 @@ header nav{
 .nav-container{
     margin: auto;
     display: flex;
+    gap: 10vw;
     height: 8vh;
     max-width: var(--maximalni-sirka);
     padding: 1vh 5vw 1vh 5vw;
@@ -57,6 +58,7 @@ nav a {
     margin: auto;
     justify-content: center;
     padding-left: 0;
+    width: 100%;
 }
 .navigace a {
     padding: .3rem;
@@ -105,5 +107,7 @@ footer h5{
 
 
 @media only screen and (max-width: 600px) {
-    
+    .logo h3{
+        display: none;
+    }
 }
