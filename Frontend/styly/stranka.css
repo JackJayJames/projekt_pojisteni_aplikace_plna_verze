@@ -1,19 +1,21 @@
-*{
+/*{
     border: 1px dotted red;
-}
+}*/
 
 body{
     font-family: Arial, Helvetica, sans-serif;
     padding-top: 8vh;
 }
 
+/*HEADER*/
 header{
     width: 100%;
     position: fixed;
     top: 0;
 }
+        /*HEADER NAV*/
 header nav{
-    background-color: rgb(176, 176, 255);
+    background-color: #3737e6;
 }
 .nav-container{
     margin: auto;
@@ -24,12 +26,14 @@ header nav{
 }
 nav a {
     text-decoration: none;
+    color: whitesmoke;
 }
 
-/*Logo*/
+                /*Logo*/
 
 .logo{
     display: flex;
+    gap: 1vw;
     width: max-content;
 }
 .logo img{
@@ -39,4 +43,24 @@ nav a {
 .logo h3{
     color: black;
     align-self: center;
+    color: whitesmoke;
+}
+
+                /*NAVIGACE*/
+.navigace{
+    display: flex;
+    gap: 3vw;
+    list-style: none;
+    margin: auto;
+    justify-content: center;
+    padding-left: 0;
+}
+.navigace a {
+    padding: .3rem;
+    transition: .1s;
+    border-radius: .3rem;
+}
+.navigace a:hover{
+    background-color: white;
+    color: #3737e6;
 }
