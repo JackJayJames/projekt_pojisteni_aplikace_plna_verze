@@ -67,18 +67,22 @@ nav a {
     background-color: white;
     color: #3737e6;
 }
+.aktivni{
+    border-bottom: .1rem solid white;
+}
 
 /*TĚLO STRÁNKY*/
 body > section{
     display: flex;
     justify-content: center;
     margin-top: 9vh;
-    height: 85vh;
+    min-height: 85vh;
 }
 .content{
     width: 100%;
     max-width: var(--maximalni-sirka);
     background-color: #e7e7e7;
+    padding: 5vh 4vw 5vh 4vw;
 }
 
 /*PATIČKA*/
