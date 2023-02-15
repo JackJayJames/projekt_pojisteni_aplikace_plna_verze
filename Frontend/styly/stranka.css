@@ -83,6 +83,10 @@ body > section{
     max-width: var(--maximalni-sirka);
     background-color: #e7e7e7;
     padding: 5vh 4vw 5vh 4vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .7vh;
 }
 
 /*PATIČKA*/
