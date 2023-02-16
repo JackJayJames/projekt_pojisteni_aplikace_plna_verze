@@ -1,5 +1,8 @@
 'use strict';
 
-export class ObsluhaHlStranky{
+import { Ajax } from "./Ajax.js";
+const privatni = new WeakMap();
 
+export class ObsluhaHlStranky{
+    
 }
