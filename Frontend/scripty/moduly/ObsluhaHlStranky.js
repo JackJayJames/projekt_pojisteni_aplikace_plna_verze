@@ -7,7 +7,7 @@ const privatni = new WeakMap();
 export class ObsluhaHlStranky{
     constructor(){
         privatni.set(this, {
-            _content: document.querySelector(".container"),
+            _tabulka: new TvoricTabulky(document.querySelector(".container")),
 
             _getPojistence: function(){
                 Ajax.get('http://localhost:3000/api/pojistenci', { pocet: 5 })
@@ -17,8 +17,7 @@ export class ObsluhaHlStranky{
                     .catch((err) => console.log(err)) 
             },
             _vykreslitPojistence: function(data){
-                console.log(data);
-                console.log(this._content);
+                this._tabulka.vytvorit(data);
             }
         });
         this.vypsatPojistence()
