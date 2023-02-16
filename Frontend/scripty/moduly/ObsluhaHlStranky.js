@@ -1,28 +1,29 @@
 'use strict';
 
 import { Ajax } from "./Ajax.js";
+import { TvoricTabulky } from "./TvoricTabulky.js";
 const privatni = new WeakMap();
 
 export class ObsluhaHlStranky{
     constructor(){
-        this.content = document.querySelector();
-
-
         privatni.set(this, {
+            _content: document.querySelector(".container"),
+
             _getPojistence: function(){
                 Ajax.get('http://localhost:3000/api/pojistenci', { pocet: 5 })
                     .then((data) => {
-                        console.log(data);
+                        this._vykreslitPojistence(data);
                     })
                     .catch((err) => console.log(err)) 
+            },
+            _vykreslitPojistence: function(data){
+                console.log(data);
+                console.log(this._content);
             }
         });
-        this.ziskatPojistence()
+        this.vypsatPojistence()
     }
-    ziskatPojistence(){
+    vypsatPojistence(){
         privatni.get(this)._getPojistence();
-    }
-    vykreslitPojistence(){
-
     }
 }
