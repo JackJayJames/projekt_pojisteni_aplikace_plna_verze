@@ -47,4 +47,17 @@ export class Ajax{
 
         throw new TypeError('Content type not found. Cannot autoparse the response')
     }
+    static _serialize(obj, prefix = ''){
+        let str = [];
+        for(let p in obj){
+            if(obj.hasOwnProperty(p)){
+                var k = prefix ? prefix + "[" + p + "]" : p,
+                    v = obj[p];
+                str.push((v !== null && typeof v === "object") ?
+                    Ajax._serialize(v, k) :
+                    encodeURIComponent(k) + "=" + encodeURIComponent(v));
+            }
+        }
+        return str.join("&");
+    }
 }
