@@ -60,4 +60,10 @@ export class Ajax{
         }
         return str.join("&");
     }
+    static async get(url, data = {}, originalResponse = false){
+        return this._request(url, 'GET', data, originalResponse);
+    }
+    static async post(url, data = {}, originalResponse = false){
+        return this._request(url, 'POST', data, originalResponse);
+    }
 }
