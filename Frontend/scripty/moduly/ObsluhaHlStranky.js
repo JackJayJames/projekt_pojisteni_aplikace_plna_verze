@@ -5,6 +5,9 @@ const privatni = new WeakMap();
 
 export class ObsluhaHlStranky{
     constructor(){
+        this.content = document.querySelector();
+
+
         privatni.set(this, {
             _getPojistence: function(){
                 Ajax.get('http://localhost:3000/api/pojistenci', { pocet: 5 })
@@ -18,5 +21,8 @@ export class ObsluhaHlStranky{
     }
     ziskatPojistence(){
         privatni.get(this)._getPojistence();
+    }
+    vykreslitPojistence(){
+
     }
 }
