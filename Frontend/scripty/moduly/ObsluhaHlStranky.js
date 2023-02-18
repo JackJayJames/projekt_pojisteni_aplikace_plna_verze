@@ -24,6 +24,18 @@ export class ObsluhaHlStranky{
                         console.log(res);
                     })
                     .catch(err => console.log(err));
+                /*fetch(`http://localhost:5500/api/pojistenec/${id}`, {
+                    method: 'DELETE',
+                    mode: 'cors',
+                    cache: 'no-cache',
+                    credentials: 'same-origin',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: "",
+                })
+                    .then(res => console.log(res))
+                    .catch(err => console.log(err));*/
             },
             _vykreslitPojistence: function(){
                 console.log(this._data);
