@@ -18,6 +18,13 @@ export class ObsluhaHlStranky{
                     })
                     .catch((err) => console.log(err)) 
             },
+            _deletePojistence: function(id){
+                Ajax.delete(`http://localhost:5500/api/pojistenec/${id}`)
+                    .then(res => {
+                        console.log(res);
+                    })
+                    .catch(err => console.log(err));
+            },
             _vykreslitPojistence: function(){
                 console.log(this._data);
                 this._tabulka.vytvorit(this._data);
@@ -25,8 +32,9 @@ export class ObsluhaHlStranky{
             },
             _obsluhaDeleteTlacitek: function(){
                 for(const pojistenec of this._data){
-                    document.getElementById(pojistenec._id).onclick = (a) => {
-                        console.log(a.target.id);
+                    document.getElementById(pojistenec._id).onclick = (e) => {
+                        console.log(e.target.id);
+                        this._deletePojistence(e.target.id);
                     };
                 }
             }

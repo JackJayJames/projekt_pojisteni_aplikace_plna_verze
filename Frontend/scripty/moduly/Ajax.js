@@ -16,7 +16,7 @@ export class Ajax{
                 'Content-Type': 'application/x-www-form-urlencoded',
             },
         };
-
+        
         if(type === 'GET'){
             let requestData = Ajax._serialize(data);
             if(requestData)
@@ -25,7 +25,10 @@ export class Ajax{
         else
             fetchOptions.body = Ajax._serialize(data);
         
+        console.log(fetchOptions);
+        
         let response = await fetch(url, fetchOptions);
+        console.log(response);
 
         if(originalResponse)
             return response;
@@ -65,5 +68,8 @@ export class Ajax{
     }
     static async post(url, data = {}, originalResponse = false){
         return this._request(url, 'POST', data, originalResponse);
+    }
+    static async delete(url, data = {}, originalResponse = false){
+        return this._request(url, 'DELETE', data, originalResponse);
     }
 }

@@ -103,6 +103,7 @@ body > section{
     border: none;
     align-self: center;
     background-image: url(/Frontend/imgs/delete-icon.svg);
+    transition: .1s;
 }
 .deleteBtn:hover{
     cursor: pointer;
