@@ -10,14 +10,14 @@ export class ObsluhaHlStranky{
             _tabulka: new TvoricTabulky(document.querySelector(".container")),
 
             _getPojistence: function(){
-                Ajax.get('http://localhost:3000/api/pojistenci', { pocet: 5 })
+                Ajax.get('http://localhost:5500/api/pojistenci', { pocet: 5 })
                     .then((data) => {
                         this._vykreslitPojistence(data);
                     })
                     .catch((err) => console.log(err)) 
             },
             _vykreslitPojistence: function(data){
-                this._tabulka.vytvorit(data);
+                //this._tabulka.vytvorit(data);
             }
         });
         this.vypsatPojistence()

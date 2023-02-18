@@ -4,8 +4,11 @@ const Validace = require('./moduly/Validace.js');
 const Mongo = require('./moduly/database/Database.js');
 const database = new Mongo();
 
+const cors = require('cors');
 const express = require('express');
 const app = express();
+
+app.use(cors());
 
 database.spustit();
 
@@ -102,4 +105,4 @@ app.delete('/api/pojisteni/:id', (req, res) => {
         .catch(err => res.status(404).send(`Chyba mazání z databáse -> ${err}`));
     });
 
-app.listen(3000, () => console.log('Listening on port 3000...'))
+app.listen(5500, () => console.log('Listening on port 3000...'))
