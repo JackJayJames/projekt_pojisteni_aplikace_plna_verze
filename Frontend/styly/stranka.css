@@ -90,6 +90,24 @@ body > section{
     align-items: center;
     gap: .7vh;
 }
+.tabulka-pojistencu{
+    border-collapse: collapse;
+}
+.tabulka-pojistencu th, td{
+    border: 1px solid black;
+    padding: 10px 5px 10px 5px;
+}
+.deleteBtn{
+    width: 20px;
+    padding: 90%;
+    border: none;
+    align-self: center;
+    background-image: url(/Frontend/imgs/delete-icon.svg);
+}
+.deleteBtn:hover{
+    cursor: pointer;
+    border: 1px solid red;
+}
 
 /*PATIČKA*/
 footer{

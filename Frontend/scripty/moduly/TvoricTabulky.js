@@ -6,7 +6,9 @@ export class TvoricTabulky{
         privatni.set(this, {
             _element: element,
             _vytvoritTabulku: function(data){
+                this._element.innerHTML = "";
                 const table = document.createElement("table");
+                table.classList = "tabulka-pojistencu";
                 table.appendChild(this._vytvoritHlavicku());
                 table.appendChild(this._vytvoritTelo(data));
 
@@ -17,9 +19,9 @@ export class TvoricTabulky{
                 const tr = document.createElement("tr");
                 tr.appendChild(this._vytvoritBunku("th", "Jméno"));
                 tr.appendChild(this._vytvoritBunku("th", "Bydliště"));
-                tr.appendChild(this._vytvoritBunku("th", "e-mail"));
-                tr.appendChild(this._vytvoritBunku("th", "telefon"));
-                tr.appendChild(this._vytvoritBunku("th", ""));
+                tr.appendChild(this._vytvoritBunku("th", "E-mail"));
+                tr.appendChild(this._vytvoritBunku("th", "Telefon"));
+                //tr.appendChild(this._vytvoritBunku("th", ""));
                 thead.appendChild(tr);
                 return thead;
             },
@@ -36,10 +38,18 @@ export class TvoricTabulky{
                     tr.appendChild(this._vytvoritBunku("td", cast.mesto));
                     tr.appendChild(this._vytvoritBunku("td", cast.mail));
                     tr.appendChild(this._vytvoritBunku("td", cast.telefon));
+                    tr.appendChild(this._vytvoritTlacitko(cast._id));
                     tbody.appendChild(tr);
                 }
 
                 return tbody;
+            },
+            _vytvoritTlacitko: function(id){
+                const button = document.createElement("button");
+                //button.textContent = "delete";
+                button.classList = "deleteBtn";
+                button.id = id;
+                return button;
             }
         });
     }
