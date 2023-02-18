@@ -21,7 +21,6 @@ export class TvoricTabulky{
                 tr.appendChild(this._vytvoritBunku("th", "Bydliště"));
                 tr.appendChild(this._vytvoritBunku("th", "E-mail"));
                 tr.appendChild(this._vytvoritBunku("th", "Telefon"));
-                //tr.appendChild(this._vytvoritBunku("th", ""));
                 thead.appendChild(tr);
                 return thead;
             },
@@ -46,7 +45,6 @@ export class TvoricTabulky{
             },
             _vytvoritTlacitko: function(id){
                 const button = document.createElement("button");
-                //button.textContent = "delete";
                 button.classList = "deleteBtn";
                 button.id = id;
                 return button;
