@@ -14,10 +14,16 @@ export class TvoricTabulky{
             _vytvoritHlavicku: function(){
                 const thead = document.createElement("thead");
                 const tr = document.createElement("tr");
-                tr.appendChild(document.createElement("th").textContent = "Jméno");
-                tr.appendChild(document.createElement("th").textContent = "Bydliště");
-
+                tr.appendChild(this._vytvoritBunku("th", "Jméno"));
+                tr.appendChild(this._vytvoritBunku("th", "Bydliště"));
+                tr.appendChild(this._vytvoritBunku("th", ""));
+                thead.appendChild(tr);
                 return thead;
+            },
+            _vytvoritBunku: function(type = "td", text){
+                const element = document.createElement(type);
+                element.textContent = text;
+                return element;
             }
         });
     }

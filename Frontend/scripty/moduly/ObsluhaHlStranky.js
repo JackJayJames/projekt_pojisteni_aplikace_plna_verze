@@ -17,7 +17,8 @@ export class ObsluhaHlStranky{
                     .catch((err) => console.log(err)) 
             },
             _vykreslitPojistence: function(data){
-                //this._tabulka.vytvorit(data);
+                console.log(data);
+                this._tabulka.vytvorit(data);
             }
         });
         this.vypsatPojistence()
