@@ -13,12 +13,14 @@
 .formVstup{
     display: flex;
     flex-direction: column;
+    gap: 2px;
     width: 50%;
     margin: 10px 0;
 }
 .formVstup input{
     line-height: 25px;
     font-size: 100%;
+    padding: .4rem .8rem;
 }
 .formVstup input:focus{
     border-color: #1940ff;
