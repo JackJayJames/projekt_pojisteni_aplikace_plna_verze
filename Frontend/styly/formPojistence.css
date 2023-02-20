@@ -20,6 +20,10 @@
     line-height: 25px;
     font-size: 100%;
 }
+.formVstup input:focus{
+    border-color: #1940ff;
+}
+
 #ulozitPojistence{
     margin-top: 10px;
     width: 100px;
