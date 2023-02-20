@@ -43,7 +43,8 @@ export class PridatPojistence{
                 this._zvalidovat();
             },
             _zvalidovat: function(){
-                console.log(this._pojistenec);
+               const response = Validace.zvalidovat(this._pojistenec);
+               console.log(response);
             }
         });
     }
