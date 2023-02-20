@@ -8,7 +8,8 @@ export class Validace{
         this.#_response.jmeno = this.#_zvalidovatJmeno(pojistenec.jmeno);
         this.#_response.prijmeni = this.#_zvalidovatJmeno(pojistenec.prijmeni);
         this.#_response.email = this.#_zvalidovatEmail(pojistenec.email);
-        console.log(this.#_response);
+        this.#_response.telefon = this.#_zvalidovatTelefon(pojistenec.telefon);
+
         return this.#_response;
     }
     static #_zvalidovatJmeno(jmeno){
@@ -47,6 +48,20 @@ export class Validace{
             return "Invalidní schéma E-mailu";
         }
     }
+    static #_zvalidovatTelefon(telefon){
+        if(!telefon){
+            this.#_response.status = false;
+            return "Toto pole je povinné";
+        }
+        if(!this.#_obasahujeCisla(telefon.trim().split(" ").join(""))){
+            this.#_response.status = false;
+            return "Musí obsaovat jenom čísla";
+        }
+        if(!this.#_delka(telefon.trim().split(" ").join(""), 9, 9)){
+            this.#_response.status = false;
+            return "Číslo musí být dlouhé 9 čísel";
+        }
+    }
 
     static #_delka(input, min, max){
         return (min <= input.length) && (input.length <= max);
@@ -75,5 +90,8 @@ export class Validace{
     }
     static #_obasahujePismena(string){
         return /^[A-Za-z]*$/.test(string);
+    }
+    static #_obasahujeCisla(cislo){
+        return /^[0-9]*$/.test(cislo);
     }
 }
