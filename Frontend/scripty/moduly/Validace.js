@@ -1,26 +1,34 @@
 'use strict';
 
 export class Validace{
-    static #response;
+    static #_response;
 
     static zvalidovat(pojistenec){
-        this.#response = { status: "OK" };
-        this.#response.jmeno = this.#zvalidovatJmeno(pojistenec.jmeno);
-        console.log(this.#response);
-        return this.#response;
+        this.#_response = { status: "OK" };
+        this.#_response.jmeno = this.#_zvalidovatJmeno(pojistenec.jmeno);
+        this.#_response.prijmeni = this.#_zvalidovatJmeno(pojistenec.prijmeni);
+        console.log(this.#_response);
+        return this.#_response;
     }
-    static #zvalidovatJmeno(jmeno){
+    static #_zvalidovatJmeno(jmeno){
         if(!jmeno){
-            this.#response.status = "notOK";
+            this.#_response.status = "notOK";
             return "Toto pole je povinné";
         }
-        if(!this.#delka(jmeno, 2, 30)){
-            this.#response.status = "notOK";
+        if(!this.#_delka(jmeno, 2, 30)){
+            this.#_response.status = "notOK";
             return "Délka musí být delší než 1 a kratší než 31";
+        }
+        if(!this.#_jednoSlovo(jmeno)){
+            this.#_response.status = "notOK";
+            return "Musí obsahovat jedno slovo";
         }
     }
 
-    static #delka(input, min, max){
+    static #_delka(input, min, max){
         return (min <= input.length) && (input.length <= max);
+    }
+    static #_jednoSlovo(slovo){
+        return slovo.trim().split(" ").length == 1;
     }
 }
