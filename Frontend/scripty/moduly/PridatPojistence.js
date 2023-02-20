@@ -1,5 +1,7 @@
 'use strict';
 
+import { Validace } from "./Validace.js";
+
 const privatni = new WeakMap();
 export class PridatPojistence{
     constructor(){
