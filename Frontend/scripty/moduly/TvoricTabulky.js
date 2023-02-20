@@ -18,15 +18,16 @@ export class TvoricTabulky{
                 const thead = document.createElement("thead");
                 const tr = document.createElement("tr");
                 tr.appendChild(this._vytvoritBunku("th", "Jméno"));
-                tr.appendChild(this._vytvoritBunku("th", "Bydliště"));
-                tr.appendChild(this._vytvoritBunku("th", "E-mail"));
+                tr.appendChild(this._vytvoritBunku("th", "Bydliště", "schovat"));
+                tr.appendChild(this._vytvoritBunku("th", "E-mail", "schovat"));
                 tr.appendChild(this._vytvoritBunku("th", "Telefon"));
                 thead.appendChild(tr);
                 return thead;
             },
-            _vytvoritBunku: function(type = "td", text){
+            _vytvoritBunku: function(type, text, trida = ""){
                 const element = document.createElement(type);
                 element.textContent = text;
+                element.classList = trida;
                 return element;
             },
             _vytvoritTelo: function(data){
@@ -34,8 +35,8 @@ export class TvoricTabulky{
                 for(const cast of data){
                     const tr = document.createElement("tr");
                     tr.appendChild(this._vytvoritBunku("td", `${cast.jmeno} ${cast.prijmeni}`));
-                    tr.appendChild(this._vytvoritBunku("td", cast.mesto));
-                    tr.appendChild(this._vytvoritBunku("td", cast.mail));
+                    tr.appendChild(this._vytvoritBunku("td", cast.mesto, "schovat"));
+                    tr.appendChild(this._vytvoritBunku("td", cast.mail, "schovat"));
                     tr.appendChild(this._vytvoritBunku("td", cast.telefon));
                     tr.appendChild(this._vytvoritTlacitko(cast._id));
                     tbody.appendChild(tr);

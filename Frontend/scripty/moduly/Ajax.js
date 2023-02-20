@@ -25,10 +25,7 @@ export class Ajax{
         else
             fetchOptions.body = Ajax._serialize(data);
         
-        console.log(fetchOptions);
-        
         let response = await fetch(url, fetchOptions);
-        console.log(response);
 
         if(originalResponse)
             return response;

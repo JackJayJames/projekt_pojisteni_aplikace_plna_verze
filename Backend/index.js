@@ -105,4 +105,4 @@ app.delete('/api/pojisteni/:id', (req, res) => {
         .catch(err => res.status(404).send(`Chyba mazání z databáse -> ${err}`));
     });
 
-app.listen(5500, () => console.log('Listening on port 3000...'))
+app.listen(5500, () => console.log('Listening on port 5500...'))

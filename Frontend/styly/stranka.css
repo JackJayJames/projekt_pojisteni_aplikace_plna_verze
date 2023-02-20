@@ -95,7 +95,8 @@ body > section{
 }
 .tabulka-pojistencu th, td{
     border: 1px solid black;
-    padding: 10px 5px 10px 5px;
+    font-size: 100%;
+    text-align: center;
 }
 .deleteBtn{
     width: 20px;
@@ -131,5 +132,18 @@ footer h5{
 @media only screen and (max-width: 600px) {
     .logo h3{
         display: none;
+    }
+    .container{
+        width: 100%;
+    }
+    .schovat{
+        display: none;
+    }
+    .tabulka-pojistencu{
+        width: 95%;
+        margin: auto;
+    }
+    .deleteBtn{
+        width: 10px;
     }
 }
