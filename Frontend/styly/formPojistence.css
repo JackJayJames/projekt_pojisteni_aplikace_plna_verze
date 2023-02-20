@@ -30,6 +30,12 @@
     border: none;
     border-radius: 10px;
 }
+#er-Jmeno, #er-Prijmeni, #er-Email, #er-Telefon, #er-Ulice,
+#er-Mesto, #er-Psc{
+    color: red;
+    margin: 10px;
+    display: none;
+}
 
 @media only screen and (max-width: 700px) {
     .formPojistenec{
