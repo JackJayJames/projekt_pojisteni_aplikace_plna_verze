@@ -24,17 +24,18 @@ export class TvoricTabulky{
                 thead.appendChild(tr);
                 return thead;
             },
-            _vytvoritBunku: function(type, text, trida = ""){
+            _vytvoritBunku: function(type, text, trida = "", id = ""){
                 const element = document.createElement(type);
                 element.textContent = text;
                 element.classList = trida;
+                element.id = id;
                 return element;
             },
             _vytvoritTelo: function(data){
                 const tbody = document.createElement("tbody");
                 for(const cast of data){
                     const tr = document.createElement("tr");
-                    tr.appendChild(this._vytvoritBunku("td", `${cast.jmeno} ${cast.prijmeni}`));
+                    tr.appendChild(this._vytvoritBunku("td", `${cast.jmeno} ${cast.prijmeni}`, "pojJmeno", `poj-${cast._id}`));
                     tr.appendChild(this._vytvoritBunku("td", cast.mesto, "schovat"));
                     tr.appendChild(this._vytvoritBunku("td", cast.mail, "schovat"));
                     tr.appendChild(this._vytvoritBunku("td", cast.telefon));

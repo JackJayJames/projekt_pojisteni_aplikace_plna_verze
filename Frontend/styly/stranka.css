@@ -96,6 +96,8 @@ body > section{
 .tabulka-pojistencu th, td{
     border: 1px solid black;
     font-size: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
     text-align: center;
 }
 .deleteBtn{
@@ -113,6 +115,13 @@ body > section{
 .deleteBtn:active{
     border-color: red;
 }
+.pojJmeno:hover{
+    background-color: #6c85ff;
+    cursor: pointer;
+}
+.pojJmeno:active{
+    background-color: #1940ff;
+}
 
 /*PATIČKA*/
 footer{
@@ -127,7 +136,6 @@ footer h5{
     color: white;
     font-weight: light;
 }
-
 
 @media only screen and (max-width: 600px) {
     .logo h3{
