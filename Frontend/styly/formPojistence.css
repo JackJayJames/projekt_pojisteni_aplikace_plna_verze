@@ -1,0 +1,52 @@
+.formPojistenec{
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1%;
+}
+.vytvoritPojistence{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 5%;
+}
+.formVstup{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: 10px 0;
+}
+.formVstup input{
+    line-height: 25px;
+    font-size: 100%;
+}
+#ulozitPojistence{
+    margin-top: 10px;
+    width: 100px;
+    height: 40px;
+    background-color: #1940ff;
+    color: white;
+    font-size: 100%;
+    border: none;
+    border-radius: 10px;
+}
+
+@media only screen and (max-width: 700px) {
+    .formPojistenec{
+        width: 90vw;
+    }
+    @media only screen and (max-width: 485px){
+        .formPojistenec{
+            width: 90vw;
+        }
+        .vytvoritPojistence{
+            flex-direction: column;
+        }
+        .formVstup{
+            width: 100%;
+        }
+        #ulozitPojistence{
+            margin: 20px auto 0 auto;
+        }
+    }
+}
