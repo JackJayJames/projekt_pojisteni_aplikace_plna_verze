@@ -29,6 +29,9 @@ export class PridatPojistence{
             _inputPsc: document.querySelector('#poj_psc'),
             _errPsc: document.querySelector('#er-Psc'),
 
+            _inputDatum: document.querySelector('#poj_narozeni'),
+            _errDatum: document.querySelector('#er-Narozeni'),
+
             _pojistenec: {},
 
             _zaplnitPojistence: function(){
@@ -39,6 +42,7 @@ export class PridatPojistence{
                 this._pojistenec.ulice = this._inputUlice.value;
                 this._pojistenec.mesto = this._inputMesto.value;
                 this._pojistenec.psc = this._inputPsc.value;
+                this._pojistenec.narozeni = this._inputDatum.value;
                 
                 this._zvalidovat();
             },
@@ -78,6 +82,10 @@ export class PridatPojistence{
                         this._errPsc.style.display = "block";
                         this._errPsc.textContent = response.psc;
                     }
+                    if(response.narozeni){
+                        this._errDatum.style.display = "block";
+                        this._errDatum.textContent = response.narozeni;
+                    }
                 }
             },
             _smazatValidacniVýstupy: function(){
@@ -88,6 +96,7 @@ export class PridatPojistence{
                 this._errUlice.style.display = "none";
                 this._errMesto.style.display = "none";
                 this._errPsc.style.display = "none";
+                this._errDatum.style.display = "none";
             },
             _odeslat(){
                 console.log(this._pojistenec);

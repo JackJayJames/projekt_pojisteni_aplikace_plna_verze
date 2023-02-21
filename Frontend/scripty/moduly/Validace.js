@@ -12,6 +12,7 @@ export class Validace{
         this.#_response.ulice = this.#_zvalidovatAdresu(pojistenec.ulice.trim());
         this.#_response.mesto = this.#_zvalidovatAdresu(pojistenec.mesto.trim());
         this.#_response.psc = this.#_zvalidovatPsc(pojistenec.psc.trim().split(" ").join(""));
+        this.#_response.narozeni = this.#_zvalidovatNarozeni(pojistenec.narozeni);
 
         return this.#_response;
     }
@@ -95,6 +96,19 @@ export class Validace{
         if(!this.#_delka(psc, 5, 5)){
             this.#_response.status = false;
             return "Invaldiní délka";
+        }
+    }
+    static #_zvalidovatNarozeni(narozeni){
+        console.log(narozeni);
+        if(!narozeni){
+            this.#_response.status = false;
+            return "Toto pole je povinné";
+        }
+        const datum = new Date(narozeni);
+        if(datum.getTime() > Date.now()){
+            
+            this.#_response.status = false;
+            return "Datum je v budoucnosti";
         }
     }
 
