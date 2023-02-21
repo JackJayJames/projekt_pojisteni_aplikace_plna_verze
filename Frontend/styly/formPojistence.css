@@ -20,6 +20,7 @@
 .formVstup input{
     line-height: 25px;
     font-size: 100%;
+    font-size: 100%;
     padding: .4rem .8rem;
     border-radius: 5px;
     border: 2px solid black;
@@ -52,7 +53,7 @@
 }
 
 #er-Jmeno, #er-Prijmeni, #er-Email, #er-Telefon, #er-Ulice,
-#er-Mesto, #er-Psc{
+#er-Mesto, #er-Psc, #er-Narozeni{
     color: red;
     margin: 10px;
     display: none;
