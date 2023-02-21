@@ -44,7 +44,44 @@ export class PridatPojistence{
             },
             _zvalidovat: function(){
                const response = Validace.zvalidovat(this._pojistenec);
-               console.log(response);
+               this._zpracovatValidaci(response);
+            },
+            _zpracovatValidaci: function(response){
+                console.log(response);
+                if(response.status) this._odeslat();
+                else{
+                    if(response.jmeno){
+                        this._errJmeno.style.display = "block";
+                        this._errJmeno.textContent = response.jmeno;
+                    }
+                    if(response.prijmeni){
+                        this._errPrijmeni.style.display = "block";
+                        this._errPrijmeni.textContent = response.prijmeni;
+                    }
+                    if(response.email){
+                        this._errEmail.style.display = "block";
+                        this._errEmail.textContent = response.email;
+                    }
+                    if(response.telefon){
+                        this._errTelefon.style.display = "block";
+                        this._errTelefon.textContent = response.telefon;
+                    }
+                    if(response.ulice){
+                        this._errUlice.style.display = "block";
+                        this._errUlice.textContent = response.ulice;
+                    }
+                    if(response.mesto){
+                        this._errMesto.style.display = "block";
+                        this._errMesto.textContent = response.mesto;
+                    }
+                    if(response.psc){
+                        this._errPsc.style.display = "block";
+                        this._errPsc.textContent = response.psc;
+                    }
+                }
+            },
+            _odeslat(){
+                console.log(this._pojistenec);
             }
         });
     }

@@ -15,7 +15,7 @@
     flex-direction: column;
     gap: 2px;
     width: 50%;
-    margin: 10px 0;
+    margin: 2px 0;
 }
 .formVstup input{
     line-height: 25px;
@@ -26,6 +26,10 @@
 }
 .formVstup input:focus{
     border: 2px solid #1940ff;
+}
+.formVstup span{
+    margin: 0;
+    padding: 0;
 }
 
 #ulozitPojistence{
