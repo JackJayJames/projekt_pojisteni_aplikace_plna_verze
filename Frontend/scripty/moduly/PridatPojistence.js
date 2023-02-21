@@ -98,8 +98,19 @@ export class PridatPojistence{
                 this._errPsc.style.display = "none";
                 this._errDatum.style.display = "none";
             },
-            _odeslat(){
+            _odeslat: async function(){
                 console.log(this._pojistenec);
+                const res = await fetch('http://localhost:5500/api/pojistenec',{
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    mode: 'cors',
+                    cache: 'no-cache',
+                    //credentials: 'same-origin',
+                    method: "POST",
+                    body: JSON.stringify({})
+                });
+                console.log(res);
             }
         });
     }
