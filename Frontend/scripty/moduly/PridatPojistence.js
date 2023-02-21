@@ -47,7 +47,7 @@ export class PridatPojistence{
                this._zpracovatValidaci(response);
             },
             _zpracovatValidaci: function(response){
-                console.log(response);
+                this._smazatValidacniVýstupy();
                 if(response.status) this._odeslat();
                 else{
                     if(response.jmeno){
@@ -79,6 +79,15 @@ export class PridatPojistence{
                         this._errPsc.textContent = response.psc;
                     }
                 }
+            },
+            _smazatValidacniVýstupy: function(){
+                this._errJmeno.style.display = "none";
+                this._errPrijmeni.style.display = "none";
+                this._errEmail.style.display = "none";
+                this._errTelefon.style.display = "none";
+                this._errUlice.style.display = "none";
+                this._errMesto.style.display = "none";
+                this._errPsc.style.display = "none";
             },
             _odeslat(){
                 console.log(this._pojistenec);
