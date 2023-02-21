@@ -9,6 +9,8 @@ export class Validace{
         this.#_response.prijmeni = this.#_zvalidovatJmeno(pojistenec.prijmeni);
         this.#_response.email = this.#_zvalidovatEmail(pojistenec.email);
         this.#_response.telefon = this.#_zvalidovatTelefon(pojistenec.telefon);
+        this.#_response.ulice = this.#_zvalidovatAdresu(pojistenec.ulice);
+        this.#_response.mesto = this.#_zvalidovatAdresu(pojistenec.mesto);
 
         return this.#_response;
     }
@@ -24,6 +26,10 @@ export class Validace{
         if(!this.#_jednoSlovo(jmeno)){
             this.#_response.status = false;
             return "Musí obsahovat jedno slovo";
+        }
+        if(!this.#_obsahujeCeskaPismena(jmeno)){
+            this.#_response.status = false;
+            return "Invalidní znaky";
         }
     }
     static #_zvalidovatEmail(mail){
@@ -62,6 +68,20 @@ export class Validace{
             return "Číslo musí být dlouhé 9 čísel";
         }
     }
+    static #_zvalidovatAdresu(adresa){
+        if(!adresa){
+            this.#_response.status = false;
+            return "Toto pole je povinné";
+        }
+        if(!this.#_delka(adresa, 3, 50)){
+            this.#_response.status = false;
+            return "Délka musí být delší než 2 znaky a kratší než 50";
+        }
+        if(!this.#_obasahujePismenaCisla(adresa.split(" ").join(""))){
+            this.#_response.status = false;
+            return "Invalidní znaky"
+        }
+    }
 
     static #_delka(input, min, max){
         return (min <= input.length) && (input.length <= max);
@@ -86,12 +106,15 @@ export class Validace{
         return true;
     }
     static #_obasahujePismenaCisla(string){
-        return /^[A-Za-z0-9]*$/.test(string);
+        return /^[A-Za-zÁ-Žá-ž0-9]*$/.test(string);
     }
     static #_obasahujePismena(string){
         return /^[A-Za-z]*$/.test(string);
     }
     static #_obasahujeCisla(cislo){
         return /^[0-9]*$/.test(cislo);
+    }
+    static #_obsahujeCeskaPismena(string){
+        return /^[a-zA-Zá-žÁ-Ž]*$/.test(string);
     }
 }
