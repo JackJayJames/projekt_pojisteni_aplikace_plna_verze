@@ -98,13 +98,15 @@ body > section{
     padding: 4%;
     border-radius: 20px;
     background-color: white;
+    display: flex;
+    justify-content: center;
 }
 .tabulka-pojistencu{
     border-collapse: collapse;
 }
 .tabulka-pojistencu th, td{
     border: 1px solid black;
-    font-size: 100%;
+    font-size: 1.2rem;
     padding-left: 1rem;
     padding-right: 1rem;
     text-align: center;
