@@ -7,7 +7,7 @@ export class Validace{
         this.#_response = { status: true };
         this.#_response.jmeno = this.#_zvalidovatJmeno(pojistenec.jmeno.trim());
         this.#_response.prijmeni = this.#_zvalidovatJmeno(pojistenec.prijmeni.trim());
-        this.#_response.email = this.#_zvalidovatEmail(pojistenec.email.trim());
+        this.#_response.mail = this.#_zvalidovatEmail(pojistenec.mail.trim());
         this.#_response.telefon = this.#_zvalidovatTelefon(pojistenec.telefon.trim());
         this.#_response.ulice = this.#_zvalidovatAdresu(pojistenec.ulice.trim());
         this.#_response.mesto = this.#_zvalidovatAdresu(pojistenec.mesto.trim());

@@ -37,13 +37,14 @@ export class PridatPojistence{
             _zaplnitPojistence: function(){
                 this._pojistenec.jmeno = this._inputJmeno.value;
                 this._pojistenec.prijmeni = this._inputPrijmeni.value;
-                this._pojistenec.email = this._inputEmail.value;
+                this._pojistenec.mail = this._inputEmail.value;
                 this._pojistenec.telefon = this._inputTelefon.value;
                 this._pojistenec.ulice = this._inputUlice.value;
                 this._pojistenec.mesto = this._inputMesto.value;
                 this._pojistenec.psc = this._inputPsc.value;
                 this._pojistenec.narozeni = this._inputDatum.value;
                 
+                console.log(this._pojistenec);
                 this._zvalidovat();
             },
             _zvalidovat: function(){
@@ -108,7 +109,7 @@ export class PridatPojistence{
                     cache: 'no-cache',
                     //credentials: 'same-origin',
                     method: "POST",
-                    body: JSON.stringify({})
+                    body: JSON.stringify(this._pojistenec)
                 });
                 console.log(res);
             }
