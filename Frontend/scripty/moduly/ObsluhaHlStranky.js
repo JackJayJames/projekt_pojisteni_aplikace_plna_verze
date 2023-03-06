@@ -39,12 +39,22 @@ export class ObsluhaHlStranky{
                 console.log(this._data);
                 this._tabulka.vytvorit(this._data);
                 this._obsluhaDeleteTlacitek();
+                this._obsluhaDetailu();
             },
             _obsluhaDeleteTlacitek: function(){
                 for(const pojistenec of this._data){
                     document.getElementById(pojistenec._id).onclick = (e) => {
                         console.log(e.target.id);
                         this._deletePojistence(e.target.id);
+                    };
+                }
+            },
+            _obsluhaDetailu: function(){
+                const pojistenci = document.querySelectorAll('.pojJmeno');
+                for(const pojistenec of pojistenci){
+                    pojistenec.onclick = (e) => {
+                        console.log(e.target.id);
+                        console.log(typeof(e.target.id));
                     };
                 }
             }
