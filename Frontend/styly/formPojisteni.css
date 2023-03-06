@@ -21,6 +21,8 @@
     height: 40px;
     font-size: 100%;
     padding-left: 2%;
+    border: 2px solid black;
+    border-radius: 7px;
 }
 #addPoj{
     margin-top: 10px;
@@ -41,4 +43,10 @@
     color: white;
     background-color: #3737e6;
     border: 2px solid white;
+}
+
+@media only screen and (max-width: 500px) {
+    .form{
+        width: 100%;
+    }
 }
