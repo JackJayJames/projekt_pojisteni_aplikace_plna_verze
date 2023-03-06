@@ -9,6 +9,7 @@ export class ObsluhaDetailStranky{
         privatni.set(this, {
             _id: id,
             _data: {},
+            _vypis: new VypisovacPojistence(),
 
             _ziskatPojistence: function(){
                 Ajax.get(`http://localhost:5500/api/pojistenec/${this._id}`, { pocet: 5 })
@@ -19,7 +20,7 @@ export class ObsluhaDetailStranky{
                 .catch((err) => console.log(err)) 
             },
             _zpracovatData: function(){
-                console.log(this._data);
+                this._vypis.vypsatPojistence(this._data);
             }
         });
     }
