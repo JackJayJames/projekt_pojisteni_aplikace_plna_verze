@@ -1,3 +1,3 @@
 'use strict';
 
-console.log("funguje");
+import { ObsluhaDetailStranky } from "../moduly/ObsluhaDetailStranky.js";
