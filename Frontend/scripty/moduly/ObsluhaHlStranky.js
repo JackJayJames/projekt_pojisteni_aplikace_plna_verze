@@ -7,7 +7,7 @@ const privatni = new WeakMap();
 export class ObsluhaHlStranky{
     constructor(){
         privatni.set(this, {
-            _tabulka: new TvoricTabulky(document.querySelector(".container")),
+            _tabulka: new TvoricTabulky(document.querySelector(".con-tabulka")),
             _data: [],
 
             _getPojistence: function(){

@@ -94,6 +94,11 @@ body > section{
     align-items: center;
     gap: .7vh;
 }
+.con-tabulka{
+    padding: 4%;
+    border-radius: 20px;
+    background-color: white;
+}
 .tabulka-pojistencu{
     border-collapse: collapse;
 }
@@ -107,7 +112,7 @@ body > section{
 .deleteBtn{
     width: 20px;
     padding: 90%;
-    border: none;
+    border: 1px solid white;
     align-self: center;
     background-image: url(/Frontend/imgs/delete-icon.svg);
     transition: .1s;
