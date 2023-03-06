@@ -50,7 +50,7 @@ export class ObsluhaHlStranky{
                 const pojistenci = document.querySelectorAll('.pojJmeno');
                 for(const pojistenec of pojistenci){
                     pojistenec.onclick = (e) => {
-                        console.log(e.target.id.replace("poj-", ""));
+                        sessionStorage.setItem("pojistenec", e.target.id.replace("poj-", ""));
                         window.location.href = "./detail.html";
                     };
                 }
