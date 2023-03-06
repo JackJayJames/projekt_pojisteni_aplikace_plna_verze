@@ -1,0 +1,44 @@
+.pridat{
+    width: 100%;
+}
+#form-poj{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.form{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    padding: 1%;
+}
+.form label{
+    font-size: 1.2rem;
+    margin: 2px;
+}
+.form input{
+    width: 100%;
+    height: 40px;
+    font-size: 100%;
+    padding-left: 2%;
+}
+#addPoj{
+    margin-top: 10px;
+    font-size: 100%;
+    width: 80px;
+    height: 40px;
+    transition: .1s;
+    color: white;
+    border-radius: 10px;
+    background-color: #3737e6;
+    border: 2px solid #3737e6;
+}
+#addPoj:hover{
+    background-color: white;
+    color: #3737e6;
+}
+#addPoj:active{
+    color: white;
+    background-color: #3737e6;
+    border: 2px solid white;
+}
