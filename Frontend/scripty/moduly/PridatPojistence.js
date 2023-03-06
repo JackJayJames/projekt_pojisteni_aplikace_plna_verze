@@ -44,7 +44,6 @@ export class PridatPojistence{
                 this._pojistenec.psc = this._inputPsc.value;
                 this._pojistenec.narozeni = this._inputDatum.value;
                 
-                console.log(this._pojistenec);
                 this._zvalidovat();
             },
             _zvalidovat: function(){
@@ -100,7 +99,6 @@ export class PridatPojistence{
                 this._errDatum.style.display = "none";
             },
             _odeslat: async function(){
-                console.log(this._pojistenec);
                 const res = await fetch('http://localhost:5500/api/pojistenec',{
                     headers: {
                         'Content-Type': 'application/json'
@@ -111,7 +109,6 @@ export class PridatPojistence{
                     method: "POST",
                     body: JSON.stringify(this._pojistenec)
                 });
-                console.log(res);
             }
         });
     }

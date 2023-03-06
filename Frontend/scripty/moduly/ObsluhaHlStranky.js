@@ -30,13 +30,11 @@ export class ObsluhaHlStranky{
                     body: "",
                 })
                     .then(res => {
-                        console.log(res.status);
                         this._getPojistence();
                     })
                     .catch(err => console.log(err));
             },
             _vykreslitPojistence: function(){
-                console.log(this._data);
                 this._tabulka.vytvorit(this._data);
                 this._obsluhaDeleteTlacitek();
                 this._obsluhaDetailu();
@@ -44,7 +42,6 @@ export class ObsluhaHlStranky{
             _obsluhaDeleteTlacitek: function(){
                 for(const pojistenec of this._data){
                     document.getElementById(pojistenec._id).onclick = (e) => {
-                        console.log(e.target.id);
                         this._deletePojistence(e.target.id);
                     };
                 }
@@ -53,8 +50,8 @@ export class ObsluhaHlStranky{
                 const pojistenci = document.querySelectorAll('.pojJmeno');
                 for(const pojistenec of pojistenci){
                     pojistenec.onclick = (e) => {
-                        console.log(e.target.id);
-                        console.log(typeof(e.target.id));
+                        console.log(e.target.id.replace("poj-", ""));
+                        window.location.href = "./detail.html";
                     };
                 }
             }
