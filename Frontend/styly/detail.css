@@ -1,0 +1,27 @@
+h1{
+    font-size: 1.6rem;
+    align-self: flex-start;
+}
+
+.info{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: white;
+    border-radius: 20px;
+    padding: 2%;
+}
+
+.vypis{
+    font-size: 1.4rem;
+    width: 50%;
+    margin-bottom: 1vh;
+}
+
+@media only screen and (max-width: 500px) {
+    .info{
+        padding: 4%;
+    }
+    .vypis{
+        width: 100%;
+    }
+}
