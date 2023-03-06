@@ -1,0 +1,4 @@
+server se spustí při zadání do konzole: node Backend/index.js
+následně se aplikace spustí spuštěním souboru index.html
+
+je potřeba mít nainstalován node a mongodb
