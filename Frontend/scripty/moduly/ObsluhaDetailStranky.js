@@ -2,6 +2,7 @@
 
 import { Ajax } from "./Ajax.js";
 import { VypisovacPojistence } from "./VypisovacPojistence.js";
+import { PridavacPojisteni } from "./PridavacPojisteni.js";
 
 const privatni = new WeakMap();
 export class ObsluhaDetailStranky{
@@ -10,6 +11,7 @@ export class ObsluhaDetailStranky{
             _id: id,
             _data: {},
             _vypis: new VypisovacPojistence(),
+            _pridatPojisteni: new PridavacPojisteni(),
 
             _ziskatPojistence: function(){
                 Ajax.get(`http://localhost:5500/api/pojistenec/${this._id}`, { pocet: 5 })
