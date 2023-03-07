@@ -33,6 +33,11 @@ h2{
     width: 50%;
     margin-bottom: 1vh;
 }
+.val{
+    color: red;
+    margin-left: 3%;
+    display: none;
+}
 
 @media only screen and (max-width: 500px) {
     .info{

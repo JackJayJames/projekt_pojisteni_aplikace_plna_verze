@@ -22,8 +22,8 @@ export class PridavacPojisteni{
             },
             _zvalidovat: function(){
                 const result = ValidacePojisteni.zvalidovat(this._pojisteni);
-                console.log(this._pojisteni);
-                console.log(result);
+                if(result.status) return this._odeslatPojisteni();
+                else    return this._zpracovatValidaci(result);
             }
         });
     }
