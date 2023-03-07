@@ -1,5 +1,7 @@
 'use strict';
 
+import { Pojisteni } from "./Pojisteni.js";
+
 const privatni = new WeakMap();
 export class PridavacPojisteni{
     constructor(){
