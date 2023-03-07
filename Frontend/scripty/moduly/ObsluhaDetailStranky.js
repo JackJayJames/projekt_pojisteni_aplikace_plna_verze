@@ -29,8 +29,8 @@ export class ObsluhaDetailStranky{
             _pridavaciTlacitko: function(){
                 this._pojisteniTlacitko.onclick = () => {
                     const pojisteni =  this._pridatPojisteni.pridat();
-                    console.log(pojisteni.platnost_od);
-                    console.log(pojisteni.platnost_do);
+                    //console.log(pojisteni.platnost_od);
+                    //console.log(pojisteni.platnost_do);
                 }
             }
         });

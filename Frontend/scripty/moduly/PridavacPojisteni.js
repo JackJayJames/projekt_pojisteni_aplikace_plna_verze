@@ -1,6 +1,7 @@
 'use strict';
 
 import { Pojisteni } from "./Pojisteni.js";
+import { ValidacePojisteni } from "./ValidacePojisteni.js";
 
 const privatni = new WeakMap();
 export class PridavacPojisteni{
@@ -20,7 +21,9 @@ export class PridavacPojisteni{
                 
             },
             _zvalidovat: function(){
-                
+                const result = ValidacePojisteni.zvalidovat(this._pojisteni);
+                console.log(this._pojisteni);
+                console.log(result);
             }
         });
     }
