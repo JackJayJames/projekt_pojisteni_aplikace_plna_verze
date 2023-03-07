@@ -1,11 +1,11 @@
 'use strict';
 
 export class Pojisteni{
-    constructor(nazev, castka, predmet, platnost){
+    constructor(nazev, castka, predmet, platnost_od, platnost_do){
         this.nazev = nazev;
         this.castka = castka;
-        this.predmet = platnost;
-        this.platnost_od = new Date.now();
-        this.platnost_do = platnost;
+        this.predmet = predmet;
+        this.platnost_od = platnost_od;
+        this.platnost_do = platnost_do;
     }
 }
