@@ -18,7 +18,7 @@ export class ValidacePojisteni{
             this.#_vysledek.status = false;
             return "Toto pole je povinné";
         }
-        if(nazev.length < 3){
+        if(nazev.length < 5){
             this.#_vysledek.status = false;
             return "Příliš krátké";
         }
@@ -36,13 +36,13 @@ export class ValidacePojisteni{
             this.#_vysledek.status = false;
             return "Toto pole je povinné";
         }
+        if(Number(castka) <= 0){
+            this.#_vysledek.status = false;
+            return "Číslo musí být větší než 0";
+        }
         if(this.#_jenomCisla(castka)){
             this.#_vysledek.status = false;
             return "Může obsahovat jenom čísla";
-        }
-        if(castka > 0){
-            this.#_vysledek.status = false;
-            return "Číslo musí být větší než 0";
         }
     }
     static #_validaceDatumu(datum){

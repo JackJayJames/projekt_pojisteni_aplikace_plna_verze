@@ -29,9 +29,27 @@ export class ObsluhaDetailStranky{
             _pridavaciTlacitko: function(){
                 this._pojisteniTlacitko.onclick = () => {
                     const pojisteni =  this._pridatPojisteni.pridat();
-                    //console.log(pojisteni.platnost_od);
-                    //console.log(pojisteni.platnost_do);
+                    
+                    if(!pojisteni){
+                        console.log("Chyba");
+                        return;
+                    }
+                    this._odeslatPojisteni(pojisteni);
                 }
+            },
+            _odeslatPojisteni: function(pojisteni){
+                console.log(pojisteni);
+                console.log(this._data._id);
+                fetch(`http://localhost:5500/api/pojisteni/${this._data._id}`,{
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    mode: 'cors',
+                    cache: 'no-cache',
+                    credentials: 'same-origin',
+                    method: "POST",
+                    body: JSON.stringify(pojisteni)
+                });
             }
         });
     }

@@ -23,12 +23,12 @@ export class PridavacPojisteni{
                 this._schovatValidaci();
                 const d = new Date();
                 this._pojisteni = new Pojisteni(this._nazev.value, this._castka.value, this._predmet.value, `${d.getFullYear()}-${d.getMonth()+1 < 10 ? '0' + (d.getMonth()+1) : d.getMonth()+1}-${d.getDate() < 10 ? '0' + d.getDate() : d.getDate()}`, this._platnost.value);
-                const validace = this._zvalidovat();
+                return this._zvalidovat();
                 
             },
             _zvalidovat: function(){
                 const result = ValidacePojisteni.zvalidovat(this._pojisteni);
-                if(result.status) return this._odeslatPojisteni();
+                if(result.status) return this._pojisteni;
                 else    return this._zpracovatValidaci(result);
             },
             _zpracovatValidaci: function(result){
@@ -48,6 +48,7 @@ export class PridavacPojisteni{
                     this._valPlatnost.style.display = "block";
                     this._valPlatnost.textContent = result.platnost_do;
                 }
+                return false;
             },
             _schovatValidaci: function(){
                 this._valNazev.style.display = "none";
@@ -58,7 +59,6 @@ export class PridavacPojisteni{
         });
     }
     pridat(){
-        console.log(privatni.get(this)._platnost);
         return privatni.get(this)._vytvoritPojisteni();
     }
 }
