@@ -28,7 +28,7 @@ export class ObsluhaDetailStranky{
             
             _pridavaciTlacitko: function(){
                 this._pojisteniTlacitko.onclick = () => {
-                    console.log("funguhe");
+                    this._pridatPojisteni.pridat();
                 }
             }
         });

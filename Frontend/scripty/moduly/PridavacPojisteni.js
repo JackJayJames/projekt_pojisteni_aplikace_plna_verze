@@ -10,4 +10,7 @@ export class PridavacPojisteni{
             _platnost: document.querySelector("#platnost")
         });
     }
+    pridat(){
+        console.log(privatni.get(this)._platnost);
+    }
 }
