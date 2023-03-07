@@ -12,6 +12,11 @@ export class PridavacPojisteni{
             _predmet: document.querySelector("#predmet"),
             _platnost: document.querySelector("#platnost"),
 
+            _valNazev: document.querySelector("#valNazev"),
+            _valCastka: document.querySelector("#valCastka"),
+            _valPredmet: document.querySelector("#valPredmet"),
+            _valPlatnost: document.querySelector("#valPlatnost"),
+
             _pojisteni: {},
             
             _vytvoritPojisteni: function(){
@@ -24,6 +29,24 @@ export class PridavacPojisteni{
                 const result = ValidacePojisteni.zvalidovat(this._pojisteni);
                 if(result.status) return this._odeslatPojisteni();
                 else    return this._zpracovatValidaci(result);
+            },
+            _zpracovatValidaci: function(result){
+                if(result.nazev){
+                    this._valNazev.style.display = "block";
+                    this._valNazev.textContent = result.nazev;
+                }
+                if(result.castka){
+                    this._valCastka.style.display = "block";
+                    this._valCastka.textContent = result.castka;
+                }
+                if(result.predmet){
+                    this._valPredmet.style.display = "block";
+                    this._valPredmet.textContent = result.predmet;
+                }
+                if(result.platnost_do){
+                    this._valPlatnost.style.display = "block";
+                    this._valPlatnost.textContent = result.platnost_do;
+                }
             }
         });
     }
