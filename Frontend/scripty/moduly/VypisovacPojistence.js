@@ -38,7 +38,10 @@ export class VypisovacPojistence{
 
                 div.appendChild(this._vytvoritDiv(pojisteni.nazev, "nazev"));
                 div.appendChild(this._vytvoritDiv(pojisteni.predmet, "predmet"));
-                div.appendChild(this._vytvoritDiv(pojisteni.nazev, "nazev"));
+                div.appendChild(this._vytvoritDiv(pojisteni.castka, "castka"));
+                div.appendChild(this._vytvoritDiv(pojisteni.platnost_od, "platnostOd"));
+                div.appendChild(this._vytvoritDiv(pojisteni.platnost_do, "platnostDo"));
+                div.appendChild(this._vytvoritDelBtn(pojisteni._id, "deleteBtn"));
 
                 this._pojisteni.appendChild(div);
                 console.log(this._pojisteni);   
@@ -48,6 +51,12 @@ export class VypisovacPojistence{
                 div.classList = trida;
                 div.textContent = text;
                 return div;
+            },
+            _vytvoritDelBtn: function(id, trida){
+                const button = document.createElement("button");
+                button.id = id;
+                button.classList = trida;
+                return button;
             }
         });
     }
