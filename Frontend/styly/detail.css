@@ -26,6 +26,29 @@ h2{
 .pojist > *{
     width: 20%;
 }
+.platnostOd{
+    width: 15%;
+}
+.platnostDo{
+    width: 15%;
+}
+.delBtnPojist{
+    width: 10%;
+    background-color: #ffa602;
+    border: 1px solid #ffa602;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    transition: .1s;
+}
+.delBtnPojist:hover{
+    color: #ffa602;
+    background-color: white;
+}
+.delBtnPojist:active{
+    color: white;
+    background-color: #d88d01;
+}
 
 .pojisteni{
     width: 100%;

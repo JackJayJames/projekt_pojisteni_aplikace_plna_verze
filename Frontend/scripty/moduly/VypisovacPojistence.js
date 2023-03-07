@@ -40,7 +40,7 @@ export class VypisovacPojistence{
                 div.appendChild(this._vytvoritDiv(pojisteni.castka, "castka"));
                 div.appendChild(this._vytvoritDiv(new Date(pojisteni.platnost_od).toLocaleDateString(), "platnostOd"));
                 div.appendChild(this._vytvoritDiv(new Date(pojisteni.platnost_do).toLocaleDateString(), "platnostDo"));
-                //div.appendChild(this._vytvoritDelBtn(pojisteni._id, "deleteBtn"));
+                div.appendChild(this._vytvoritDelBtn(pojisteni._id, "delBtnPojist"));
 
                 this._pojisteni.appendChild(div);
                 console.log(this._pojisteni);   
@@ -53,6 +53,7 @@ export class VypisovacPojistence{
             },
             _vytvoritDelBtn: function(id, trida){
                 const button = document.createElement("button");
+                button.textContent = "Smazat";
                 button.id = id;
                 button.classList = trida;
                 return button;
