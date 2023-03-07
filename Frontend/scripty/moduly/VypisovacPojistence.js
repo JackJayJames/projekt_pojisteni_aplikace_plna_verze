@@ -28,6 +28,26 @@ export class VypisovacPojistence{
 
             _smazatPojisteni: function(poj){
                 poj === 0 ? this._pojisteni.innerHTML = "Žádná pojištění" : this._pojisteni.innerHTML = "";
+            },
+
+            _vypsatPojisteni: function(pojisteni){
+                console.log(pojisteni);
+
+                const div = document.createElement("div");
+                div.classList = "pojist";
+
+                div.appendChild(this._vytvoritDiv(pojisteni.nazev, "nazev"));
+                div.appendChild(this._vytvoritDiv(pojisteni.predmet, "predmet"));
+                div.appendChild(this._vytvoritDiv(pojisteni.nazev, "nazev"));
+
+                this._pojisteni.appendChild(div);
+                console.log(this._pojisteni);   
+            },
+            _vytvoritDiv: function(text, trida){
+                const div = document.createElement("div");
+                div.classList = trida;
+                div.textContent = text;
+                return div;
             }
         });
     }
@@ -39,6 +59,6 @@ export class VypisovacPojistence{
         privatni.get(this)._smazatPojisteni(poj);
     }
     vypsatPojisteni(pojisteni){
-        console.log(pojisteni);
+        privatni.get(this)._vypsatPojisteni(pojisteni);
     }
 }
