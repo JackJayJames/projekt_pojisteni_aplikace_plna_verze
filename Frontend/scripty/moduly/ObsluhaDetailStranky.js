@@ -18,12 +18,22 @@ export class ObsluhaDetailStranky{
                 Ajax.get(`http://localhost:5500/api/pojistenec/${this._id}`, { pocet: 5 })
                 .then((data) => {
                     this._data = data;
+                    this._vypis.vypsatPojistence(this._data);
                     this._zpracovatData();
+
                 })
                 .catch((err) => console.log(err)) 
             },
             _zpracovatData: function(){
-                this._vypis.vypsatPojistence(this._data);
+                console.log(this._data.pojisteni);
+                this._vypis.smazatPojisteni(this._data.pojisteni.length);
+                for(const pojisteni of this._data.pojisteni){
+                    Ajax.get(`http://localhost:5500/api/pojisteni/${pojisteni}`, { pocet: 5 })
+                    .then((res) => {
+                        this._vypis.vypsatPojisteni(res);
+                    })
+                    .catch((err) => console.log(err))
+                }
             },
             
             _pridavaciTlacitko: function(){
@@ -38,8 +48,6 @@ export class ObsluhaDetailStranky{
                 }
             },
             _odeslatPojisteni: function(pojisteni){
-                console.log(pojisteni);
-                console.log(this._data._id);
                 fetch(`http://localhost:5500/api/pojisteni/${this._data._id}`,{
                     headers: {
                         'Content-Type': 'application/json'

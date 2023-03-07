@@ -13,6 +13,8 @@ export class VypisovacPojistence{
             _mesto: document.querySelector("#mesto"),
             _psc: document.querySelector("#psc"),
 
+            _pojisteni: document.querySelector(".pojisteni"),
+
             _vypsatPojistence: function(pojistenec){
                 this._jmeno.textContent = pojistenec.jmeno;
                 this._prijmeni.textContent = pojistenec.prijmeni;
@@ -22,10 +24,21 @@ export class VypisovacPojistence{
                 this._ulice.textContent = pojistenec.ulice;
                 this._mesto.textContent = pojistenec.mesto;
                 this._psc.textContent = pojistenec.psc;
+            },
+
+            _smazatPojisteni: function(poj){
+                poj === 0 ? this._pojisteni.innerHTML = "Žádná pojištění" : this._pojisteni.innerHTML = "";
             }
         });
     }
     vypsatPojistence(pojistenec){
         privatni.get(this)._vypsatPojistence(pojistenec);
+    }
+
+    smazatPojisteni(poj){
+        privatni.get(this)._smazatPojisteni(poj);
+    }
+    vypsatPojisteni(pojisteni){
+        console.log(pojisteni);
     }
 }
