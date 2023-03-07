@@ -35,13 +35,12 @@ export class VypisovacPojistence{
 
                 const div = document.createElement("div");
                 div.classList = "pojist";
-
                 div.appendChild(this._vytvoritDiv(pojisteni.nazev, "nazev"));
                 div.appendChild(this._vytvoritDiv(pojisteni.predmet, "predmet"));
                 div.appendChild(this._vytvoritDiv(pojisteni.castka, "castka"));
-                div.appendChild(this._vytvoritDiv(pojisteni.platnost_od, "platnostOd"));
-                div.appendChild(this._vytvoritDiv(pojisteni.platnost_do, "platnostDo"));
-                div.appendChild(this._vytvoritDelBtn(pojisteni._id, "deleteBtn"));
+                div.appendChild(this._vytvoritDiv(new Date(pojisteni.platnost_od).toLocaleDateString(), "platnostOd"));
+                div.appendChild(this._vytvoritDiv(new Date(pojisteni.platnost_do).toLocaleDateString(), "platnostDo"));
+                //div.appendChild(this._vytvoritDelBtn(pojisteni._id, "deleteBtn"));
 
                 this._pojisteni.appendChild(div);
                 console.log(this._pojisteni);   

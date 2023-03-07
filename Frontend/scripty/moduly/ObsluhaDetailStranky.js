@@ -57,7 +57,9 @@ export class ObsluhaDetailStranky{
                     credentials: 'same-origin',
                     method: "POST",
                     body: JSON.stringify(pojisteni)
-                });
+                })
+                .then(() => this._ziskatPojistence())
+                .catch(err => console.log(err));
             }
         });
     }

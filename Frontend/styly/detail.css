@@ -15,7 +15,20 @@ h2{
     padding: 2%;
 }
 
+.pojist{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1%;
+    border-radius: 5px;
+    border-bottom: 2px solid black;
+}
+.pojist > *{
+    width: 20%;
+}
+
 .pojisteni{
+    width: 100%;
     font-size: 1.2rem;
     padding: 1%;
     border-radius: 15px;

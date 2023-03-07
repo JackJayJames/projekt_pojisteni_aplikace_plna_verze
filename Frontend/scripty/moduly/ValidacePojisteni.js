@@ -18,7 +18,7 @@ export class ValidacePojisteni{
             this.#_vysledek.status = false;
             return "Toto pole je povinné";
         }
-        if(nazev.length < 5){
+        if(nazev.length < 3){
             this.#_vysledek.status = false;
             return "Příliš krátké";
         }
@@ -57,7 +57,7 @@ export class ValidacePojisteni{
     }
 
     static #_jenomPismena(str){
-        return !/^[A-Za-zÁ-Žá-ž]*$/.test(str);
+        return !/^[A-Za-zÁ-Žá-ž ]*$/.test(str);
     }
     static #_jenomCisla(cislo){
         return !/^[0-9]*$/.test(cislo);
