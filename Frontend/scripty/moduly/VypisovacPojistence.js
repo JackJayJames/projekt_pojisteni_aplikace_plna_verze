@@ -31,8 +31,6 @@ export class VypisovacPojistence{
             },
 
             _vypsatPojisteni: function(pojisteni){
-                console.log(pojisteni);
-
                 const div = document.createElement("div");
                 div.classList = "pojist";
                 div.appendChild(this._vytvoritDiv(pojisteni.nazev, "nazev"));
@@ -43,7 +41,6 @@ export class VypisovacPojistence{
                 div.appendChild(this._vytvoritDelBtn(pojisteni._id, "delBtnPojist"));
 
                 this._pojisteni.appendChild(div);
-                console.log(this._pojisteni);   
             },
             _vytvoritDiv: function(text, trida){
                 const div = document.createElement("div");

@@ -31,6 +31,26 @@ export class ObsluhaDetailStranky{
                     Ajax.get(`http://localhost:5500/api/pojisteni/${pojisteni}`, { pocet: 5 })
                     .then((res) => {
                         this._vypis.vypsatPojisteni(res);
+                        
+                        const delBtn = document.getElementById(pojisteni);
+                        delBtn.onclick = (e) => {
+                            if(!confirm("Jste si jistý že chcete smazat toto pojištění?")) return;
+                            
+                            fetch(`http://localhost:5500/api/pojisteni/${e.target.id}`, {
+                                method: 'DELETE',
+                                mode: 'cors',
+                                cache: 'no-cache',
+                                credentials: 'same-origin',
+                                headers: {
+                                    'Content-Type': 'application/x-www-form-urlencoded',
+                                },
+                                body: "",
+                            })
+                                .then(res => {
+                                    this._ziskatPojistence();
+                                })
+                                .catch(err => console.log(err));
+                        };
                     })
                     .catch((err) => console.log(err))
                 }
