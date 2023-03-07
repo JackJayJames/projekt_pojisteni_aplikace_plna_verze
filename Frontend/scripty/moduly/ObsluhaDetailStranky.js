@@ -10,6 +10,7 @@ export class ObsluhaDetailStranky{
         privatni.set(this, {
             _id: id,
             _data: {},
+            _pojisteniTlacitko: document.querySelector("#addPoj"),
             _vypis: new VypisovacPojistence(),
             _pridatPojisteni: new PridavacPojisteni(),
 
@@ -23,10 +24,17 @@ export class ObsluhaDetailStranky{
             },
             _zpracovatData: function(){
                 this._vypis.vypsatPojistence(this._data);
+            },
+            
+            _pridavaciTlacitko: function(){
+                this._pojisteniTlacitko.onclick = () => {
+                    console.log("funguhe");
+                }
             }
         });
     }
     spustit(){
         privatni.get(this)._ziskatPojistence();
+        privatni.get(this)._pridavaciTlacitko();
     }
 }
