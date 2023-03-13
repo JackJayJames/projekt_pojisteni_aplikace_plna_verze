@@ -37,7 +37,7 @@ export class ObsluhaDetailStranky{
                         delBtn.onclick = (e) => {
                             //if(!confirm("Jste si jistý že chcete smazat toto pojištění?")) return;
                             
-                            PopUp.success("Pojištění úspěšně smazáno");
+                            PopUp.success("Pojištění úspěšně smazáno", pojisteni);
 
                             /*
                             fetch(`http://localhost:5500/api/pojisteni/${e.target.id}`, {
