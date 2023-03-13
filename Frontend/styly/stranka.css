@@ -149,6 +149,8 @@ footer h5{
 }
 
 .popup{
+    animation: fadeIn 2s;
+
     position: fixed;
     top: 10vh;
     right: 10px;
@@ -178,8 +180,18 @@ footer h5{
     color: #b8b8b8;
 }
 .popupDel:active{
+    animation: fadeOut 2s;
     border: 1px solid rgb(116, 116, 116);
     color: black;
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+    }
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 @media only screen and (max-width: 600px) {

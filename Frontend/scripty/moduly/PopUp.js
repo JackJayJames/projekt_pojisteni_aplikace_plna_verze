@@ -2,7 +2,7 @@
 
 export class PopUp{
     static success(text, id){
-        this.#vytvorit(text, id, "#5bc236");
+        this.#vytvorit(text, `popup-${id}`, "#5bc236");
     }
     static #vytvorit(text, id, barva){
         const popup = document.createElement("div");
@@ -12,7 +12,7 @@ export class PopUp{
         popup.style.backgroundColor = barva;
         popup.appendChild(this.#getDelete(id));
 
-        setTimeout( (id) => this.#smazatPopUp(id), 3000)
+        setTimeout(() => this.#smazatPopUp(id), 5000)
 
         document.body.appendChild(popup);
     }
@@ -26,6 +26,10 @@ export class PopUp{
         return del;
     }
     static #smazatPopUp(id){
-        console.log("Asdf");
+        const element = document.getElementById(id);
+        if(!element) return;
+        element.animation = "fadeOut";
+
+        setTimeout(() => element.remove(), 2000)
     }
 }
