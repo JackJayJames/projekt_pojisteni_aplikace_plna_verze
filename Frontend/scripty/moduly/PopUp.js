@@ -11,6 +11,9 @@ export class PopUp{
         popup.textContent = text;
         popup.style.backgroundColor = barva;
         popup.appendChild(this.#getDelete(id));
+
+        setTimeout( (id) => this.#smazatPopUp(id), 3000)
+
         document.body.appendChild(popup);
     }
     static #getDelete(id){
@@ -18,8 +21,11 @@ export class PopUp{
         del.classList = "popupDel";
         del.textContent = "X";
         del.onclick = () => {
-            console.log(id);
+            this.#smazatPopUp(id);
         };
         return del;
+    }
+    static #smazatPopUp(id){
+        console.log("Asdf");
     }
 }
