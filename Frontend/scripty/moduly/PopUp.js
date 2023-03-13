@@ -16,6 +16,7 @@ export class PopUp{
     static #getDelete(id){
         const del = document.createElement("button");
         del.classList = "popupDel";
+        del.textContent = "X";
         del.onclick = () => {
             console.log(id);
         };
