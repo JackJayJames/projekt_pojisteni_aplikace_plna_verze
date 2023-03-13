@@ -3,6 +3,7 @@
 import { Ajax } from "./Ajax.js";
 import { VypisovacPojistence } from "./VypisovacPojistence.js";
 import { PridavacPojisteni } from "./PridavacPojisteni.js";
+import { PopUp } from "./PopUp.js";
 
 const privatni = new WeakMap();
 export class ObsluhaDetailStranky{
@@ -34,8 +35,11 @@ export class ObsluhaDetailStranky{
                         
                         const delBtn = document.getElementById(pojisteni);
                         delBtn.onclick = (e) => {
-                            if(!confirm("Jste si jistý že chcete smazat toto pojištění?")) return;
+                            //if(!confirm("Jste si jistý že chcete smazat toto pojištění?")) return;
                             
+                            PopUp.success("Pojištění úspěšně smazáno");
+
+                            /*
                             fetch(`http://localhost:5500/api/pojisteni/${e.target.id}`, {
                                 method: 'DELETE',
                                 mode: 'cors',
@@ -50,6 +54,7 @@ export class ObsluhaDetailStranky{
                                     this._ziskatPojistence();
                                 })
                                 .catch(err => console.log(err));
+                            */
                         };
                     })
                     .catch((err) => console.log(err))

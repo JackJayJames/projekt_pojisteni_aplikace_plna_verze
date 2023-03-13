@@ -148,6 +148,11 @@ footer h5{
     font-weight: light;
 }
 
+.popup{
+    position: fixed;
+    top: 10vh;
+}
+
 @media only screen and (max-width: 600px) {
     .logo h3{
         display: none;
