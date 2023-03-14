@@ -10,6 +10,7 @@ module.exports = class Database{
     constructor(){
         privatni.set(this, {
             _adresa: "mongodb://127.0.0.1:27017/pojistdb",
+            _ModelUser: mongoose.model('User', Schema.user),
             _ModelPojistenec: mongoose.model('Pojistenec', Schema.pojistenec),
             _ModelPojisteni: mongoose.model('Pojisteni', Schema.pojisteni),
 
