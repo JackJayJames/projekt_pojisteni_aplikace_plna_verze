@@ -1,5 +1,8 @@
 'use strict';
 
+const User = require('./moduly/User.js');
+const Pojistenec = require('./moduly/Pojistenec.js');
+
 const Validace = require('./moduly/Validace.js');
 const Mongo = require('./moduly/database/Database.js');
 const database = new Mongo();
