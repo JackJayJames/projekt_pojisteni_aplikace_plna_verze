@@ -18,7 +18,8 @@ module.exports = class Database{
                 return true;
             },
 
-            _vytvoritModelPojistenecUser: function(pojistenec){
+            _vytvoritModelPojistenecUser: function(user, pojistenec){
+                this._ulozitModel(new this._ModelUser(user))
                 return this._ulozitModel(new this._ModelPojistenec(pojistenec));
             },
             _ulozitModel: async function(model){
@@ -63,7 +64,7 @@ module.exports = class Database{
     }
     ulozitPojistence(user, pojistenec){
         if(!privatni.get(this)._kontrolaUserName(user.username)) return Promise.reject(new Error("Username already in use"));
-        return privatni.get(this)._vytvoritModelPojistenecUser(pojistenec);
+        return privatni.get(this)._vytvoritModelPojistenecUser(user, pojistenec);
     }
     ziskatPojistence(id){
         if(!id)
