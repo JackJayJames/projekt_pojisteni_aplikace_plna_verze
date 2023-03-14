@@ -1,6 +1,6 @@
 'use strict';
 
-export class Pojistenec{
+module.exports = class Pojistenec{
     constructor(jmeno, prijmeni, narozeni, mail, telefon, ulice, mesto, psc, pojisteni){
         this.jmeno = jmeno;
         this.prijmeni = prijmeni;

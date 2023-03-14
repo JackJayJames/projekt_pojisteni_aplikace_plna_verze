@@ -24,7 +24,11 @@ app.post('/api/pojistenec', (req, res) => {
         res.status(400).send(error.details[0].message);
     }
     else{
-        database.ulozitPojistence(req.body)
+        const user = new User(req.body.username, req.body.password);
+        const pojistenec = new Pojistenec(req.body.jmeno, req.body.prijmeni, req.body.narozeni, req.body.mail, req.body.telefon,
+        req.body.ulice, req.body.mesto, req.body.psc, req.body.pojisteni);
+        
+        database.ulozitPojistence(user, pojistenec)
             .then(result => {
                 res.status(200).send(result);
                 console.log(`POST: Pojištěnec ${result.jmeno} ${result.prijmeni}, byl úspěšně přidán`);

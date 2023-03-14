@@ -13,6 +13,10 @@ module.exports = class Database{
             _ModelPojistenec: mongoose.model('Pojistenec', Schema.pojistenec),
             _ModelPojisteni: mongoose.model('Pojisteni', Schema.pojisteni),
 
+            _kontrolaUserName: function(username){
+                return true;
+            },
+
             _vytvoritModelPojistenec: function(pojistenec){
                 return this._ulozitModel(new this._ModelPojistenec(pojistenec));
             },
@@ -56,7 +60,8 @@ module.exports = class Database{
             .then(() => console.log(`Connected to MongoDB at ${privatni.get(this)._adresa}`))
             .catch(error => console.error('Could not connect to MongoDB...', error));
     }
-    ulozitPojistence(pojistenec){
+    ulozitPojistence(user, pojistenec){
+        if(!privatni.get(this)._kontrolaUserName(user.username)) return Promise.reject(new Error("Username already in use"));
         return privatni.get(this)._vytvoritModelPojistenec(pojistenec);
     }
     ziskatPojistence(id){
