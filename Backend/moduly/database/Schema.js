@@ -1,6 +1,11 @@
 'use strict';
 
 module.exports = class Schema{
+    static user = {
+        username: String,
+        password: String,
+        id: String
+    }
     static pojistenec = {
         jmeno: String,
         prijmeni: String,
