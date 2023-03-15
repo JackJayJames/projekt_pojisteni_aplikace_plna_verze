@@ -115,11 +115,7 @@ module.exports = class Database{
         return privatni.get(this)._smazatPojisteni(id);
     }
     async kontrolaTicketu(pojID, ticketID, reqIP){
-        console.log("pojID " + pojID + " | ticket " + ticketID + " | reqIP " + reqIP);
         const result = await privatni.get(this)._najitTicket(pojID, ticketID, reqIP);
-
-        console.log(result);
-
         if( result === -1) return Promise.reject("Ticket vypršel");
         if(result.length === 0) return Promise.reject("Neplatný ticket");
         return;

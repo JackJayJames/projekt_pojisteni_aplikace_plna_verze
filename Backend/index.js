@@ -37,19 +37,26 @@ app.post('/api/pojistenec', (req, res) => {
             .catch(err => res.status(404).send(`Chyba zapsání pojistence do databáze -> ${err}`));
     }
 });
-app.post('/api/pojisteni/:pojistenec', (req, res) => {
+app.post('/api/pojisteni/:pojistenec/:ticketID', (req, res) => {
     const { error } = Validace.pojisteni(req.body);
     if(error){
         console.log(error.details[0].message);
         res.status(400).send(error.details[0].message);
     }
     else{
-        database.ulozitPojisteni(req.params.pojistenec, req.body)
-            .then(result => {
-                res.status(200).send(result);
-                console.log(`POST: Pojištění ${result.nazev} ${result.predmet} bylo přidáno pojištěnci s ID ${req.params.pojistenec}`);
-            })
-            .catch(err => res.status(404).send(`Chyba zapsání pojištění do databáze -> ${err}`))
+        database.kontrolaTicketu(req.params.pojistenec, req.params.ticketID, req.ip)
+        .then(() => {
+            database.ulozitPojisteni(req.params.pojistenec, req.body)
+                .then(result => {
+                    res.status(200).send(result);
+                    console.log(`POST: Pojištění ${result.nazev} ${result.predmet} bylo přidáno pojištěnci s ID ${req.params.pojistenec}`);
+                })
+                .catch(err => res.status(404).send(`Chyba zapsání pojištění do databáze -> ${err}`))
+        })
+        .catch(err => {
+            console.log("POST: " + err);
+            res.status(408).send(err);
+        });
     }
 });/*
 app.post('/api/udalost/:pojisteni', (req, res) => {
@@ -72,8 +79,6 @@ app.get('/api/pojistenci', (req, res) => {
         .catch(err => res.status(404).send(`Chyba čtení z databáse -> ${err}`));
 })
 app.get('/api/pojistenec/:id/:ticketID', (req, res) => {
-    console.log(req.params);
-
     database.kontrolaTicketu(req.params.id, req.params.ticketID, req.ip)
         .then(() => {
             database.ziskatPojistence(req.params.id)
@@ -88,20 +93,9 @@ app.get('/api/pojistenec/:id/:ticketID', (req, res) => {
                 });
         })
         .catch(err => {
-            console.log(err);
+            console.log("GET: " + err);
             res.status(408).send(err);
         });
-    /*
-    database.ziskatPojistence(req.params.id)
-        .then(pojistenec => {
-            if(pojistenec)  console.log(`GET: ID: ${req.params.id}, posílám pojištěnce ${pojistenec.jmeno} ${pojistenec.prijmeni}`);
-            else    console.log(`GET: pojistenec nenalezen`);
-            res.status(200).send(pojistenec);
-        })
-        .catch(err => {
-            console.log(err.message);
-            res.status(404).send(`Chyba čtení z databáse -> ${err}`);
-        });*/
 });
 app.get('/api/pojisteni/:id', (req, res) => {
     database.ziskatPojisteni(req.params.id)
