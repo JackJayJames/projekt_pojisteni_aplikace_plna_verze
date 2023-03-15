@@ -72,6 +72,11 @@ app.get('/api/pojistenci', (req, res) => {
         .catch(err => res.status(404).send(`Chyba čtení z databáse -> ${err}`));
 })
 app.get('/api/pojistenec/:id/:ticketID', (req, res) => {
+    console.log(req.params);
+
+    const resultTicket = database.kontrolaTicketu(req.params.id, req.params.ticketID, req.ip);
+
+    /*
     database.ziskatPojistence(req.params.id)
         .then(pojistenec => {
             if(pojistenec)  console.log(`GET: ID: ${req.params.id}, posílám pojištěnce ${pojistenec.jmeno} ${pojistenec.prijmeni}`);
@@ -81,7 +86,7 @@ app.get('/api/pojistenec/:id/:ticketID', (req, res) => {
         .catch(err => {
             console.log(err.message);
             res.status(404).send(`Chyba čtení z databáse -> ${err}`);
-        });
+        });*/
 });
 app.get('/api/pojisteni/:id', (req, res) => {
     database.ziskatPojisteni(req.params.id)

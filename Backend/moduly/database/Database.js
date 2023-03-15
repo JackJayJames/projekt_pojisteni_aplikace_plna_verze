@@ -73,6 +73,11 @@ module.exports = class Database{
                 pojistenec.pojisteni.push(result.id);
                 await this._ModelPojistenec.findByIdAndUpdate(pojistenec, { pojisteni: pojistenec.pojisteni });
                 return result;
+            },
+            _najitTicket: async function(pojID, ticketID, reqIP){
+                const result = await this._ModelTicket.find({ "_id": mongoose.Types.ObjectId(ticketID), "pojistenec_ID": pojID, "ip": reqIP });
+                console.log("result:");
+                console.log(result);
             }
         });
     }
@@ -101,5 +106,9 @@ module.exports = class Database{
     }
     smazatPojisteni(id){
         return privatni.get(this)._smazatPojisteni(id);
+    }
+    kontrolaTicketu(pojID, ticketID, reqIP){
+        console.log("pojID " + pojID + " | ticket " + ticketID + " | reqIP " + reqIP);
+        const result = privatni.get(this)._najitTicket(pojID, ticketID, reqIP);
     }
 }

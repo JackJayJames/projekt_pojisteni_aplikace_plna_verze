@@ -34,3 +34,5 @@
     "mesto": "Los Angeles",
     "psc": 76512
 }
+
+/api/pojistenec/6412079a6a45f78fd5ee9832/6412079a6a45f78fd5ee9835
