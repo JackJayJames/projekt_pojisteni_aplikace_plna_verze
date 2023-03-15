@@ -25,9 +25,14 @@ module.exports = class Database{
                 const resUser = await this._ulozitModel(new this._ModelUser(user));
                 const resPojistenec = await this._ulozitModel(new this._ModelPojistenec(pojistenec));
                 await this._spojitUserPojistenec(resUser._id, resPojistenec._id);
-                
-
+                const resTicket = await this._ulozitModel(new this._ModelTicket({ timeOut: this._vytvoritTimeOut() }));
+                console.log(resTicket);
                 return { pojistenec: resPojistenec, ticket: resUser._id };
+            },
+            _vytvoritTimeOut: function(){
+                const date = new Date();
+                date.setDate(date.getDate() + 3);
+                return date;
             },
             _ulozitModel: async function(model){
                 return await model.save();
