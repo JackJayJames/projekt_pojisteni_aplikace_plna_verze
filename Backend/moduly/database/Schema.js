@@ -1,6 +1,9 @@
 'use strict';
 
 module.exports = class Schema{
+    static ticket = {
+        timeOut: Date
+    }
     static user = {
         username: String,
         password: String,

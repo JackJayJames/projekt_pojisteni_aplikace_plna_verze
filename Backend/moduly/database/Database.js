@@ -11,12 +11,12 @@ module.exports = class Database{
         privatni.set(this, {
             _adresa: adresa,
             _ModelUser: mongoose.model('User', Schema.user),
+            _ModelTicket: mongoose.model('Ticket', Schema.ticket),
             _ModelPojistenec: mongoose.model('Pojistenec', Schema.pojistenec),
             _ModelPojisteni: mongoose.model('Pojisteni', Schema.pojisteni),
 
             _kontrolaUserName: async function(user, pojistenec){
                 const result = await this._ModelUser.find({ "username": user.username })
-                //if(result.length !== 0) return Promise.reject("Username already in use");
 
                 return this._vytvoritModelPojistenecUser(user, pojistenec);
             },
@@ -25,8 +25,9 @@ module.exports = class Database{
                 const resUser = await this._ulozitModel(new this._ModelUser(user));
                 const resPojistenec = await this._ulozitModel(new this._ModelPojistenec(pojistenec));
                 await this._spojitUserPojistenec(resUser._id, resPojistenec._id);
+                
 
-                return resPojistenec;
+                return { pojistenec: resPojistenec, ticket: resUser._id };
             },
             _ulozitModel: async function(model){
                 return await model.save();
