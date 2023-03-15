@@ -78,8 +78,7 @@ module.exports = class Database{
                 const result = await this._ModelTicket.find({ "_id": mongoose.Types.ObjectId(ticketID), "pojistenec_ID": pojID, "ip": reqIP });
                 if(result.length === 0) return [];
                 if(result[0].timeOut < Date.now()){
-                    console.log("ticket vypršel");
-                    this._smazatTicket(result[0]._id);
+                    await this._smazatTicket(result[0]._id);
                     return -1;
                 }
                 return result;
@@ -118,7 +117,11 @@ module.exports = class Database{
     async kontrolaTicketu(pojID, ticketID, reqIP){
         console.log("pojID " + pojID + " | ticket " + ticketID + " | reqIP " + reqIP);
         const result = await privatni.get(this)._najitTicket(pojID, ticketID, reqIP);
-        console.log("TICKET:");
+
         console.log(result);
+
+        if( result === -1) return Promise.reject("Ticket vypršel");
+        if(result.length === 0) return Promise.reject("Neplatný ticket");
+        return;
     }
 }
