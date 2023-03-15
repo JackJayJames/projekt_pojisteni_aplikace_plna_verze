@@ -16,17 +16,23 @@ module.exports = class Database{
 
             _kontrolaUserName: async function(user, pojistenec){
                 const result = await this._ModelUser.find({ "username": user.username })
-                console.log(result);
-                if(result.length === 0) return Promise.reject("Username already in use");
+                //if(result.length !== 0) return Promise.reject("Username already in use");
+
                 return this._vytvoritModelPojistenecUser(user, pojistenec);
             },
 
-            _vytvoritModelPojistenecUser: function(user, pojistenec){
-                this._ulozitModel(new this._ModelUser(user))
-                return this._ulozitModel(new this._ModelPojistenec(pojistenec));
+            _vytvoritModelPojistenecUser: async function(user, pojistenec){
+                const resUser = await this._ulozitModel(new this._ModelUser(user));
+                const resPojistenec = await this._ulozitModel(new this._ModelPojistenec(pojistenec));
+                await this._spojitUserPojistenec(resUser._id, resPojistenec._id);
+
+                return resPojistenec;
             },
             _ulozitModel: async function(model){
                 return await model.save();
+            },
+            _spojitUserPojistenec: async function(userID, pojistenecID){
+                return await this._ModelUser.findByIdAndUpdate(userID, { pojistenec_ID: pojistenecID });
             },
             _ziskatPojistence: async function(){
                 return await this._ModelPojistenec.find()
@@ -66,11 +72,7 @@ module.exports = class Database{
             .catch(error => console.error('Could not connect to MongoDB...', error));
     }
     ulozitPojistence(user, pojistenec){
-        //if(!privatni.get(this)._kontrolaUserName(user.username)) return Promise.reject(new Error("Username already in use"));
         return privatni.get(this)._kontrolaUserName(user, pojistenec);
-
-        //return privatni.get(this)._vytvoritModelPojistenecUser(user, pojistenec);
-        //return Promise.resolve({});
     }
     ziskatPojistence(id){
         if(!id)

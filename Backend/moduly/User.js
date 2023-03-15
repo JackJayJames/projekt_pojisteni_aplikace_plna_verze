@@ -4,6 +4,6 @@ module.exports = class User{
     constructor(username, password, id = "-1"){
         this.username = username;
         this.password = password;
-        this.id = id;
+        this.pojistenec_ID = id;
     }
 }

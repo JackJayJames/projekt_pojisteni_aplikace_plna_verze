@@ -4,7 +4,7 @@ module.exports = class Schema{
     static user = {
         username: String,
         password: String,
-        id: String
+        pojistenec_ID: String
     }
     static pojistenec = {
         jmeno: String,
