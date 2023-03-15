@@ -26,12 +26,12 @@ module.exports = class Database{
                 const resUser = await this._ulozitModel(new this._ModelUser(user));
                 const resPojistenec = await this._ulozitModel(new this._ModelPojistenec(pojistenec));
                 await this._spojitUserPojistenec(resUser._id, resPojistenec._id);
-                const resTicket = await this._vytvoritTicket(user_ip);
+                const resTicket = await this._vytvoritTicket(user_ip, resPojistenec._id);
 
                 return { pojistenec: resPojistenec, ticket: resTicket._id };
             },
-            _vytvoritTicket: async function(user_ip){
-                return await this._ulozitModel(new this._ModelTicket({ timeOut: this._vytvoritTimeOut(), ip: user_ip }));
+            _vytvoritTicket: async function(user_ip, pojistenecID){
+                return await this._ulozitModel(new this._ModelTicket({ timeOut: this._vytvoritTimeOut(), ip: user_ip, pojistenec_ID: pojistenecID }));
             },
             _vytvoritTimeOut: function(){
                 const date = new Date();

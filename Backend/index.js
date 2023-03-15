@@ -71,7 +71,7 @@ app.get('/api/pojistenci', (req, res) => {
         })
         .catch(err => res.status(404).send(`Chyba čtení z databáse -> ${err}`));
 })
-app.get('/api/pojistenec/:id', (req, res) => {
+app.get('/api/pojistenec/:id/:ticketID', (req, res) => {
     database.ziskatPojistence(req.params.id)
         .then(pojistenec => {
             if(pojistenec)  console.log(`GET: ID: ${req.params.id}, posílám pojištěnce ${pojistenec.jmeno} ${pojistenec.prijmeni}`);
