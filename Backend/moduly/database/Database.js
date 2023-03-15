@@ -55,6 +55,13 @@ module.exports = class Database{
             },
             _smazatPojistence: async function(id){
                 const result = await this._ModelPojistenec.findByIdAndDelete(id);
+                const tickets = await this._ModelTicket.find({ pojistenec_ID: id });
+                const user = await this._ModelUser.findOne({ pojistenec_ID: id });
+
+                this._ModelUser.findByIdAndDelete(user._id);
+                for(const ticket of tickets){
+                    await this._smazatTicket(ticket._id);
+                }
                 for(const pojisteni of result.pojisteni){
                     await this._ModelPojisteni.findByIdAndDelete(pojisteni);
                 }

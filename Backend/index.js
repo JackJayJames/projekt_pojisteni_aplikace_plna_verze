@@ -107,13 +107,20 @@ app.get('/api/pojisteni/:id/:pojistenec/:ticketID', (req, res) => {
         });
 });
 
-app.delete('/api/pojistenec/:id', (req, res) => {
-    database.smazatPojistence(String(req.params.id))
-        .then(pojistenec => {
-            res.status(200).send(`Pojištěnec ${pojistenec.jmeno} ${pojistenec.prijmeni} byl úspěšně smazán`);
-            console.log(`DELETE: Pojištěnec ${pojistenec.jmeno} ${pojistenec.prijmeni} byl úspěšně smazán`);
+app.delete('/api/pojistenec/:id/:ticketID', (req, res) => {
+    database.kontrolaTicketu(req.params.id, req.params.ticketID, req.ip)
+        .then(() => {
+            database.smazatPojistence(req.params.id)
+                .then(pojistenec => {
+                    res.status(200).send(`Pojištěnec ${pojistenec.jmeno} ${pojistenec.prijmeni} byl úspěšně smazán`);
+                    console.log(`DELETE: Pojištěnec ${pojistenec.jmeno} ${pojistenec.prijmeni} byl úspěšně smazán`);
+                })
+                .catch(err => res.status(404).send(`Chyba mazání z databáse -> ${err}`));
         })
-        .catch(err => res.status(404).send(`Chyba mazání z databáse -> ${err}`));
+        .catch(err => {
+            console.log("DELETE: " + err);
+            res.status(408).send(err);
+        });
 });
 app.delete('/api/pojisteni/:id', (req, res) => {
     database.smazatPojisteni(req.params.id)
