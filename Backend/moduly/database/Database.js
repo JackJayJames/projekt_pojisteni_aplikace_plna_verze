@@ -14,8 +14,11 @@ module.exports = class Database{
             _ModelPojistenec: mongoose.model('Pojistenec', Schema.pojistenec),
             _ModelPojisteni: mongoose.model('Pojisteni', Schema.pojisteni),
 
-            _kontrolaUserName: function(username){
-                return true;
+            _kontrolaUserName: async function(user, pojistenec){
+                const result = await this._ModelUser.find({ "username": user.username })
+                console.log(result);
+                if(result.length === 0) return Promise.reject("Username already in use");
+                return this._vytvoritModelPojistenecUser(user, pojistenec);
             },
 
             _vytvoritModelPojistenecUser: function(user, pojistenec){
@@ -63,8 +66,11 @@ module.exports = class Database{
             .catch(error => console.error('Could not connect to MongoDB...', error));
     }
     ulozitPojistence(user, pojistenec){
-        if(!privatni.get(this)._kontrolaUserName(user.username)) return Promise.reject(new Error("Username already in use"));
-        return privatni.get(this)._vytvoritModelPojistenecUser(user, pojistenec);
+        //if(!privatni.get(this)._kontrolaUserName(user.username)) return Promise.reject(new Error("Username already in use"));
+        return privatni.get(this)._kontrolaUserName(user, pojistenec);
+
+        //return privatni.get(this)._vytvoritModelPojistenecUser(user, pojistenec);
+        //return Promise.resolve({});
     }
     ziskatPojistence(id){
         if(!id)
