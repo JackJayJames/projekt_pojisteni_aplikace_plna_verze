@@ -15,19 +15,23 @@ module.exports = class Database{
             _ModelPojistenec: mongoose.model('Pojistenec', Schema.pojistenec),
             _ModelPojisteni: mongoose.model('Pojisteni', Schema.pojisteni),
 
-            _kontrolaUserName: async function(user, pojistenec){
+            _kontrolaUserName: async function(user, pojistenec, user_ip){
                 const result = await this._ModelUser.find({ "username": user.username })
+                //if(result.length !== 0) return Promise.reject('Uživatelké jméno zabráno');
 
-                return this._vytvoritModelPojistenecUser(user, pojistenec);
+                return this._vytvoritModelPojistenecUser(user, pojistenec, user_ip);
             },
 
-            _vytvoritModelPojistenecUser: async function(user, pojistenec){
+            _vytvoritModelPojistenecUser: async function(user, pojistenec, user_ip){
                 const resUser = await this._ulozitModel(new this._ModelUser(user));
                 const resPojistenec = await this._ulozitModel(new this._ModelPojistenec(pojistenec));
                 await this._spojitUserPojistenec(resUser._id, resPojistenec._id);
-                const resTicket = await this._ulozitModel(new this._ModelTicket({ timeOut: this._vytvoritTimeOut() }));
-                console.log(resTicket);
-                return { pojistenec: resPojistenec, ticket: resUser._id };
+                const resTicket = await this._vytvoritTicket(user_ip);
+
+                return { pojistenec: resPojistenec, ticket: resTicket._id };
+            },
+            _vytvoritTicket: async function(user_ip){
+                return await this._ulozitModel(new this._ModelTicket({ timeOut: this._vytvoritTimeOut(), ip: user_ip }));
             },
             _vytvoritTimeOut: function(){
                 const date = new Date();
@@ -77,8 +81,8 @@ module.exports = class Database{
             .then(() => console.log(`Connected to MongoDB at ${privatni.get(this)._adresa}`))
             .catch(error => console.error('Could not connect to MongoDB...', error));
     }
-    ulozitPojistence(user, pojistenec){
-        return privatni.get(this)._kontrolaUserName(user, pojistenec);
+    ulozitPojistence(user, pojistenec, user_ip){
+        return privatni.get(this)._kontrolaUserName(user, pojistenec, user_ip);
     }
     ziskatPojistence(id){
         if(!id)

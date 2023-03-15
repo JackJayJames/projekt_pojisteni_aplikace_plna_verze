@@ -2,7 +2,8 @@
 
 module.exports = class Schema{
     static ticket = {
-        timeOut: Date
+        timeOut: Date,
+        ip: String
     }
     static user = {
         username: String,

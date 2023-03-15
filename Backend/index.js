@@ -12,10 +12,10 @@ const express = require('express');
 const app = express();
 
 app.use(cors());
+app.use(express.json());
+app.set('trust proxy', true);
 
 database.spustit();
-
-app.use(express.json());
 
 app.post('/api/pojistenec', (req, res) => {
     const { error } = Validace.pojistenec(req.body);
@@ -28,10 +28,11 @@ app.post('/api/pojistenec', (req, res) => {
         const pojistenec = new Pojistenec(req.body.jmeno, req.body.prijmeni, req.body.narozeni, req.body.mail, req.body.telefon,
         req.body.ulice, req.body.mesto, req.body.psc, req.body.pojisteni);
         
-        database.ulozitPojistence(user, pojistenec)
+
+        database.ulozitPojistence(user, pojistenec, req.ip)
             .then(result => {
                 res.status(200).send(result);
-                console.log(`POST: Pojištěnec ${result.jmeno} ${result.prijmeni}, byl úspěšně přidán`);
+                console.log(`POST: Pojištěnec ${result.pojistenec.jmeno} ${result.pojistenec.prijmeni}, byl úspěšně přidán`);
             })
             .catch(err => res.status(404).send(`Chyba zapsání pojistence do databáze -> ${err}`));
     }
