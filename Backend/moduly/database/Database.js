@@ -76,8 +76,16 @@ module.exports = class Database{
             },
             _najitTicket: async function(pojID, ticketID, reqIP){
                 const result = await this._ModelTicket.find({ "_id": mongoose.Types.ObjectId(ticketID), "pojistenec_ID": pojID, "ip": reqIP });
-                console.log("result:");
-                console.log(result);
+                if(result.length === 0) return [];
+                if(result[0].timeOut < Date.now()){
+                    console.log("ticket vypršel");
+                    this._smazatTicket(result[0]._id);
+                    return -1;
+                }
+                return result;
+            },
+            _smazatTicket: async function(id){
+                await this._ModelTicket.findByIdAndDelete(id);
             }
         });
     }
@@ -107,8 +115,10 @@ module.exports = class Database{
     smazatPojisteni(id){
         return privatni.get(this)._smazatPojisteni(id);
     }
-    kontrolaTicketu(pojID, ticketID, reqIP){
+    async kontrolaTicketu(pojID, ticketID, reqIP){
         console.log("pojID " + pojID + " | ticket " + ticketID + " | reqIP " + reqIP);
-        const result = privatni.get(this)._najitTicket(pojID, ticketID, reqIP);
+        const result = await privatni.get(this)._najitTicket(pojID, ticketID, reqIP);
+        console.log("TICKET:");
+        console.log(result);
     }
 }
