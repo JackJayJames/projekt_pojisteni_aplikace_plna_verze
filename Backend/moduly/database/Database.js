@@ -7,9 +7,9 @@ const { pojisteni } = require('../Validace.js');
 
 const privatni = new WeakMap();
 module.exports = class Database{
-    constructor(){
+    constructor(adresa){
         privatni.set(this, {
-            _adresa: "mongodb://127.0.0.1:27017/pojistdb",
+            _adresa: adresa,
             _ModelUser: mongoose.model('User', Schema.user),
             _ModelPojistenec: mongoose.model('Pojistenec', Schema.pojistenec),
             _ModelPojisteni: mongoose.model('Pojisteni', Schema.pojisteni),

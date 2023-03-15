@@ -5,7 +5,7 @@ const Pojistenec = require('./moduly/Pojistenec.js');
 
 const Validace = require('./moduly/Validace.js');
 const Mongo = require('./moduly/database/Database.js');
-const database = new Mongo();
+const database = new Mongo("mongodb://127.0.0.1:27017/pojistdb");
 
 const cors = require('cors');
 const express = require('express');
