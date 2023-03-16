@@ -66,6 +66,9 @@ app.post('/api/login', (req, res) => {
         console.log(error.details[0].message);
         res.status(400).send(error.details[0].message);
     }
+    else{
+        database.kontrolaPrihlaseni(req.body.username, req.body.password);
+    }
 });
 
 app.get('/api/pojistenci', (req, res) => {

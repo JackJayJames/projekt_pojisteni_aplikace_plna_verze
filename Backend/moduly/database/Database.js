@@ -131,4 +131,10 @@ module.exports = class Database{
         if(result.length === 0) return Promise.reject("Neplatný ticket");
         return;
     }
+    kontrolaPrihlaseni(username, password){
+        console.log("Username " + username);
+        console.log("Password " + password);
+
+        
+    }
 }
