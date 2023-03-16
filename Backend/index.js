@@ -70,6 +70,12 @@ app.post('/api/login', (req, res) => {
         database.kontrolaPrihlaseni(req.body.username, req.body.password)
             .then(pojID => {
                 console.log(pojID);
+                database.ziskatTicket(pojID)
+                    .then(ticketID => {
+                        console.log(`ticketID = ${ticketID}`);
+                    })
+                    .catch(err => { res.status(404).send(err) });
+
                 res.status(200).send(`pojistenecID = ${pojID}`);
             })
             .catch(err => { res.status(401).send(err) });
