@@ -100,7 +100,7 @@ module.exports = class Database{
                 return result;
             },
             _smazatTicket: async function(id){
-                await this._smazatModel(this._ModelTicket, id);
+                return await this._smazatModel(this._ModelTicket, id);
             },
             _zkontrolovatUser: async function(username, password){
                 return await this._ModelUser.find({ "username": username, "password": password });
@@ -154,5 +154,10 @@ module.exports = class Database{
 
         const result = await privatni.get(this)._vytvoritTicket(ip, pojID);
         return result._id;
+    }
+    async smazatTicket(ticketID){
+        const result = await privatni.get(this)._smazatTicket(ticketID);
+        if(!result) return Promise.reject("Ticket neexistuje");
+        return;
     }
 }
