@@ -122,13 +122,22 @@ app.delete('/api/pojistenec/:id/:ticketID', (req, res) => {
             res.status(408).send(err);
         });
 });
-app.delete('/api/pojisteni/:id', (req, res) => {
-    database.smazatPojisteni(req.params.id)
-        .then(pojisteni => {
-            res.status(200).send(`Pojištění ${pojisteni.nazev} na ${pojisteni.predmet} bylo úspěšně smazáno`);
-            console.log(`DELETE: Pojištění ${pojisteni.nazev} na ${pojisteni.predmet} bylo úspěšně smazáno`);
+app.delete('/api/pojisteni/:id/:ticketID', (req, res) => {
+    database.kontrolaTicketu(req.params.id, req.params.ticketID, req.ip)
+        .then(() => {
+            database.smazatPojisteni(req.params.id)
+                .then(pojisteni => {
+                    res.status(200).send(`Pojištění ${pojisteni.nazev} na ${pojisteni.predmet} bylo úspěšně smazáno`);
+                    console.log(`DELETE: Pojištění ${pojisteni.nazev} na ${pojisteni.predmet} bylo úspěšně smazáno`);
+                })
+                .catch(err => res.status(404).send(`Chyba mazání z databáse -> ${err}`));
         })
-        .catch(err => res.status(404).send(`Chyba mazání z databáse -> ${err}`));
-    });
+        .catch(err => {
+            console.log("DELETE: " + err);
+            res.status(408).send(err);
+        });
+});
 
-app.listen(5500, () => console.log('Listening on port 5500...'))
+
+
+app.listen(5500, () => console.log('Listening on port 5500...'));
