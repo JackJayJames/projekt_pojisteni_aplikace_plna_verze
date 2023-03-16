@@ -61,6 +61,11 @@ app.post('/api/pojisteni/:pojistenec/:ticketID', (req, res) => {
 });
 app.post('/api/login', (req, res) => {
     console.log(req.body);
+    const { error } = Validace.login(req.body);
+    if(error){
+        console.log(error.details[0].message);
+        res.status(400).send(error.details[0].message);
+    }
 });
 
 app.get('/api/pojistenci', (req, res) => {

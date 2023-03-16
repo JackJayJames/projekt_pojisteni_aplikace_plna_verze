@@ -3,6 +3,13 @@
 const Joi = require('joi');
 
 module.exports = class Validace{
+    static login(login_params){
+        const schema = Joi.object({
+            username: Joi.string().min(6).required(),
+            password: Joi.string().min(6).required()
+        });
+        return schema.validate(login_params);
+    }
     static pojistenec(pojistenec){
         const schema = Joi.object({
             username: Joi.string().min(6).required(),
