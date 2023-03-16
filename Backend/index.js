@@ -59,6 +59,9 @@ app.post('/api/pojisteni/:pojistenec/:ticketID', (req, res) => {
         });
     }
 });
+app.post('/api/login', (req, res) => {
+    console.log(req.body);
+});
 
 app.get('/api/pojistenci', (req, res) => {
     database.ziskatPojistence()

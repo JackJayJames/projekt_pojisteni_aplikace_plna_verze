@@ -17,7 +17,7 @@ module.exports = class Database{
 
             _kontrolaUserName: async function(user, pojistenec, user_ip){
                 const result = await this._ModelUser.find({ "username": user.username })
-                //if(result.length !== 0) return Promise.reject('Uživatelké jméno zabráno');
+                if(result.length !== 0) return Promise.reject('Uživatelké jméno zabráno');
 
                 return this._vytvoritModelPojistenecUser(user, pojistenec, user_ip);
             },
@@ -58,18 +58,15 @@ module.exports = class Database{
                 return await this._ModelPojisteni.findById(id);
             },
             _smazatPojistence: async function(id){
-                //const result = await this._ModelPojistenec.findByIdAndDelete(id);
                 const result = await this._smazatModel(this._ModelPojistenec, id)
                 const tickets = await this._ModelTicket.find({ pojistenec_ID: id });
                 const user = await this._ModelUser.findOne({ pojistenec_ID: id });
                 console.log(user._id.toHexString());
                 await this._smazatModel(this._ModelUser, user._id);
                 for(const ticket of tickets){
-                    //await this._smazatTicket(ticket._id);
                     await this._smazatModel(this._ModelTicket, ticket._id);
                 }
                 for(const pojisteni of result.pojisteni){
-                    //await this._ModelPojisteni.findByIdAndDelete(pojisteni);
                     await this._smazatModel(this._ModelPojisteni, pojisteni);
                 }
                 return result;
@@ -98,7 +95,6 @@ module.exports = class Database{
                 return result;
             },
             _smazatTicket: async function(id){
-                //await this._ModelTicket.findByIdAndDelete(id);
                 await this._smazatModel(this._ModelTicket, id);
             }
         });
