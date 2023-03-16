@@ -96,6 +96,9 @@ module.exports = class Database{
             },
             _smazatTicket: async function(id){
                 await this._smazatModel(this._ModelTicket, id);
+            },
+            _zkontrolovatUser: async function(username, password){
+                return await this._ModelUser.find({ "username": username, "password": password });
             }
         });
     }
@@ -131,10 +134,12 @@ module.exports = class Database{
         if(result.length === 0) return Promise.reject("Neplatný ticket");
         return;
     }
-    kontrolaPrihlaseni(username, password){
+    async kontrolaPrihlaseni(username, password){
         console.log("Username " + username);
         console.log("Password " + password);
 
-        
+        const result = await privatni.get(this)._zkontrolovatUser(username, password);
+        if(result.length === 0) return Promise.reject("Chybné uživatelské jméno, nebo heslo");
+        return result[0].pojistenec_ID;
     }
 }

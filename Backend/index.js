@@ -67,7 +67,12 @@ app.post('/api/login', (req, res) => {
         res.status(400).send(error.details[0].message);
     }
     else{
-        database.kontrolaPrihlaseni(req.body.username, req.body.password);
+        database.kontrolaPrihlaseni(req.body.username, req.body.password)
+            .then(pojID => {
+                console.log(pojID);
+                res.status(200).send(`pojistenecID = ${pojID}`);
+            })
+            .catch(err => { res.status(401).send(err) });
     }
 });
 
