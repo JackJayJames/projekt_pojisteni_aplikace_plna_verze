@@ -23,7 +23,7 @@
     "psc": 76512
 }
 {
-    "username": "Agni",
+    "username": "Agnasdi",
     "password": "12dfa!",
     "jmeno": "Angelina",
     "prijmeni": "Jolie",
