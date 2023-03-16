@@ -60,7 +60,6 @@ app.post('/api/pojisteni/:pojistenec/:ticketID', (req, res) => {
     }
 });
 app.post('/api/login', (req, res) => {
-    console.log(req.body);
     const { error } = Validace.login(req.body);
     if(error){
         console.log(error.details[0].message);
@@ -69,14 +68,12 @@ app.post('/api/login', (req, res) => {
     else{
         database.kontrolaPrihlaseni(req.body.username, req.body.password)
             .then(pojID => {
-                console.log(pojID);
-                database.ziskatTicket(pojID)
+                database.ziskatTicketID(pojID, req.ip)
                     .then(ticketID => {
-                        console.log(`ticketID = ${ticketID}`);
+                        console.log(`LOGIN: posílám ticket, id = ${ticketID}`);
+                        res.status(200).send({ "ticketID": ticketID });
                     })
                     .catch(err => { res.status(404).send(err) });
-
-                res.status(200).send(`pojistenecID = ${pojID}`);
             })
             .catch(err => { res.status(401).send(err) });
     }
@@ -158,6 +155,14 @@ app.delete('/api/pojisteni/:id/:ticketID', (req, res) => {
             console.log("DELETE: " + err);
             res.status(408).send(err);
         });
+});
+app.delete('/api/logout/:ticketID', (req, res) => {
+    database.smazatTicket(req.params.ticketID)
+        .then(() => {
+            console.log(`DELETE: Ticket s id = ${req.params.ticketID} byl smazán`);
+            res.status(200).send("Ticket smazán");
+        })
+        .catch(err => res.status(404).send(`Chyba mazání z databáze -> ${err}`));
 });
 
 

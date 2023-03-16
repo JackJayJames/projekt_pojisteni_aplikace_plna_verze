@@ -94,6 +94,11 @@ module.exports = class Database{
                 }
                 return result;
             },
+            _najitTickets: async function(pojID, reqIP){
+                const tickets = await this._ModelTicket.find({ "ip": reqIP, "pojistenec_ID": pojID });
+                const result = tickets.filter(ticket => ticket.timeOut > Date.now());
+                return result;
+            },
             _smazatTicket: async function(id){
                 await this._smazatModel(this._ModelTicket, id);
             },
@@ -135,11 +140,19 @@ module.exports = class Database{
         return;
     }
     async kontrolaPrihlaseni(username, password){
-        console.log("Username " + username);
-        console.log("Password " + password);
-
         const result = await privatni.get(this)._zkontrolovatUser(username, password);
         if(result.length === 0) return Promise.reject("Chybné uživatelské jméno, nebo heslo");
         return result[0].pojistenec_ID;
+    }
+    async ziskatTicketID(pojID, ip){
+        const oldTickets = await privatni.get(this)._najitTickets(pojID, ip);
+        if(oldTickets.length > 0){
+            for(const ticket of oldTickets){
+                await privatni.get(this)._smazatTicket(ticket._id);
+            }
+        }
+
+        const result = await privatni.get(this)._vytvoritTicket(ip, pojID);
+        return result._id;
     }
 }
