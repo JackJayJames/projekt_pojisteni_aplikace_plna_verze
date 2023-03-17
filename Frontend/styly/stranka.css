@@ -211,4 +211,7 @@ footer h5{
     .deleteBtn{
         width: 10px;
     }
+    h1{
+        border-radius: 10px;
+    }
 }

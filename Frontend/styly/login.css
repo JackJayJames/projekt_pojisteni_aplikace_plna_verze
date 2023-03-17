@@ -47,3 +47,14 @@
     background-color: var(--modra);
     border-color: white;
 }
+.login a{
+    margin-top: 10%;
+    align-self: flex-end;
+}
+
+@media only screen and (max-width: 420px){
+    .login{
+        width: 100%;
+        padding: 20px 5px;
+    }
+}
