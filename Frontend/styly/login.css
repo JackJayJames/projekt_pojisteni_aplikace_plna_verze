@@ -3,8 +3,15 @@
     width: 400px;
     display: flex;
     flex-direction: column;
+    gap: 10px;
+    padding: 20px;
 }
 .loginBunka{
     display: flex;
     flex-direction: column;
+    padding: 10px;
+    gap: 5px;
+}
+.loginBunka label{
+    font-size: 1.1rem;
 }
