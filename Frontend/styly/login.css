@@ -1,5 +1,7 @@
 .login{
-    border: 1px solid red;
+    border: 3px solid #494949;
+    border-radius: 10px;
+    background-color: white;
     width: 400px;
     display: flex;
     flex-direction: column;
@@ -14,4 +16,9 @@
 }
 .loginBunka label{
     font-size: 1.1rem;
+}
+.loginBunka input{
+    height: 1.8rem;
+    font-size: 100%;
+    padding-left: 5px;
 }
