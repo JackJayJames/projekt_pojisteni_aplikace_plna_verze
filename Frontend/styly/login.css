@@ -1,12 +1,16 @@
+:root{
+    --modra: #3737e6;
+}
+
 .login{
     border: 3px solid #494949;
     border-radius: 10px;
     background-color: white;
-    width: 400px;
+    width: 350px;
     display: flex;
     flex-direction: column;
     gap: 10px;
-    padding: 20px;
+    padding: 40px 20px;
 }
 .loginBunka{
     display: flex;
@@ -21,4 +25,25 @@
     height: 1.8rem;
     font-size: 100%;
     padding-left: 5px;
+}
+
+.login button{
+    width: max-content;
+    align-self: center;
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding: 3%;
+    border: 2px solid var(--modra);
+    border-radius: 5px;
+    background-color: var(--modra);
+    color: white;
+}
+.login button:hover{
+    background-color: white;
+    color: var(--modra);
+}
+.login button:active{
+    color: white;
+    background-color: var(--modra);
+    border-color: white;
 }
