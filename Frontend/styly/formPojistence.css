@@ -8,14 +8,15 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     gap: 5%;
 }
 .formVstup{
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    /*gap: 2px;*/
     width: 50%;
-    margin: 2px 0;
+    /*margin: 2px 0;*/
 }
 .formVstup input{
     line-height: 25px;
