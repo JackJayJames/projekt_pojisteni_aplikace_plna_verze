@@ -14,9 +14,18 @@ export class FormInputOutput{
     get validni(){
         const validace = this.#validace(this.#input.value);
         if(validace){
-            console.log(validace);
+            this.#vypsatChybuValidace(validace);
             return false;
         }
+        this.#schovatChybuValidace();
         return true;
+    }
+    #vypsatChybuValidace(error){
+        console.log(error);
+        this.#err.textContent = error;
+        this.#err.style.display = "block";
+    }
+    #schovatChybuValidace(){
+        this.#err.style.display = "none";
     }
 }
