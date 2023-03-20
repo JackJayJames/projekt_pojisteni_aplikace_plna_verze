@@ -1,5 +1,7 @@
 'use strict';
 
+import { Ajax } from "./Ajax.js";
+
 export class PridatPojistence{
     #adresy;
     #ulozitTl;
@@ -19,6 +21,7 @@ export class PridatPojistence{
     }
     spustit(){
         this.#ulozitTl.onclick = () => {
+            this.#odeslatPojistence();
             if(!this.#kontrola().some(e => e === false)){
                 if(this.#adresy['password_II'].rovno(this.#adresy['password_I'].hodnota, "Hesla nejsou stejná"))    return;
                 this.#odeslatPojistence();
