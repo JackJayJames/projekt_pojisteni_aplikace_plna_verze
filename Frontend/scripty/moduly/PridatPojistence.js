@@ -16,8 +16,9 @@ export class PridatPojistence{
     }
     spustit(){
         this.#ulozitTl.onclick = () => {
-            const validace = this.#kontrola().some(e => e !== false);
-            console.log(validace);
+            if(!this.#kontrola().some(e => e === false)){
+                console.log("validni");
+            }
         };
     }
 }
