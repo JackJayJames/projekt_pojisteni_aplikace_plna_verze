@@ -12,6 +12,11 @@ export class FormInputOutput{
         this.#validace = validace;
     }
     get validni(){
-        return this.#validace(this.#input.value);
+        const validace = this.#validace(this.#input.value);
+        if(validace){
+            console.log(validace);
+            return false;
+        }
+        return true;
     }
 }
