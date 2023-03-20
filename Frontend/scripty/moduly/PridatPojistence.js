@@ -14,11 +14,14 @@ export class PridatPojistence{
         }
         return vysledky;
     }
+    #odeslatPojistence(){
+        console.log("odesilac");
+    }
     spustit(){
         this.#ulozitTl.onclick = () => {
             if(!this.#kontrola().some(e => e === false)){
                 if(this.#adresy['password_II'].rovno(this.#adresy['password_I'].hodnota, "Hesla nejsou stejná"))    return;
-                
+                this.#odeslatPojistence();
             }
         };
     }

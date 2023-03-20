@@ -29,7 +29,7 @@ export class FormInputOutput{
             return false;
         }
         this.#schovatChybuValidace();
-        return;
+        return true;
     }
     #vypsatChybuValidace(error){
         this.#err.textContent = error;
