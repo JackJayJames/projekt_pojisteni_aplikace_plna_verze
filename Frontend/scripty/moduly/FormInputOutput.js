@@ -20,6 +20,12 @@ export class FormInputOutput{
         this.#schovatChybuValidace();
         return true;
     }
+    get hodnota(){
+        return this.#input.value;
+    }
+    rovno(cmp, mess = ""){
+        return;
+    }
     #vypsatChybuValidace(error){
         this.#err.textContent = error;
         this.#err.style.display = "block";

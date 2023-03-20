@@ -12,6 +12,7 @@ export class PridatPojistence{
         for(const input in this.#adresy){
             vysledky.push(this.#adresy[input].validni);
         }
+        vysledky.push(this.#adresy['password_I'].rovno(this.#adresy['assword_II'].hodnota));
         return vysledky;
     }
     spustit(){
