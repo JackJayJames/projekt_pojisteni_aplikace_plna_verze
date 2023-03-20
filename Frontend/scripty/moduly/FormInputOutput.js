@@ -9,7 +9,7 @@ export class FormInputOutput{
     constructor(input, err, validace){
         this.#input = input;
         this.#err = err;
-        this.#validace = validace;
+        this.#validace = validace.bind(Validace);
     }
     get validni(){
         const validace = this.#validace(this.#input.value);
