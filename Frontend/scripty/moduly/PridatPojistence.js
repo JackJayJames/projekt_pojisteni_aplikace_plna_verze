@@ -10,6 +10,9 @@ export class PridatPojistence{
         this.#ulozitTl = ulozitTl;
     }
     spustit(){
-        console.log(this.#adresy);
+        for(const adress in this.#adresy){
+            console.log(adress);
+            this.#adresy[adress].zapsat();
+        }
     }
 }
