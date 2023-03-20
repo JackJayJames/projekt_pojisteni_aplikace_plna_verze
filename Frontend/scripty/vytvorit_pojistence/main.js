@@ -5,7 +5,7 @@ import { FormInputOutput } from "../moduly/FormInputOutput.js";
 import { Validace } from "../moduly/Validace.js";
 
 const adresy = {
-    username: new FormInputOutput(document.querySelector('#poj_username'), document.querySelector('#er-Username')),
+    username: new FormInputOutput(document.querySelector('#poj_username'), document.querySelector('#er-Username'), Validace.zvalidovatJmeno),
     password_I: new FormInputOutput(document.querySelector('#poj_password'), document.querySelector('#er-Password')),
     password_II: new FormInputOutput(document.querySelector('#poj_passwordII'), document.querySelector('#er-PasswordII')),
     jmeno: new FormInputOutput(document.querySelector('#poj_jmeno'), document.querySelector('#er-Jmeno')),

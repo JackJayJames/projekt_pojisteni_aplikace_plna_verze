@@ -3,10 +3,11 @@
 export class Validace{
     static #_response;
 
+    /*
     static zvalidovat(pojistenec){
         this.#_response = { status: true };
-        this.#_response.jmeno = this._zvalidovatJmeno(pojistenec.jmeno.trim());
-        this.#_response.prijmeni = this._zvalidovatJmeno(pojistenec.prijmeni.trim());
+        this.#_response.jmeno = this.zvalidovatJmeno(pojistenec.jmeno.trim());
+        this.#_response.prijmeni = this.zvalidovatJmeno(pojistenec.prijmeni.trim());
         this.#_response.mail = this.#_zvalidovatEmail(pojistenec.mail.trim());
         this.#_response.telefon = this.#_zvalidovatTelefon(pojistenec.telefon.trim());
         this.#_response.ulice = this.#_zvalidovatAdresu(pojistenec.ulice.trim());
@@ -15,8 +16,8 @@ export class Validace{
         this.#_response.narozeni = this.#_zvalidovatNarozeni(pojistenec.narozeni);
 
         return this.#_response;
-    }
-    static _zvalidovatJmeno(jmeno){
+    }*/
+    static zvalidovatJmeno(jmeno){
         if(!jmeno){
             this.#_response.status = false;
             return "Toto pole je povinné";
@@ -34,7 +35,7 @@ export class Validace{
             return "Invalidní znaky";
         }
     }
-    static #_zvalidovatEmail(mail){
+    static zvalidovatEmail(mail){
         if(!mail){
             this.#_response.status = false;
             return "Toto pole je povinné";
@@ -56,7 +57,7 @@ export class Validace{
             return "Invalidní schéma E-mailu";
         }
     }
-    static #_zvalidovatTelefon(telefon){
+    static zvalidovatTelefon(telefon){
         if(!telefon){
             this.#_response.status = false;
             return "Toto pole je povinné";
@@ -70,7 +71,7 @@ export class Validace{
             return "Číslo musí být dlouhé 9 čísel";
         }
     }
-    static #_zvalidovatAdresu(adresa){
+    static zvalidovatAdresu(adresa){
         if(!adresa){
             this.#_response.status = false;
             return "Toto pole je povinné";
@@ -84,7 +85,7 @@ export class Validace{
             return "Invalidní znaky"
         }
     }
-    static #_zvalidovatPsc(psc){
+    static zvalidovatPsc(psc){
         if(!psc){
             this.#_response.status = false;
             return "Toto pole je povinné";
@@ -98,7 +99,7 @@ export class Validace{
             return "Invaldiní délka";
         }
     }
-    static #_zvalidovatNarozeni(narozeni){
+    static zvalidovatNarozeni(narozeni){
         console.log(narozeni);
         if(!narozeni){
             this.#_response.status = false;
@@ -112,7 +113,7 @@ export class Validace{
         }
     }
 
-    static #_delka(input, min, max){
+    static delka(input, min, max){
         return (min <= input.length) && (input.length <= max);
     }
     static #_jednoSlovo(slovo){
