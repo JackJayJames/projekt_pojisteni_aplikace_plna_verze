@@ -18,17 +18,21 @@ export class Validace{
     }*/
 
     static zvalidovatUsername(username){
-        return "";
+        if(!username) return "Toto pole je povinné";
+        if(!this.#_delka(username, 6, 20))   return "Musí být delší než 5 a kratší než 21";
+        if(!this.#_obasahujePismenaCisla(username)) return "Může obsahovat jenom písmena a čísla";
     }
     static zvalidovatPassword(password){
-        return "";
+        if(!password) return "Toto pole je povinné";
+        if(!this.#_delka(password, 6, 20)) return "Musí být delší než 5 a kratší než 21";
+        if(!this.#_obsahujePismenaCislaZnaky(password)) return "Invalidní znaky";
     }
     static zvalidovatJmeno(jmeno){
         if(!jmeno){
             return "Toto pole je povinné";
         }
         if(!this.#_delka(jmeno, 2, 30)){
-            return "Délka musí být delší než 1 a kratší než 31";
+            return "Délka musí být delší než 1 a k ratší než 31";
         }
         if(!this.#_jednoSlovo(jmeno)){
             return "Musí obsahovat jedno slovo";
@@ -130,5 +134,8 @@ export class Validace{
     }
     static #_obsahujeCeskaPismena(string){
         return /^[a-zA-Zá-žÁ-Ž]*$/.test(string);
+    }
+    static #_obsahujePismenaCislaZnaky(string){
+        return /^[a-zA-Z0-9!?@&]*$/.test(string);
     }
 }

@@ -54,10 +54,10 @@
     filter: grayscale(80%) contrast(40%);
 }
 
-#er-Jmeno, #er-Prijmeni, #er-Email, #er-Telefon, #er-Ulice,
+#er-Username, #er-Password, #er-PasswordII, #er-Jmeno, #er-Prijmeni, #er-Email, #er-Telefon, #er-Ulice,
 #er-Mesto, #er-Psc, #er-Narozeni{
     color: red;
-    margin: 10px;
+    margin-left: 10px;
     display: none;
 }
 
