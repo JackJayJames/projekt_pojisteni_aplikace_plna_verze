@@ -88,7 +88,6 @@ export class Validace{
         }
     }
     static zvalidovatNarozeni(narozeni){
-        console.log(narozeni);
         if(!narozeni){
             return "Toto pole je povinné";
         }

@@ -7,11 +7,17 @@ export class PridatPojistence{
         this.#adresy = adresy;
         this.#ulozitTl = ulozitTl;
     }
+    #kontrola(){
+        const vysledky = [];
+        for(const input in this.#adresy){
+            vysledky.push(this.#adresy[input].validni);
+        }
+        return vysledky;
+    }
     spustit(){
         this.#ulozitTl.onclick = () => {
-            for(const input in this.#adresy){
-                console.log(this.#adresy[input].validni);
-            }
+            const validace = this.#kontrola().some(e => e !== false);
+            console.log(validace);
         };
     }
 }

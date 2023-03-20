@@ -21,7 +21,6 @@ export class FormInputOutput{
         return true;
     }
     #vypsatChybuValidace(error){
-        console.log(error);
         this.#err.textContent = error;
         this.#err.style.display = "block";
     }
