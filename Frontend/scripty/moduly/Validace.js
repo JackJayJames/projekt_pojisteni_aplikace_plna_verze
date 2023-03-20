@@ -17,6 +17,13 @@ export class Validace{
 
         return this.#_response;
     }*/
+
+    static zvalidovatUsername(username){
+        return "";
+    }
+    static zvalidovatPassword(password){
+        return "";
+    }
     static zvalidovatJmeno(jmeno){
         if(!jmeno){
             this.#_response.status = false;
