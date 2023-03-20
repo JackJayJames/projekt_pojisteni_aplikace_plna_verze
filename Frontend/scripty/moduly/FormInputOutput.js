@@ -12,7 +12,7 @@ export class FormInputOutput{
         this.#validace = validace.bind(Validace);
     }
     get validni(){
-        const validace = this.#validace(this.#input.value);
+        const validace = this.#validace(this.hodnota);
         if(validace){
             this.#vypsatChybuValidace(validace);
             return false;
@@ -24,6 +24,11 @@ export class FormInputOutput{
         return this.#input.value;
     }
     rovno(cmp, mess = ""){
+        if(cmp !== this.hodnota){
+            this.#vypsatChybuValidace(mess);
+            return false;
+        }
+        this.#schovatChybuValidace();
         return;
     }
     #vypsatChybuValidace(error){

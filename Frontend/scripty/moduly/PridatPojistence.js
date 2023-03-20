@@ -12,13 +12,13 @@ export class PridatPojistence{
         for(const input in this.#adresy){
             vysledky.push(this.#adresy[input].validni);
         }
-        vysledky.push(this.#adresy['password_I'].rovno(this.#adresy['assword_II'].hodnota));
         return vysledky;
     }
     spustit(){
         this.#ulozitTl.onclick = () => {
             if(!this.#kontrola().some(e => e === false)){
-                console.log("validni");
+                if(this.#adresy['password_II'].rovno(this.#adresy['password_I'].hodnota, "Hesla nejsou stejná"))    return;
+                
             }
         };
     }
