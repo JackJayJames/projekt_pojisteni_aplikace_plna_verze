@@ -8,6 +8,10 @@ export class PridatPojistence{
         this.#ulozitTl = ulozitTl;
     }
     spustit(){
-        console.log(this.#adresy.jmeno.validni);
+        this.#ulozitTl.onclick = () => {
+            for(const input in this.#adresy){
+                console.log(this.#adresy[input].validni);
+            }
+        };
     }
 }
