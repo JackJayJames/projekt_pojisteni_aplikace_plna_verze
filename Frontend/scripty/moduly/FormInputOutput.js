@@ -3,12 +3,13 @@
 export class FormInputOutput{
     #input;
     #err;
-    constructor(input, err){
+    #validace;
+    constructor(input, err, validace){
         this.#input = input;
         this.#err = err;
+        this.#validace = validace;
     }
-    zapsat(){
-        this.#input.value = "ano";
-        this.#err.textContent = "ano";
+    get validni(){
+        return "ok";
     }
 }

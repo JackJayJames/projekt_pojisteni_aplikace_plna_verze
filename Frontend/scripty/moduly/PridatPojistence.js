@@ -1,7 +1,5 @@
 'use strict';
 
-import { Validace } from "./Validace.js";
-
 export class PridatPojistence{
     #adresy;
     #ulozitTl;
@@ -11,8 +9,7 @@ export class PridatPojistence{
     }
     spustit(){
         for(const adress in this.#adresy){
-            console.log(adress);
-            this.#adresy[adress].zapsat();
+            console.log(this.#adresy[adress].validni);
         }
     }
 }

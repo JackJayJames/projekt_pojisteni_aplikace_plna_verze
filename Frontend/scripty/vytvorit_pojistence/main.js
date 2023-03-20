@@ -2,6 +2,7 @@
 
 import { PridatPojistence } from "../moduly/PridatPojistence.js";
 import { FormInputOutput } from "../moduly/FormInputOutput.js";
+import { Validace } from "../moduly/Validace.js";
 
 const adresy = {
     username: new FormInputOutput(document.querySelector('#poj_username'), document.querySelector('#er-Username')),
