@@ -17,7 +17,7 @@ export class PridatPojistence{
         return vysledky;
     }
     #odeslatPojistence(){
-        console.log("odesilac");
+        Ajax.get(`http://127.0.0.1:5500/api/pojistenec/641894484803d20877d7bc6d/641894494803d20877d7bc70`);
     }
     spustit(){
         this.#ulozitTl.onclick = () => {
