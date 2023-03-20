@@ -1,5 +1,7 @@
 'use strict';
 
+import { Validace } from "./Validace.js";
+
 export class FormInputOutput{
     #input;
     #err;
@@ -10,6 +12,6 @@ export class FormInputOutput{
         this.#validace = validace;
     }
     get validni(){
-        return "ok";
+        return this.#validace(this.#input.value);
     }
 }

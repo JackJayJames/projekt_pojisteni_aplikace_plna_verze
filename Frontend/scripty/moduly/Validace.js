@@ -1,7 +1,6 @@
 'use strict';
 
 export class Validace{
-    static #_response;
 
     /*
     static zvalidovat(pojistenec){
@@ -26,101 +25,80 @@ export class Validace{
     }
     static zvalidovatJmeno(jmeno){
         if(!jmeno){
-            this.#_response.status = false;
             return "Toto pole je povinné";
         }
         if(!this.#_delka(jmeno, 2, 30)){
-            this.#_response.status = false;
             return "Délka musí být delší než 1 a kratší než 31";
         }
         if(!this.#_jednoSlovo(jmeno)){
-            this.#_response.status = false;
             return "Musí obsahovat jedno slovo";
         }
         if(!this.#_obsahujeCeskaPismena(jmeno)){
-            this.#_response.status = false;
             return "Invalidní znaky";
         }
     }
     static zvalidovatEmail(mail){
         if(!mail){
-            this.#_response.status = false;
             return "Toto pole je povinné";
         }
         if(!this.#_delka(mail, 2, 30)){
-            this.#_response.status = false;
             return "Délka musí být delší než 1 a kratší než 31";
         }
         if(!this.#_jednoSlovo(mail)){
-            this.#_response.status = false;
             return "Musí obsahovat jedno slovo";
         }
         if(!this.#_obsahujeZnaky(["@", "."], mail)){
-            this.#_response.status = false;
             return "Musí obsahovat znaky @ a .";
         }
         if(!this.#_schemaEmail(mail)){
-            this.#_response.status = false;
             return "Invalidní schéma E-mailu";
         }
     }
     static zvalidovatTelefon(telefon){
         if(!telefon){
-            this.#_response.status = false;
             return "Toto pole je povinné";
         }
         if(!this.#_obasahujeCisla(telefon.trim().split(" ").join(""))){
-            this.#_response.status = false;
             return "Musí obsaovat jenom čísla";
         }
         if(!this.#_delka(telefon.trim().split(" ").join(""), 9, 9)){
-            this.#_response.status = false;
             return "Číslo musí být dlouhé 9 čísel";
         }
     }
     static zvalidovatAdresu(adresa){
         if(!adresa){
-            this.#_response.status = false;
             return "Toto pole je povinné";
         }
         if(!this.#_delka(adresa, 3, 50)){
-            this.#_response.status = false;
             return "Délka musí být delší než 2 znaky a kratší než 50";
         }
         if(!this.#_obasahujePismenaCisla(adresa.split(" ").join(""))){
-            this.#_response.status = false;
             return "Invalidní znaky"
         }
     }
     static zvalidovatPsc(psc){
         if(!psc){
-            this.#_response.status = false;
             return "Toto pole je povinné";
         }
         if(!this.#_obasahujeCisla(psc)){
-            this.#_response.status = false;
             return "Může obsahovat jenom čísla";
         }
         if(!this.#_delka(psc, 5, 5)){
-            this.#_response.status = false;
             return "Invaldiní délka";
         }
     }
     static zvalidovatNarozeni(narozeni){
         console.log(narozeni);
         if(!narozeni){
-            this.#_response.status = false;
             return "Toto pole je povinné";
         }
         const datum = new Date(narozeni);
         if(datum.getTime() > Date.now()){
-            
-            this.#_response.status = false;
             return "Datum je v budoucnosti";
         }
     }
 
-    static delka(input, min, max){
+    static #_delka(input, min, max){
         return (min <= input.length) && (input.length <= max);
     }
     static #_jednoSlovo(slovo){
