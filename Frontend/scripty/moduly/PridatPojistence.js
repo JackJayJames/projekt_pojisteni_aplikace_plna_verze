@@ -25,26 +25,13 @@ export class PridatPojistence{
         return pojistenec;
     }
     #odeslatPojistence(){
-        this.#fetchWrapper("http://localhost:5500/api/pojistenec/", this.#vytvoritDataObj(), 'POST')
+        Ajax.post("http://localhost:5500/api/pojistenec", this.#vytvoritDataObj())
             .then(res => { console.log(res) })
-            .catch(err => { console.log(err) })
-    }
-    async #fetchWrapper(adresa = "", obj = {}, type = ""){
-        const result = fetch(adresa, {
-            methon: type,
-            mode: 'cors',
-            cache: 'no-cache',
-            credentials: 'same-origin',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: JSON.stringify(obj)
-        });
-
-        return result;
+            .catch(err => { console.log(err) });
     }
     spustit(){
         this.#ulozitTl.onclick = () => {
+            this.#odeslatPojistence();
             if(!this.#kontrola().some(e => e === false)){
                 if(this.#adresy['password_II'].rovno(this.#adresy['password'].hodnota, "Hesla nejsou stejná"))    return;
                 this.#odeslatPojistence();

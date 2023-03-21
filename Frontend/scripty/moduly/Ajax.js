@@ -4,7 +4,7 @@ export class Ajax{
     static async #_request(url, type, data, originalResponse){
         
         let fetchOptions = {
-            methon: 'POST',
+            method: type,
             mode: 'cors',
             cache: 'no-cache',
             credentials: 'same-origin',
@@ -12,6 +12,11 @@ export class Ajax{
                 'Content-Type': 'application/x-www-form-urlencoded',
             },
         };
+        if("POST" === type)
+            fetchOptions['body'] = data;
+        console.log(fetchOptions);
+
+        fetchOptions = JSON.stringify(fetchOptions);
         
         let response = await fetch(url, fetchOptions);
 
@@ -40,7 +45,7 @@ export class Ajax{
         return this.#_request(url, 'GET', data, originalResponse);
     }
     static async post(url, data = {}, originalResponse = false){
-        return this.#_request(url, 'POST', JSON.stringify(data), originalResponse);
+        return this.#_request(url, 'POST', data, originalResponse);
     }
     static async delete(url, data = {}, originalResponse = false){
         return this.#_request(url, 'DELETE', data, originalResponse);

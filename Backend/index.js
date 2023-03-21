@@ -18,6 +18,7 @@ app.set('trust proxy', true);
 database.spustit();
 
 app.post('/api/pojistenec', (req, res) => {
+    console.log(req.body);
     const { error } = Validace.pojistenec(req.body);
     if(error){
         console.log(error.details[0].message);
