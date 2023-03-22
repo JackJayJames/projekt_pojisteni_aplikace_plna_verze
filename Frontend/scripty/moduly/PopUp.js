@@ -1,10 +1,10 @@
 'use strict';
 
 export class PopUp{
-    static success(text, id){
+    success(text, id){
         this.#vytvorit(text, `popup-${id}`, "#5bc236");
     }
-    static #vytvorit(text, id, barva){
+    #vytvorit(text, id, barva){
         const popup = document.createElement("div");
         popup.classList = "popup";
         popup.id = id;
@@ -16,7 +16,7 @@ export class PopUp{
 
         document.body.appendChild(popup);
     }
-    static #getDelete(id){
+    #getDelete(id){
         const del = document.createElement("button");
         del.classList = "popupDel";
         del.textContent = "X";
@@ -25,7 +25,7 @@ export class PopUp{
         };
         return del;
     }
-    static #smazatPopUp(id){
+    #smazatPopUp(id){
         const element = document.getElementById(id);
         if(!element) return;
         element.animation = "fadeOut";

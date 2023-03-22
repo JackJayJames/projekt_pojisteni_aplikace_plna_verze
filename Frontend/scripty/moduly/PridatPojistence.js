@@ -1,6 +1,7 @@
 'use strict';
 
 import { Ajax } from "./Ajax.js";
+import { PopUp } from "./PopUp.js";
 
 export class PridatPojistence{
     #adresy;
@@ -27,12 +28,12 @@ export class PridatPojistence{
     #prepnoutNaDetail(id, ticket){
         localStorage.setItem('pojistenec_id', id);
         localStorage.setItem('ticket_id', ticket);
-        window.location.replace('./detail.html');
+        //window.location.replace('./detail.html');
     }
     #odeslatPojistence(){
         Ajax.post("http://localhost:5500/api/pojistenec", this.#vytvoritDataObj())
             .then(res => { this.#prepnoutNaDetail(res.pojistenec._id, res.ticket) })
-            .catch(err => { console.log(err.message) });
+            .catch(err => { console.log(err) });
     }
     spustit(){
         this.#ulozitTl.onclick = () => {
