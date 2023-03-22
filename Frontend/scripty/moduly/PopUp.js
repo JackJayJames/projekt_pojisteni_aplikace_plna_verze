@@ -1,6 +1,9 @@
 'use strict';
 
 export class PopUp{
+    constructor(element){
+        this.element = element;
+    }
     success(text, id){
         this.#vytvorit(text, `popup-${id}`, "#5bc236");
     }
