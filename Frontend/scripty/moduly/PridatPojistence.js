@@ -37,6 +37,7 @@ export class PridatPojistence{
             .then(res => { this.#prepnoutNaDetail(res.pojistenec._id, res.ticket) })
             .catch(err => {
                 console.log(err.status);
+                if(err.status === 405) this.#popup.error()
                 this.#popup.error('Uživatelské jméno zabráno', 123456789);
             });
     }
