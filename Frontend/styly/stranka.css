@@ -149,16 +149,16 @@ footer h5{
 }
 
 .popup{
-    animation: fadeIn 2s;
-
+    animation: fadeIn .5s;
+    max-width: 90vw;
     position: fixed;
     top: 10vh;
     right: 10px;
-    padding: 1%;
-    padding-right: 2%;
-    border-radius: 20px;
+    padding: 2%;
+    padding-right: 22px;
+    border-radius: 15px;
     border-top-right-radius: 0;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: bold;
     color: white;
 }

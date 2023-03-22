@@ -6,10 +6,11 @@ import { PopUp } from "./PopUp.js";
 export class PridatPojistence{
     #adresy;
     #ulozitTl;
+    #popup;
     constructor(adresy, ulozitTl){
         this.#adresy = adresy;
         this.#ulozitTl = ulozitTl;
-        this.#popup = new PopUp();
+        this.#popup = new PopUp(document.querySelector('.content'));
     }
     #kontrola(){
         const vysledky = [];
@@ -34,7 +35,10 @@ export class PridatPojistence{
     #odeslatPojistence(){
         Ajax.post("http://localhost:5500/api/pojistenec", this.#vytvoritDataObj())
             .then(res => { this.#prepnoutNaDetail(res.pojistenec._id, res.ticket) })
-            .catch(err => { console.log(err) });
+            .catch(err => {
+                console.log(err);
+                this.#popup.error('Uživatelské jméno zabráno', 123456789);
+            });
     }
     spustit(){
         this.#ulozitTl.onclick = () => {

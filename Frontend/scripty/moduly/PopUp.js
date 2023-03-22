@@ -1,11 +1,15 @@
 'use strict';
 
 export class PopUp{
+    #element;
     constructor(element){
-        this.element = element;
+        this.#element = element;
     }
     success(text, id){
         this.#vytvorit(text, `popup-${id}`, "#5bc236");
+    }
+    error(text, id){
+        this.#vytvorit(text, `popup-${id}`, `#7C0A02`);
     }
     #vytvorit(text, id, barva){
         const popup = document.createElement("div");
@@ -17,7 +21,7 @@ export class PopUp{
 
         setTimeout(() => this.#smazatPopUp(id), 5000)
 
-        document.body.appendChild(popup);
+        this.#element.appendChild(popup);
     }
     #getDelete(id){
         const del = document.createElement("button");
