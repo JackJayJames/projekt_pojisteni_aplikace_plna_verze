@@ -17,12 +17,11 @@ export class Ajax{
             fetchOptions['body'] = JSON.stringify(data);
         
         let response = await fetch(url, fetchOptions);
-        console.log(response);
 
         if(originalResponse)
             return response;
         if(!response.ok){
-            return Promise.reject(`${response.status} - ${response.statusText}`);
+            return Promise.reject({ "status": response.status, "text": response.statusText });
             //throw new Error(`${response.status} - ${response.statusText}`);
         }
         

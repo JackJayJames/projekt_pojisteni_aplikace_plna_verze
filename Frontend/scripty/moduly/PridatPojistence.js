@@ -36,12 +36,13 @@ export class PridatPojistence{
         Ajax.post("http://localhost:5500/api/pojistenec", this.#vytvoritDataObj())
             .then(res => { this.#prepnoutNaDetail(res.pojistenec._id, res.ticket) })
             .catch(err => {
-                console.log(err);
+                console.log(err.status);
                 this.#popup.error('Uživatelské jméno zabráno', 123456789);
             });
     }
     spustit(){
         this.#ulozitTl.onclick = () => {
+            this.#odeslatPojistence();
             if(!this.#kontrola().some(e => e === false)){
                 if(!this.#adresy['password_II'].rovno(this.#adresy['password'].hodnota, "Hesla nejsou stejná"))    return;
                 this.#odeslatPojistence();
