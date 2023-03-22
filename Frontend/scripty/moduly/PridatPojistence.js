@@ -9,6 +9,7 @@ export class PridatPojistence{
     constructor(adresy, ulozitTl){
         this.#adresy = adresy;
         this.#ulozitTl = ulozitTl;
+        this.#popup = new PopUp();
     }
     #kontrola(){
         const vysledky = [];
