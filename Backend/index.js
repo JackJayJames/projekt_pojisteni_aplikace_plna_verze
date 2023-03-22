@@ -35,7 +35,7 @@ app.post('/api/pojistenec', (req, res) => {
                 res.status(200).send(result);
                 console.log(`POST: Pojištěnec ${result.pojistenec.jmeno} ${result.pojistenec.prijmeni}, byl úspěšně přidán`);
             })
-            .catch(err => res.status(404).send(`Chyba zapsání pojistence do databáze -> ${err}`));
+            .catch(err => res.status(406).send(`Chyba zapsání pojistence do databáze -> ${err}`));
     }
 });
 app.post('/api/pojisteni/:pojistenec/:ticketID', (req, res) => {
@@ -52,11 +52,11 @@ app.post('/api/pojisteni/:pojistenec/:ticketID', (req, res) => {
                     res.status(200).send(result);
                     console.log(`POST: Pojištění ${result.nazev} ${result.predmet} bylo přidáno pojištěnci s ID ${req.params.pojistenec}`);
                 })
-                .catch(err => res.status(404).send(`Chyba zapsání pojištění do databáze -> ${err}`))
+                .catch(err => res.status(405).send(`Chyba zapsání pojištění do databáze -> ${err}`))
         })
         .catch(err => {
             console.log("POST: " + err);
-            res.status(408).send(err);
+            res.status(401).send(err);
         });
     }
 });
@@ -104,7 +104,7 @@ app.get('/api/pojistenec/:id/:ticketID', (req, res) => {
         })
         .catch(err => {
             console.log("GET: " + err);
-            res.status(408).send(err);
+            res.status(401).send(err);
         });
 });
 app.get('/api/pojisteni/:id/:pojistenec/:ticketID', (req, res) => {
@@ -123,7 +123,7 @@ app.get('/api/pojisteni/:id/:pojistenec/:ticketID', (req, res) => {
         })
         .catch(err => {
             console.log("GET: " + err);
-            res.status(408).send(err);
+            res.status(401).send(err);
         });
 });
 
@@ -139,7 +139,7 @@ app.delete('/api/pojistenec/:id/:ticketID', (req, res) => {
         })
         .catch(err => {
             console.log("DELETE: " + err);
-            res.status(408).send(err);
+            res.status(401).send(err);
         });
 });
 app.delete('/api/pojisteni/:id/:ticketID', (req, res) => {
@@ -154,7 +154,7 @@ app.delete('/api/pojisteni/:id/:ticketID', (req, res) => {
         })
         .catch(err => {
             console.log("DELETE: " + err);
-            res.status(408).send(err);
+            res.status(401).send(err);
         });
 });
 app.delete('/api/logout/:ticketID', (req, res) => {

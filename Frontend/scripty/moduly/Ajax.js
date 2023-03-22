@@ -9,21 +9,22 @@ export class Ajax{
             cache: 'no-cache',
             credentials: 'same-origin',
             headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
+                //'Content-Type': { 'application/x-www-form-urlencoded'},
+                'Content-Type': 'application/json'
             },
         };
         if("POST" === type)
-            fetchOptions['body'] = data;
-        console.log(fetchOptions);
-
-        fetchOptions = JSON.stringify(fetchOptions);
+            fetchOptions['body'] = JSON.stringify(data);
         
         let response = await fetch(url, fetchOptions);
+        console.log(response);
 
         if(originalResponse)
             return response;
-        if(!response.ok)
-            throw new Error(`${response.status} - ${response.statusText}`);
+        if(!response.ok){
+            return Promise.reject(`${response.status} - ${response.statusText}`);
+            //throw new Error(`${response.status} - ${response.statusText}`);
+        }
         
         let contentType = response.headers.get('content-type');
         if(contentType){

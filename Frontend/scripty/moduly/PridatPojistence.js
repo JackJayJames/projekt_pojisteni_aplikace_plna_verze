@@ -24,16 +24,20 @@ export class PridatPojistence{
         }
         return pojistenec;
     }
+    #prepnoutNaDetail(id, ticket){
+        localStorage.setItem('pojistenec_id', id);
+        localStorage.setItem('ticket_id', ticket);
+        window.location.replace('./detail.html');
+    }
     #odeslatPojistence(){
         Ajax.post("http://localhost:5500/api/pojistenec", this.#vytvoritDataObj())
-            .then(res => { console.log(res) })
-            .catch(err => { console.log(err) });
+            .then(res => { this.#prepnoutNaDetail(res.pojistenec._id, res.ticket) })
+            .catch(err => { console.log(err.message) });
     }
     spustit(){
         this.#ulozitTl.onclick = () => {
-            this.#odeslatPojistence();
             if(!this.#kontrola().some(e => e === false)){
-                if(this.#adresy['password_II'].rovno(this.#adresy['password'].hodnota, "Hesla nejsou stejná"))    return;
+                if(!this.#adresy['password_II'].rovno(this.#adresy['password'].hodnota, "Hesla nejsou stejná"))    return;
                 this.#odeslatPojistence();
             }
         };
