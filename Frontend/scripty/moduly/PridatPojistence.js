@@ -37,8 +37,9 @@ export class PridatPojistence{
             .then(res => { this.#prepnoutNaDetail(res.pojistenec._id, res.ticket) })
             .catch(err => {
                 console.log(err.status);
-                if(err.status === 405) this.#popup.error()
-                this.#popup.error('Uživatelské jméno zabráno', 123456789);
+                if(err.status === 405) this.#popup.error('Chyba sítě, nebo server je nedostupný', 9987654321);
+                if(err.status === 401) this.#popup.error('Uživatelské jméno zabráno', 123456789);
+                if(err.status === 400) this.#popup.error('Invalidní data', 456789123);
             });
     }
     spustit(){

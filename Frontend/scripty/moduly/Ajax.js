@@ -16,13 +16,16 @@ export class Ajax{
         if("POST" === type)
             fetchOptions['body'] = JSON.stringify(data);
         
+        console.log(fetchOptions);
+
         let response = await fetch(url, fetchOptions);
+
+        console.log(response);
 
         if(originalResponse)
             return response;
         if(!response.ok){
             return Promise.reject({ "status": response.status, "text": response.statusText });
-            //throw new Error(`${response.status} - ${response.statusText}`);
         }
         
         let contentType = response.headers.get('content-type');
