@@ -8,4 +8,8 @@ export class ObsluhaDetailStranky{
     spustit(){
         console.log("detail");
     }
+
+    static prepnoutNaLogin(){
+        window.location.replace('./index.html');
+    }
 }

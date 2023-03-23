@@ -15,12 +15,8 @@ export class Ajax{
         };
         if("POST" === type)
             fetchOptions['body'] = JSON.stringify(data);
-        
-        console.log(fetchOptions);
 
         let response = await fetch(url, fetchOptions);
-
-        console.log(response);
 
         if(originalResponse)
             return response;
