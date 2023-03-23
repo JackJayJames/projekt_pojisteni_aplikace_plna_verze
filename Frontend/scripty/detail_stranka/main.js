@@ -26,17 +26,18 @@ if(userData.pojistenec_id && userData.ticket_id){
                 pojisteni: new Vlastnosti(res.pojisteni)
             };
             const formPojisteni = {
-                nazev: new FormInputOutput(document.querySelector("#nazev"), document.querySelector("#valNazev")),
-                castka: new FormInputOutput(document.querySelector("#castka"), document.querySelector("#valCastka")),
-                predmet: new FormInputOutput(document.querySelector("#predmet"), document.querySelector("#valPredmet")),
-                platnost: new FormInputOutput(document.querySelector("#platnost"), document.querySelector("#valPlatnost"))
+                nazev: new FormInputOutput(document.querySelector("#nazev"), document.querySelector("#valNazev"), ()=>{}),
+                castka: new FormInputOutput(document.querySelector("#castka"), document.querySelector("#valCastka"), ()=>{}),
+                predmet: new FormInputOutput(document.querySelector("#predmet"), document.querySelector("#valPredmet"), ()=>{}),
+                platnost: new FormInputOutput(document.querySelector("#platnost"), document.querySelector("#valPlatnost"), ()=>{})
             }
+            const detail = new ObsluhaDetailStranky(userData, vystupInfo, formPojisteni);
+            detail.spustit();
         })
         .catch(err => {
             console.log(err);
         });
-    const detail = new ObsluhaDetailStranky(sessionStorage.getItem("pojistenec"));
-    detail.spustit();
+    
 }
 else{
     ObsluhaDetailStranky.prepnoutNaLogin();
