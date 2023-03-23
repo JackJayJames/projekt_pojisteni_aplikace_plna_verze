@@ -35,8 +35,6 @@ export class PopUp{
     #smazatPopUp(id){
         const element = document.getElementById(id);
         if(!element) return;
-        element.animation = "fadeOut";
-
-        setTimeout(() => element.remove(), 2000)
+        element.remove();
     }
 }
