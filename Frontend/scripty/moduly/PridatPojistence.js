@@ -30,13 +30,12 @@ export class PridatPojistence{
     #prepnoutNaDetail(id, ticket){
         localStorage.setItem('pojistenec_id', id);
         localStorage.setItem('ticket_id', ticket);
-        //window.location.replace('./detail.html');
+        window.location.replace('./detail.html');
     }
     #odeslatPojistence(){
         Ajax.post("http://localhost:5500/api/pojistenec", this.#vytvoritDataObj())
             .then(res => { this.#prepnoutNaDetail(res.pojistenec._id, res.ticket) })
             .catch(err => {
-                console.log(err.status);
                 if(err.status === 405) this.#popup.error('Chyba sítě, nebo server je nedostupný', 9987654321);
                 if(err.status === 401) this.#popup.error('Uživatelské jméno zabráno', 123456789);
                 if(err.status === 400) this.#popup.error('Invalidní data', 456789123);
@@ -44,7 +43,6 @@ export class PridatPojistence{
     }
     spustit(){
         this.#ulozitTl.onclick = () => {
-            this.#odeslatPojistence();
             if(!this.#kontrola().some(e => e === false)){
                 if(!this.#adresy['password_II'].rovno(this.#adresy['password'].hodnota, "Hesla nejsou stejná"))    return;
                 this.#odeslatPojistence();
