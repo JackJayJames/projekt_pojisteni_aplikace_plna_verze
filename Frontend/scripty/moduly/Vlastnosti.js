@@ -5,6 +5,6 @@ export class Vlastnosti{
     #adresa;
     constructor(vlastnost, adresa){
         this.#vlastnost = vlastnost;
-        this.#odresa = adresa;
+        this.#adresa = adresa;
     }
 }

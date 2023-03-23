@@ -2,17 +2,28 @@
 
 import { ObsluhaDetailStranky } from "../moduly/ObsluhaDetailStranky.js";
 import { Ajax } from "../moduly/Ajax.js";
+import { Vlastnosti } from "../moduly/Vlastnosti.js";
 
 const userData = {
     "pojistenec_id": localStorage.getItem('pojistenec_id'),
     "ticket_id": localStorage.getItem('ticket_id')
 };
-console.log(userData);
 
 if(userData.pojistenec_id && userData.ticket_id){
     Ajax.get(`http://localhost:5500/api/pojistenec/${userData.pojistenec_id}/${userData.ticket_id}`)
         .then(res => {
             console.log(res);
+            const vystupInfo = {
+                jmeno: new Vlastnosti(res.jmeno, document.querySelector("#jmeno")),
+                prijmeni: new Vlastnosti(res.prijmeni, document.querySelector("#prijmeni")),
+                narozeni: new Vlastnosti(res.narozeni, document.querySelector("#narozeni")),
+                mail: new Vlastnosti(res.mail, document.querySelector("#mail")),
+                telefon: new Vlastnosti(res.telefon, document.querySelector("#telefon")),
+                ulice: new Vlastnosti(res.ulice, document.querySelector("#ulice")),
+                mesto: new Vlastnosti(res.mesto, document.querySelector("#mesto")),
+                psc: new Vlastnosti(res.psc, document.querySelector("#psc")),
+                pojisteni: new Vlastnosti(res.pojisteni)
+            };
         })
         .catch(err => {
             console.log(err);
