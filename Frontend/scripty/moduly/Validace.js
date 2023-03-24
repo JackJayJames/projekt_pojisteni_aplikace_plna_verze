@@ -2,21 +2,6 @@
 
 export class Validace{
 
-    /*
-    static zvalidovat(pojistenec){
-        this.#_response = { status: true };
-        this.#_response.jmeno = this.zvalidovatJmeno(pojistenec.jmeno.trim());
-        this.#_response.prijmeni = this.zvalidovatJmeno(pojistenec.prijmeni.trim());
-        this.#_response.mail = this.#_zvalidovatEmail(pojistenec.mail.trim());
-        this.#_response.telefon = this.#_zvalidovatTelefon(pojistenec.telefon.trim());
-        this.#_response.ulice = this.#_zvalidovatAdresu(pojistenec.ulice.trim());
-        this.#_response.mesto = this.#_zvalidovatAdresu(pojistenec.mesto.trim());
-        this.#_response.psc = this.#_zvalidovatPsc(pojistenec.psc.trim().split(" ").join(""));
-        this.#_response.narozeni = this.#_zvalidovatNarozeni(pojistenec.narozeni);
-
-        return this.#_response;
-    }*/
-
     static zvalidovatUsername(username){
         if(!username) return "Toto pole je povinné";
         if(!this.#_delka(username, 6, 20))   return "Musí být delší než 5 a kratší než 21";

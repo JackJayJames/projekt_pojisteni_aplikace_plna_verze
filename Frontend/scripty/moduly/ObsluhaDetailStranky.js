@@ -12,9 +12,14 @@ export class ObsluhaDetailStranky{
         this.#infoVystup = infoVystup;
         this.#formPojisteni = formPojisteni;
     }
-
+    #vypsatInfo(){
+        for(const info in this.#infoVystup){
+            if(info === "pojisteni") continue;
+            this.#infoVystup[info].vypsat();
+        }
+    }
     spustit(){
-        console.log("detail");
+        this.#vypsatInfo();
     }
 
     static prepnoutNaLogin(){

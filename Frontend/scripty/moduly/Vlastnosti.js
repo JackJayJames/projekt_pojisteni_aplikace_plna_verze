@@ -7,4 +7,7 @@ export class Vlastnosti{
         this.#vlastnost = vlastnost;
         this.#adresa = adresa;
     }
+    vypsat(){
+        console.log(this.#vlastnost);
+    }
 }
