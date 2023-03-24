@@ -5,6 +5,7 @@ import { Ajax } from "../moduly/Ajax.js";
 import { Vlastnosti } from "../moduly/Vlastnosti.js";
 import { FormInputOutput } from "../moduly/FormInputOutput.js";
 import { VlastnostiPojisteni } from "../moduly/VlastnostiPojisteni.js";
+import { Validace } from "../moduly/Validace.js";
 
 const userData = {
     "pojistenec_id": localStorage.getItem('pojistenec_id'),
@@ -27,10 +28,10 @@ if(userData.pojistenec_id && userData.ticket_id){
                 pojisteni: new VlastnostiPojisteni(res.pojisteni, "")
             };
             const formPojisteni = {
-                nazev: new FormInputOutput(document.querySelector("#nazev"), document.querySelector("#valNazev"), ()=>{}),
-                castka: new FormInputOutput(document.querySelector("#castka"), document.querySelector("#valCastka"), ()=>{}),
-                predmet: new FormInputOutput(document.querySelector("#predmet"), document.querySelector("#valPredmet"), ()=>{}),
-                platnost: new FormInputOutput(document.querySelector("#platnost"), document.querySelector("#valPlatnost"), ()=>{})
+                nazev: new FormInputOutput(document.querySelector("#nazev"), document.querySelector("#valNazev"), Validace.zvalidovatNazev),
+                castka: new FormInputOutput(document.querySelector("#castka"), document.querySelector("#valCastka"), Validace.zvalidovatCastku),
+                predmet: new FormInputOutput(document.querySelector("#predmet"), document.querySelector("#valPredmet"), Validace.zvalidovatPredmet),
+                platnost: new FormInputOutput(document.querySelector("#platnost"), document.querySelector("#valPlatnost"), Validace.zvalidovatPlatnost)
             }
             const detail = new ObsluhaDetailStranky(userData, vystupInfo, formPojisteni, document.querySelector("#addPoj"));
             detail.spustit();

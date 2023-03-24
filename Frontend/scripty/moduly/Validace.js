@@ -1,7 +1,18 @@
 'use strict';
 
 export class Validace{
-
+    static zvalidovatNazev(nazev){
+        return "nazev";
+    }
+    static zvalidovatCastku(castka){
+        return "castka";
+    }
+    static zvalidovatPredmet(predmet){
+        return "predmet";
+    }
+    static zvalidovatPlatnost(platnost){
+        return "platnost";
+    }
     static zvalidovatUsername(username){
         if(!username) return "Toto pole je povinné";
         if(!this.#_delka(username, 6, 20))   return "Musí být delší než 5 a kratší než 21";
