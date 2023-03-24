@@ -7,7 +7,10 @@ export class Validace{
         if(!this.#_obasahujePismenaCisla(nazev)) return "Invalidní znaky";
     }
     static zvalidovatCastku(castka){
-        return "castka";
+        if(!castka) return "Toto pole je povinné";
+        if(!this.#_obasahujeCisla(castka)) return "Může obsahovat jenom čísla";
+        if(Number(castka) < 1) return "Částka je příliš malá";
+        if(Number(castka) > 10000000) return "Částka je příliš velká";
     }
     static zvalidovatPredmet(predmet){
         return "predmet";
