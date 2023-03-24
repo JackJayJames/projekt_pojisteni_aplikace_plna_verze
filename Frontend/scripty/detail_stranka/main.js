@@ -24,7 +24,7 @@ if(userData.pojistenec_id && userData.ticket_id){
                 ulice: new Vlastnosti(res.ulice, document.querySelector("#ulice")),
                 mesto: new Vlastnosti(res.mesto, document.querySelector("#mesto")),
                 psc: new Vlastnosti(res.psc, document.querySelector("#psc")),
-                pojisteni: new VlastnostiPojisteni(res.pojisteni)
+                pojisteni: new VlastnostiPojisteni(res.pojisteni, "")
             };
             const formPojisteni = {
                 nazev: new FormInputOutput(document.querySelector("#nazev"), document.querySelector("#valNazev"), ()=>{}),

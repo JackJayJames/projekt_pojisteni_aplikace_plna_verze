@@ -3,7 +3,13 @@
 import { Vlastnosti } from "./Vlastnosti.js";
 
 export class VlastnostiPojisteni extends Vlastnosti{
-    constructor(Vlastnost, adresa){
-        super(Vlastnost, adresa);
+    #vlastnost;
+    #adresa;
+    constructor(vlastnost, adresa){
+        super(vlastnost, adresa);
+        console.log(vlastnost);
+    }
+    get maPojisteni(){
+        console.log(this.#vlastnost);
     }
 }
