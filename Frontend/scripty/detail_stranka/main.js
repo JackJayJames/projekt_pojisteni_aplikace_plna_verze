@@ -17,7 +17,7 @@ if(userData.pojistenec_id && userData.ticket_id){
             const vystupInfo = {
                 jmeno: new Vlastnosti(res.jmeno, document.querySelector("#jmeno")),
                 prijmeni: new Vlastnosti(res.prijmeni, document.querySelector("#prijmeni")),
-                narozeni: new Vlastnosti(res.narozeni, document.querySelector("#narozeni")),
+                narozeni: new Vlastnosti(new Date(res.narozeni).toLocaleDateString(), document.querySelector("#narozeni")),
                 mail: new Vlastnosti(res.mail, document.querySelector("#mail")),
                 telefon: new Vlastnosti(res.telefon, document.querySelector("#telefon")),
                 ulice: new Vlastnosti(res.ulice, document.querySelector("#ulice")),

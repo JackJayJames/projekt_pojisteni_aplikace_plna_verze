@@ -8,6 +8,6 @@ export class Vlastnosti{
         this.#adresa = adresa;
     }
     vypsat(){
-        console.log(this.#vlastnost);
+        this.#adresa.textContent = this.#vlastnost;
     }
 }
