@@ -4,6 +4,7 @@ import { ObsluhaDetailStranky } from "../moduly/ObsluhaDetailStranky.js";
 import { Ajax } from "../moduly/Ajax.js";
 import { Vlastnosti } from "../moduly/Vlastnosti.js";
 import { FormInputOutput } from "../moduly/FormInputOutput.js";
+import { VlastnostiPojisteni } from "../moduly/VlastnostiPojisteni.js";
 
 const userData = {
     "pojistenec_id": localStorage.getItem('pojistenec_id'),
@@ -23,7 +24,7 @@ if(userData.pojistenec_id && userData.ticket_id){
                 ulice: new Vlastnosti(res.ulice, document.querySelector("#ulice")),
                 mesto: new Vlastnosti(res.mesto, document.querySelector("#mesto")),
                 psc: new Vlastnosti(res.psc, document.querySelector("#psc")),
-                pojisteni: new Vlastnosti(res.pojisteni)
+                pojisteni: new VlastnostiPojisteni(res.pojisteni)
             };
             const formPojisteni = {
                 nazev: new FormInputOutput(document.querySelector("#nazev"), document.querySelector("#valNazev"), ()=>{}),
