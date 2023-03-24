@@ -13,7 +13,9 @@ export class Validace{
         if(Number(castka) > 10000000) return "Částka je příliš velká";
     }
     static zvalidovatPredmet(predmet){
-        return "predmet";
+        if(!predmet) return "Toto pole je povinné";
+        if(!this.#_delka(predmet, 2, 50)) return "Invalidní délka";
+        if(!this.#_obasahujePismenaCisla(predmet)) return "Invalidní znaky";
     }
     static zvalidovatPlatnost(platnost){
         return "platnost";
