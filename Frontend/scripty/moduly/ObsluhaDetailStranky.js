@@ -1,6 +1,7 @@
 'use strict';
 
 import { Ajax } from "./Ajax.js";
+import { Pojisteni } from "./Pojisteni.js";
 import { PopUp } from "./PopUp.js";
 
 export class ObsluhaDetailStranky{
@@ -23,18 +24,20 @@ export class ObsluhaDetailStranky{
     #kontrola(){
         const validace = [];
         for(const input in this.#formPojisteni){
-            console.log(this.#formPojisteni[input].validni);
             validace.push(this.#formPojisteni[input].validni);
         }
         return validace;
+    }
+    #odeslatPojisteni(){
+        const pojisteni = new Pojisteni(this.#formPojisteni.nazev.hodnota, this.#formPojisteni.castka.hodnota,
+                         this.#formPojisteni.predmet.hodnota, new Date(Date.now()).toString(), this.#formPojisteni.platnost.hodnota);
+        console.log(pojisteni);
     }
     spustit(){
         this.#vypsatInfo();
         this.#submitTl.onclick = () => {
             if(!this.#kontrola().some(e => e === false)){
-                console.log("validni");
-            } else {
-                console.log("nevalidní");
+                this.#odeslatPojisteni();
             }
         };
         console.log(this.#infoVystup["pojisteni"].maPojisteni);
