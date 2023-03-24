@@ -32,6 +32,7 @@ export class ObsluhaDetailStranky{
         const pojisteni = new Pojisteni(this.#formPojisteni.nazev.hodnota, this.#formPojisteni.castka.hodnota,
                          this.#formPojisteni.predmet.hodnota, new Date(Date.now()).toString(), this.#formPojisteni.platnost.hodnota);
         console.log(pojisteni);
+        Ajax.post(`http://localhost:5500/api/pojisteni/${this.#userData.pojistenec_id}/${this.#userData.ticket_id}`)
     }
     spustit(){
         this.#vypsatInfo();
