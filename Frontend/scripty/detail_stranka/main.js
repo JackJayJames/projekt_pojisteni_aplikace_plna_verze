@@ -32,7 +32,7 @@ if(userData.pojistenec_id && userData.ticket_id){
                 predmet: new FormInputOutput(document.querySelector("#predmet"), document.querySelector("#valPredmet"), ()=>{}),
                 platnost: new FormInputOutput(document.querySelector("#platnost"), document.querySelector("#valPlatnost"), ()=>{})
             }
-            const detail = new ObsluhaDetailStranky(userData, vystupInfo, formPojisteni);
+            const detail = new ObsluhaDetailStranky(userData, vystupInfo, formPojisteni, document.querySelector("#addPoj"));
             detail.spustit();
         })
         .catch(err => {

@@ -7,10 +7,12 @@ export class ObsluhaDetailStranky{
     #userData;
     #infoVystup;
     #formPojisteni;
-    constructor(userData, infoVystup, formPojisteni){
+    #submitTl;
+    constructor(userData, infoVystup, formPojisteni, submitTl){
         this.#userData = userData;
         this.#infoVystup = infoVystup;
         this.#formPojisteni = formPojisteni;
+        this.#submitTl = submitTl;
     }
     #vypsatInfo(){
         for(const info in this.#infoVystup){
