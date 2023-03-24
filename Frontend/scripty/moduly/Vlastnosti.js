@@ -7,6 +7,9 @@ export class Vlastnosti{
         this.#vlastnost = vlastnost;
         this.#adresa = adresa;
     }
+    get info(){
+        return this.#vlastnost;
+    }
     vypsat(){
         this.#adresa.textContent = this.#vlastnost;
     }

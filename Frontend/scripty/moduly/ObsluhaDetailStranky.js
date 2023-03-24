@@ -22,7 +22,7 @@ export class ObsluhaDetailStranky{
     }
     spustit(){
         this.#vypsatInfo();
-        this.#infoVystup["pojisteni"].maPojisteni;
+        console.log(this.#infoVystup["pojisteni"].maPojisteni);
     }
 
     static prepnoutNaLogin(){

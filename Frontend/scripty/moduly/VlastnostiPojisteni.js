@@ -6,10 +6,9 @@ export class VlastnostiPojisteni extends Vlastnosti{
     #vlastnost;
     #adresa;
     constructor(vlastnost, adresa){
-        super(vlastnost, adresa);
-        console.log(vlastnost);
+        super(vlastnost, adresa);   
     }
     get maPojisteni(){
-        console.log(this.#vlastnost);
+        return this.info.length > 0;
     }
 }
