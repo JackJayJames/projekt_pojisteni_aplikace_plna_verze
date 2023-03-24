@@ -22,6 +22,9 @@ export class ObsluhaDetailStranky{
     }
     spustit(){
         this.#vypsatInfo();
+        this.#submitTl.onclick = () => {
+            console.log("funuguje");
+        };
         console.log(this.#infoVystup["pojisteni"].maPojisteni);
     }
 
