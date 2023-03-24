@@ -2,7 +2,9 @@
 
 export class Validace{
     static zvalidovatNazev(nazev){
-        return "nazev";
+        if(!nazev) return "Toto pole je povinné";
+        if(!this.#_delka(nazev, 5, 30)) return "Invalidní délka";
+        if(!this.#_obasahujePismenaCisla(nazev)) return "Invalidní znaky";
     }
     static zvalidovatCastku(castka){
         return "castka";

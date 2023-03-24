@@ -20,10 +20,20 @@ export class ObsluhaDetailStranky{
             this.#infoVystup[info].vypsat();
         }
     }
+    #kontrola(){
+        for(const input in this.#formPojisteni){
+            console.log(this.#formPojisteni[input].validni);
+        }
+        return [true];
+    }
     spustit(){
         this.#vypsatInfo();
         this.#submitTl.onclick = () => {
-            console.log("funuguje");
+            if(!this.#kontrola().some(e => e === false)){
+                console.log("validni");
+            } else {
+                console.log("nevalidní");
+            }
         };
         console.log(this.#infoVystup["pojisteni"].maPojisteni);
     }
