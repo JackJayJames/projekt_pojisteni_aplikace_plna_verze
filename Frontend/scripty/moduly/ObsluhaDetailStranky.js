@@ -21,10 +21,12 @@ export class ObsluhaDetailStranky{
         }
     }
     #kontrola(){
+        const validace = [];
         for(const input in this.#formPojisteni){
             console.log(this.#formPojisteni[input].validni);
+            validace.push(this.#formPojisteni[input].validni);
         }
-        return [true];
+        return validace;
     }
     spustit(){
         this.#vypsatInfo();
