@@ -18,7 +18,8 @@ export class Validace{
         if(!this.#_obasahujePismenaCisla(predmet)) return "Invalidní znaky";
     }
     static zvalidovatPlatnost(platnost){
-        return "platnost";
+        if(!platnost) return "Toto pole je povinné";
+        if(Date.now() > new Date(platnost)) return "Datum je v minulosti";
     }
     static zvalidovatUsername(username){
         if(!username) return "Toto pole je povinné";
