@@ -4,10 +4,6 @@ import { Ajax } from "./Ajax.js";
 import { PopUp } from "../moduly/PopUp.js";
 
 export class ObsluhaHlStranky{
-<<<<<<< Updated upstream
-    constructor(){
-        
-=======
     #login;
     #loginBtn;
     #popUp;
@@ -29,6 +25,5 @@ export class ObsluhaHlStranky{
         this.#loginBtn.onclick = () => {
             if(this.#validaceLogin())    return this.#popUp.error('Invalidni Login', 123456789);
         };
->>>>>>> Stashed changes
     }
 }
