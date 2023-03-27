@@ -51,6 +51,13 @@
     margin-top: 10%;
     align-self: flex-end;
 }
+<<<<<<< Updated upstream
+=======
+.err-username, .err-password{
+    color: red;
+    margin-left: 5px;
+}
+>>>>>>> Stashed changes
 
 @media only screen and (max-width: 420px){
     .login{
