@@ -20,7 +20,13 @@ export class ObsluhaHlStranky{
         return validationResults;
     }
     #odeslatLogin(){
-        console.log("login");
+        Ajax.post('http://localhost:5500/api/login', { username: this.#login.username.hodnota, password: this.#login.password.hodnota })
+            .then(res => {
+                console.log(res.ticketID);
+            })
+            .catch(err => {
+                console.log(err);
+            });
     }
     spustit(){
         this.#loginBtn.onclick = () => {
