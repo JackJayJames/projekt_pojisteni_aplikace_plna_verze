@@ -15,15 +15,19 @@ export class ObsluhaHlStranky{
     #validaceLogin(){
         const validationResults = [];
         for(const form in this.#login){
-            console.log(form);
             validationResults.push(this.#login[form].validni);
         }
-        console.log(validationResults);
-        return true;
+        return validationResults;
+    }
+    #odeslatLogin(){
+        console.log("login");
     }
     spustit(){
         this.#loginBtn.onclick = () => {
-            if(this.#validaceLogin())    return this.#popUp.error('Invalidni Login', 123456789);
+            if(!this.#validaceLogin().some(e => e === false)){
+                this.#popUp.error('Invalidni Login', 123456789);
+                this.#odeslatLogin();
+            }
         };
     }
 }
