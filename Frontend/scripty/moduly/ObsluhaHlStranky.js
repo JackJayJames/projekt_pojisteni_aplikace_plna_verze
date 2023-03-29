@@ -25,7 +25,9 @@ export class ObsluhaHlStranky{
                 console.log(res.ticketID);
             })
             .catch(err => {
-                console.log(err);
+                if(err.status === 401)  this.#popUp.error("Špatné uživalské jméno nebo heslo", 123456789);
+                if(err.status === 404)  this.#popUp.error("Chyba", 987564321);
+                if(err.status === 400)  this.#popUp.error("Invalidní formát jména nebo hesla", 654123789);
             });
     }
     spustit(){
