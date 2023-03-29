@@ -22,7 +22,10 @@ export class ObsluhaHlStranky{
     #odeslatLogin(){
         Ajax.post('http://localhost:5500/api/login', { username: this.#login.username.hodnota, password: this.#login.password.hodnota })
             .then(res => {
-                console.log(res.ticketID);
+                localStorage.setItem('pojistenec_id', res.pojistenec._id);
+                localStorage.setItem('ticket_id', res.ticket);
+                window.location.replace('./detail.html');
+                console.log("321456")
             })
             .catch(err => {
                 if(err.status === 401)  this.#popUp.error("Špatné uživalské jméno nebo heslo", 123456789);
@@ -32,8 +35,10 @@ export class ObsluhaHlStranky{
     }
     spustit(){
         this.#loginBtn.onclick = () => {
-            if(!this.#validaceLogin().some(e => e === false)){
+            if(this.#validaceLogin().some(e => e === false)){
                 this.#popUp.error('Invalidni Login', 123456789);
+                
+            } else{
                 this.#odeslatLogin();
             }
         };
