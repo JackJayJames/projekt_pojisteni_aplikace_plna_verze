@@ -151,9 +151,8 @@ module.exports = class Database{
                 await privatni.get(this)._smazatTicket(ticket._id);
             }
         }
-
         const result = await privatni.get(this)._vytvoritTicket(ip, pojID);
-        return result._id;
+        return { "ticketID": result._id, "pojistenec_ID": result.pojistenec_ID };
     }
     async smazatTicket(ticketID){
         const result = await privatni.get(this)._smazatTicket(ticketID);

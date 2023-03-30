@@ -70,9 +70,9 @@ app.post('/api/login', (req, res) => {
         database.kontrolaPrihlaseni(req.body.username, req.body.password)
             .then(pojID => {
                 database.ziskatTicketID(pojID, req.ip)
-                    .then(ticketID => {
-                        console.log(`LOGIN: posílám ticket, id = ${ticketID}`);
-                        res.status(200).send({ "ticketID": ticketID });
+                    .then(result => {
+                        console.log(`LOGIN: posílám ticket, id = ${result.ticketID}`);
+                        res.status(200).send({ "pojistenec": result.pojistenec_ID, "ticketID": result.ticketID });
                     })
                     .catch(err => { res.status(404).send(err) });
             })
