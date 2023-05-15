@@ -38,6 +38,7 @@ if(userData.pojistenec_id && userData.ticket_id){
         })
         .catch(err => {
             console.log(err);
+            console.log(userData);
             if(err.status === 401) ObsluhaDetailStranky.prepnoutNaLogin();
         });
     

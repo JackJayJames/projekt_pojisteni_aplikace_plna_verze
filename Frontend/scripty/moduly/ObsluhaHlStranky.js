@@ -22,7 +22,7 @@ export class ObsluhaHlStranky{
     #odeslatLogin(){
         Ajax.post('http://localhost:5500/api/login', { username: this.#login.username.hodnota, password: this.#login.password.hodnota })
             .then(res => {
-                localStorage.setItem('pojistenec_id', res.pojistenec._id);
+                localStorage.setItem('pojistenec_id', res.pojistenec);
                 localStorage.setItem('ticket_id', res.ticketID);
                 window.location.replace('./detail.html');
             })
