@@ -20,6 +20,11 @@ export class ObsluhaDetailStranky{
             if(info === "pojisteni") continue;
             this.#infoVystup[info].vypsat();
         }
+        console.log(this.#infoVystup['pojisteni'].info);
+        for(const pojisteni of this.#infoVystup['pojisteni'].info){
+            console.log(pojisteni);
+            this.#ziskatPojisteni(pojisteni);
+        }
     }
     #kontrola(){
         const validace = [];
@@ -27,6 +32,15 @@ export class ObsluhaDetailStranky{
             validace.push(this.#formPojisteni[input].validni);
         }
         return validace;
+    }
+    #ziskatPojisteni(pojisteni){
+        Ajax.get(`http://localhost:5500/api/pojisteni/${pojisteni}/${this.#userData.pojistenec_id}/${this.#userData.ticket_id}`)
+        .then(res => {
+            console.log(res);
+        })
+        .catch(err => {
+            console.log(err);
+        })
     }
     #odeslatPojisteni(){
         const pojisteni = new Pojisteni(this.#formPojisteni.nazev.hodnota, this.#formPojisteni.castka.hodnota,
