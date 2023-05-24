@@ -10,11 +10,13 @@ export class ObsluhaDetailStranky{
     #infoVystup;
     #formPojisteni;
     #submitTl;
+    #poj_Tabulka;
     constructor(userData, infoVystup, formPojisteni, submitTl){
         this.#userData = userData;
         this.#infoVystup = infoVystup;
         this.#formPojisteni = formPojisteni;
         this.#submitTl = submitTl;
+        this.#poj_Tabulka = new TvoricTabulky(".pojisteni");
     }
     #vypsatInfo(){
         for(const info in this.#infoVystup){
@@ -42,6 +44,7 @@ export class ObsluhaDetailStranky{
         Ajax.get(`http://localhost:5500/api/pojisteni/${pojisteni}/${this.#userData.pojistenec_id}/${this.#userData.ticket_id}`)
         .then(res => {
             console.log(res);
+            TvoricTabulky.pridat
 
         })
         .catch(err => {
