@@ -22,16 +22,16 @@ export class ObsluhaDetailStranky{
         for(const info in this.#infoVystup){
             if(info === "pojisteni") continue;
             this.#infoVystup[info].vypsat();
-        }/*
+        }
         if(!this.#infoVystup['pojisteni'].info.length){
             const poj_sp = document.querySelector('.pojisteni');
             poj_sp.innerHTML = "Žádná pojištění";
             return;
-        }*/
+        }
         for(const pojisteni of this.#infoVystup['pojisteni'].info){
-            console.log(pojisteni);
             this.#ziskatPojisteni(pojisteni);
         }
+        this.#poj_Tabulka.vypsat();
     }
     #kontrola(){
         const validace = [];
@@ -43,9 +43,7 @@ export class ObsluhaDetailStranky{
     #ziskatPojisteni(pojisteni){
         Ajax.get(`http://localhost:5500/api/pojisteni/${pojisteni}/${this.#userData.pojistenec_id}/${this.#userData.ticket_id}`)
         .then(res => {
-            console.log(res);
-            TvoricTabulky.pridat
-
+            this.#poj_Tabulka.pridat(res);
         })
         .catch(err => {
             PopUp.error(`Chyba ${err.status} - ${err.text}`);
@@ -55,10 +53,9 @@ export class ObsluhaDetailStranky{
     #odeslatPojisteni(){
         const pojisteni = new Pojisteni(this.#formPojisteni.nazev.hodnota, this.#formPojisteni.castka.hodnota,
                          this.#formPojisteni.predmet.hodnota, new Date(Date.now()).toString(), this.#formPojisteni.platnost.hodnota);
-        console.log(pojisteni);
+        
         Ajax.post(`http://localhost:5500/api/pojisteni/${this.#userData.pojistenec_id}/${this.#userData.ticket_id}`, pojisteni)
         .then(res => {
-            console.log(res);
             location.reload();
         })
         .catch(err => {
@@ -72,7 +69,6 @@ export class ObsluhaDetailStranky{
                 this.#odeslatPojisteni();
             }
         };
-        console.log(this.#infoVystup["pojisteni"].maPojisteni);
     }
 
     static prepnoutNaLogin(){
