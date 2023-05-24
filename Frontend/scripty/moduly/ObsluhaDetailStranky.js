@@ -20,7 +20,12 @@ export class ObsluhaDetailStranky{
             if(info === "pojisteni") continue;
             this.#infoVystup[info].vypsat();
         }
-        console.log(this.#infoVystup['pojisteni'].info);
+        if(!this.#infoVystup['pojisteni'].info.length){
+            const pojisteni = document.querySelector('.pojisteni');
+            pojisteni.innerHTML = "Žádná pojištění";
+            return;
+        }
+
         for(const pojisteni of this.#infoVystup['pojisteni'].info){
             console.log(pojisteni);
             this.#ziskatPojisteni(pojisteni);
@@ -34,12 +39,14 @@ export class ObsluhaDetailStranky{
         return validace;
     }
     #ziskatPojisteni(pojisteni){
+
         Ajax.get(`http://localhost:5500/api/pojisteni/${pojisteni}/${this.#userData.pojistenec_id}/${this.#userData.ticket_id}`)
         .then(res => {
             console.log(res);
+
         })
         .catch(err => {
-            console.log(err);
+            PopUp.error(`Chyba ${err.status} - ${err.text}`);
         })
     }
     #odeslatPojisteni(){
