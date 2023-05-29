@@ -31,7 +31,6 @@ export class ObsluhaDetailStranky{
         for(const pojisteni of this.#infoVystup['pojisteni'].info){
             this.#ziskatPojisteni(pojisteni);
         }
-        this.#poj_Tabulka.vypsat();
     }
     #kontrola(){
         const validace = [];
