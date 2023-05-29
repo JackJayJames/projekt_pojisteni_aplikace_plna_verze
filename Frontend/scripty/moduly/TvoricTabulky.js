@@ -7,11 +7,30 @@ export class TvoricTabulky{
         this.#misto = document.querySelector(misto);
         this.#seznam_pojisteni = {};
     }
+    #vytvoritElem(type, trida, text){
+        const elem = document.createElement(type);
+        elem.classList = trida;
+        elem.innerText = text;
+        return elem;
+    }
     #vytvoritContainer(obj){
         const container = document.createElement('div');
         container.classList = 'elemPojist';
         container.id = obj._id;
 
+        const predmet = this.#vytvoritElem('h3', "predmet", obj.predmet);
+        container.appendChild(predmet);
+
+        const nazev = this.#vytvoritElem('h4', "nazev", obj.nazev);
+        container.appendChild(nazev);
+
+        const castka = this.#vytvoritElem('div', "castka", obj.castka);
+        container.appendChild(castka);
+
+        const platnost = this.#vytvoritElem('div', "platnost", obj.platnost_do);
+        container.appendChild(platnost);
+
+        console.log(obj);
         console.log(container);
     }
     vypsat(){
