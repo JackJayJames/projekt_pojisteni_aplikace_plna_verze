@@ -26,7 +26,7 @@ export class TvoricTabulky{
         container.appendChild(castka);
         const platnost = this.#vytvoritElem('div', "platnost", new Date(obj.platnost_do).toLocaleDateString());
         container.appendChild(platnost);
-        const deleteBtn = this.#vytvoritDeleteButton("poj_deleteBtn", obj._id);
+        const deleteBtn = this.#vytvoritDeleteButton("poj_deleteBtn", `delete-${obj._id}`);
         container.appendChild(deleteBtn);
 
         return container;

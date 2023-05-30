@@ -43,12 +43,18 @@ export class ObsluhaDetailStranky{
         Ajax.get(`http://localhost:5500/api/pojisteni/${pojisteni}/${this.#userData.pojistenec_id}/${this.#userData.ticket_id}`)
         .then(res => {
             this.#poj_Tabulka.pridat(res);
+            this.#pridatSmazatPojisteni(res._id);
         })
         .catch(err => {
             PopUp.error(`Chyba ${err.status} - ${err.text}`, 1234576543);
         })
     }
-
+    #pridatSmazatPojisteni(id){
+        const delBtn = document.getElementById(`delete-${id}`);
+        delBtn.onclick = () => {
+            console.log("kliknuto " + id);
+        }
+    }
     #odeslatPojisteni(){
         const pojisteni = new Pojisteni(this.#formPojisteni.nazev.hodnota, this.#formPojisteni.castka.hodnota,
                          this.#formPojisteni.predmet.hodnota, new Date(Date.now()).toString(), this.#formPojisteni.platnost.hodnota);
