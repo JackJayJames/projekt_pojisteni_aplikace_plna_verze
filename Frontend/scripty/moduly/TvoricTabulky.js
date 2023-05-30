@@ -36,10 +36,13 @@ export class TvoricTabulky{
         if(!Object.keys(this.#seznam_pojisteni).length){
             this.#misto.innerHTML = "Žádná pojištění";
             return;
+        } else {
+            this.#misto.innerHTML = "";
         }
 
         for(const poj in this.#seznam_pojisteni){
             console.log(this.#seznam_pojisteni[poj]);
+            this.#misto.appendChild(this.#seznam_pojisteni[poj]);
         }
     }
     pridat(poj){
