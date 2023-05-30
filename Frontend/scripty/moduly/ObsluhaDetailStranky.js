@@ -52,8 +52,17 @@ export class ObsluhaDetailStranky{
     #pridatSmazatPojisteni(id){
         const delBtn = document.getElementById(`delete-${id}`);
         delBtn.onclick = () => {
-            console.log("kliknuto " + id);
+            this.#smazatPojisteni(id);
         }
+    }
+    #smazatPojisteni(pojisteni){
+        Ajax.delete(`http://localhost:5500/api/pojisteni/${pojisteni}/${this.#userData.ticket_id}`)
+        .then(res => {
+
+        })
+        .catch(err => {
+            
+        });
     }
     #odeslatPojisteni(){
         const pojisteni = new Pojisteni(this.#formPojisteni.nazev.hodnota, this.#formPojisteni.castka.hodnota,

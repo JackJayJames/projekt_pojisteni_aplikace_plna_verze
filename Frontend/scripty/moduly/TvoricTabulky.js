@@ -53,7 +53,6 @@ export class TvoricTabulky{
     pridat(poj){
         const element = this.#vytvoritContainer(poj);
         this.#seznam_pojisteni[poj._id] = element;
-
         this.vypsat();
     }
 }
