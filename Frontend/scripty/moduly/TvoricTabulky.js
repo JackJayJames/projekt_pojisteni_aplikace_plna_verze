@@ -20,17 +20,23 @@ export class TvoricTabulky{
 
         const predmet = this.#vytvoritElem('h3', "predmet", obj.predmet);
         container.appendChild(predmet);
-
         const nazev = this.#vytvoritElem('h4', "nazev", obj.nazev);
         container.appendChild(nazev);
-
         const castka = this.#vytvoritElem('div', "castka", obj.castka);
         container.appendChild(castka);
-
         const platnost = this.#vytvoritElem('div', "platnost", new Date(obj.platnost_do).toLocaleDateString());
         container.appendChild(platnost);
+        const deleteBtn = this.#vytvoritDeleteButton("poj_deleteBtn", obj._id);
+        container.appendChild(deleteBtn);
 
         return container;
+    }
+    #vytvoritDeleteButton(trida, id){
+        const button = document.createElement('button');
+        button.textContent = "DELETE";
+        button.classList = trida;
+        button.id = id;
+        return button;
     }
     vypsat(){
         if(!Object.keys(this.#seznam_pojisteni).length){
@@ -41,7 +47,6 @@ export class TvoricTabulky{
         }
 
         for(const poj in this.#seznam_pojisteni){
-            console.log(this.#seznam_pojisteni[poj]);
             this.#misto.appendChild(this.#seznam_pojisteni[poj]);
         }
     }

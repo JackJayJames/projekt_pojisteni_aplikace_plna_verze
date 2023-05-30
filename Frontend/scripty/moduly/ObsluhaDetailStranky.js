@@ -45,7 +45,7 @@ export class ObsluhaDetailStranky{
             this.#poj_Tabulka.pridat(res);
         })
         .catch(err => {
-            PopUp.error(`Chyba ${err.status} - ${err.text}`);
+            PopUp.error(`Chyba ${err.status} - ${err.text}`, 1234576543);
         })
     }
 
