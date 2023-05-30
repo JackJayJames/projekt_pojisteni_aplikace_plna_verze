@@ -56,12 +56,16 @@ export class ObsluhaDetailStranky{
         }
     }
     #smazatPojisteni(pojisteni){
+        console.log('Ticket = ' + this.#userData.ticket_id);
+        console.log('Pojisteni = ' + pojisteni);
+
         Ajax.delete(`http://localhost:5500/api/pojisteni/${pojisteni}/${this.#userData.ticket_id}`)
         .then(res => {
-
+            this.#poj_Tabulka.smazat(pojisteni);
+            PopUp.success('Pojištění úspěšně smazáno.', '9876456079');
         })
         .catch(err => {
-            
+            PopUp.error('Chyba mazání pojištění', '89udfs3');
         });
     }
     #odeslatPojisteni(){

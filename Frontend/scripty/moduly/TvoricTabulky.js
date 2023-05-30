@@ -55,4 +55,8 @@ export class TvoricTabulky{
         this.#seznam_pojisteni[poj._id] = element;
         this.vypsat();
     }
+    smazat(poj){
+        delete this.#seznam_pojisteni[poj];
+        this.vypsat();
+    }
 }
