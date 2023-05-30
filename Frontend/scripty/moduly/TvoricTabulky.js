@@ -30,21 +30,21 @@ export class TvoricTabulky{
         const platnost = this.#vytvoritElem('div', "platnost", new Date(obj.platnost_do).toLocaleDateString());
         container.appendChild(platnost);
 
-        console.log(obj);
-        console.log(container);
+        return container;
     }
     vypsat(){
-        console.log("-");
-        console.log(this.#seznam_pojisteni);
-        console.log("-");
+        if(!Object.keys(this.#seznam_pojisteni).length){
+            this.#misto.innerHTML = "Žádná pojištění";
+            return;
+        }
 
         for(const poj in this.#seznam_pojisteni){
-            console.log(poj);
+            console.log(this.#seznam_pojisteni[poj]);
         }
     }
     pridat(poj){
         const element = this.#vytvoritContainer(poj);
-        //this.#seznam_pojisteni[poj._id] = element;
+        this.#seznam_pojisteni[poj._id] = element;
 
         this.vypsat();
     }
