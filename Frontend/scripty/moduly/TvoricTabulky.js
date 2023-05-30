@@ -27,7 +27,7 @@ export class TvoricTabulky{
         const castka = this.#vytvoritElem('div', "castka", obj.castka);
         container.appendChild(castka);
 
-        const platnost = this.#vytvoritElem('div', "platnost", obj.platnost_do);
+        const platnost = this.#vytvoritElem('div', "platnost", new Date(obj.platnost_do).toLocaleDateString());
         container.appendChild(platnost);
 
         console.log(obj);
@@ -44,7 +44,8 @@ export class TvoricTabulky{
     }
     pridat(poj){
         const element = this.#vytvoritContainer(poj);
-        //this.#seznam_pojisteni[poj._id] = poj;
+        //this.#seznam_pojisteni[poj._id] = element;
+
         this.vypsat();
     }
 }
